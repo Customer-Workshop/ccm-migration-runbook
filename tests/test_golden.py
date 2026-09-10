@@ -18,7 +18,7 @@ from tools import pipeline
 GOLDEN = {
     "17-0574": {
         "verdicts": {
-            "G0": "fail",
+            "G0": "pass",
             "G1": "pass",
             "G2": "pass",
             "G3": "fail",
@@ -38,13 +38,13 @@ GOLDEN = {
             "decisions_proposed": 3,
         },
         "G4": {
-            "field_match_pct": 0.5041,
-            "exact_name_pct": 0.122,
-            "static_text_coverage": 0.7707,
+            "field_match_pct": 0.6341,
+            "exact_name_pct": 0.0894,
+            "static_text_coverage": 0.9608,
             "sections_matched": 0,
             "sections_total": 13,
-            "target_form_controls": 271,
-            "target_data_variables": 314,
+            "target_form_controls": 74,
+            "target_data_variables": 2494,
         },
     },
     "18-1026": {

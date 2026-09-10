@@ -1,9 +1,10 @@
 """Inventory of a Quadient Inspire Layout export (the *.xml next to a WFD).
 
 Observed grammar (two reference exports, Designer 17.0.436.3): the root <Layout> holds a flat
-list of records. A record with <ParentId> is a declaration (type, Name, ParentId, IndexInParent,
-Forward). A record without <ParentId> is the body of a declared object, keyed by <Id>. Group
-declarations never have a body and Def.* roots never have a declaration.
+list of records, either directly or nested in the single Layout module of a <WorkFlow> wrapper. A
+record with <ParentId> is a declaration (type, Name, ParentId, IndexInParent, Forward). A record
+without <ParentId> is the body of a declared object, keyed by <Id>. Group declarations never have
+a body and Def.* roots never have a declaration.
 """
 
 from __future__ import annotations
@@ -23,8 +24,23 @@ def _text(el: ET.Element, tag: str) -> str:
     return (el.findtext(tag) or "").strip()
 
 
+def layout_root(root: ET.Element) -> ET.Element:
+    if root.tag == "Layout":
+        return root
+    if root.tag == "WorkFlow":
+        modules = [child for child in root if child.tag == "Layout"]
+        if len(modules) != 1:
+            raise ValueError(f"WorkFlow export has {len(modules)} Layout modules; expected 1")
+        layouts = [child for child in modules[0] if child.tag == "Layout"]
+        if len(layouts) != 1:
+            raise ValueError(f"WorkFlow Layout module has {len(layouts)} nested Layout elements; expected 1")
+        return layouts[0]
+    raise ValueError(f"unsupported target export root <{root.tag}>")
+
+
 def inventory(path: Path) -> dict:
-    root = load_xml(path)
+    export = load_xml(path)
+    root = layout_root(export)
     declarations: dict[str, dict] = {}
     bodies: dict[str, list] = defaultdict(list)
     for child in root:
@@ -77,9 +93,10 @@ def inventory(path: Path) -> dict:
         if d["parent"] and not d["parent"].startswith("Def.") and d["parent"] not in declared_ids
     )
 
-    return {
+    result = {
         "source_file": path.name,
         "root": root.tag,
+        "export_kind": "workflow" if export.tag == "WorkFlow" else "layout",
         "counts": {
             "records_total": len(declarations) + sum(len(v) for v in bodies.values()),
             "declarations": len(declarations),
@@ -106,3 +123,6 @@ def inventory(path: Path) -> dict:
             "dangling_reference_count": len(dangling),
         },
     }
+    if export.tag == "WorkFlow":
+        result["workflow_version"] = export.attrib["version"]
+    return result

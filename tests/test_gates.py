@@ -290,6 +290,85 @@ def test_inventory_reports_dangling_reference(tmp_path: Path) -> None:
     assert integrity["dangling_references"][0]["value"] == "999"
 
 
+def test_inventory_unwraps_workflow_layout_module(tmp_path: Path) -> None:
+    records = """
+      <Variable>
+        <Id>1</Id>
+        <Name>First</Name>
+        <ParentId>Def.Data</ParentId>
+        <IndexInParent>0</IndexInParent>
+        <Forward>0</Forward>
+      </Variable>
+      <Variable>
+        <Id>2</Id>
+        <Name>Second</Name>
+        <ParentId>Def.Data</ParentId>
+        <IndexInParent>1</IndexInParent>
+        <Forward>0</Forward>
+      </Variable>
+    """
+    bare_path = tmp_path / "bare.xml"
+    bare_path.write_text(f"<Layout>{records}</Layout>", encoding="utf-8")
+    workflow_path = tmp_path / "workflow.xml"
+    workflow_path.write_text(
+        f"""
+        <WorkFlow version="17.0.436.3">
+          <Property />
+          <Connect />
+          <Output />
+          <ExtWfdImpl />
+          <Layout>
+            <Id>1</Id>
+            <Name>Layout1</Name>
+            <ModulePos>0</ModulePos>
+            <Layout>{records}</Layout>
+          </Layout>
+        </WorkFlow>
+        """,
+        encoding="utf-8",
+    )
+
+    bare = inventory(bare_path)
+    workflow = inventory(workflow_path)
+
+    for key in (
+        "root",
+        "counts",
+        "pages",
+        "tables",
+        "rowsets",
+        "form_controls",
+        "data_variables",
+        "styles",
+        "static_text",
+        "inline_object_ids",
+        "integrity",
+    ):
+        assert workflow[key] == bare[key]
+    assert bare["export_kind"] == "layout"
+    assert workflow["export_kind"] == "workflow"
+    assert workflow["workflow_version"] == "17.0.436.3"
+
+
+def test_inventory_rejects_multiple_workflow_layout_modules(tmp_path: Path) -> None:
+    path = tmp_path / "multiple.xml"
+    path.write_text(
+        '<WorkFlow version="17.0"><Layout /><Layout /></WorkFlow>',
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match=r"WorkFlow export has 2 Layout modules; expected 1"):
+        inventory(path)
+
+
+def test_inventory_rejects_unknown_export_root(tmp_path: Path) -> None:
+    path = tmp_path / "unknown.xml"
+    path.write_text("<Other />", encoding="utf-8")
+
+    with pytest.raises(ValueError, match=r"unsupported target export root <Other>"):
+        inventory(path)
+
+
 # G5
 
 
