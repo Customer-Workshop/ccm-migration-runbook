@@ -30,10 +30,18 @@ between the session and the designer's inbox.
 Form: <form_id>   plan sha256: <hash>   session: <devin session url>
 Migration-stack version used: <x.y.z or unknown>   Designer version: <from knowledge/quadient-designer.md>
 
-1. Run the Groovy import against the plan. Paste the full console output below, unedited.
-2. Export the resulting WFD as XML (Designer's generic XML export). Record its filename and sha256.
+1. In migration-examples (migration-config.toml and project-config.toml set, inspireOutput = "Designer"):
+     BUILD_PLAN=<path to plan> ../gradlew CimBuildPlanImport
+     ../gradlew DeployStyles
+     ../gradlew DeployDocumentObjects
+   Paste the full console output of all three below, unedited, and attach report/*-deployment-report-*.csv.
+   Record defaultTargetFolder and the ICM path of the deployed .wfd.
+2. Open the deployed .wfd in Designer and export it as XML (Designer's generic XML export). Record its
+   filename and sha256.
 3. For each manual_design / defer item listed, say done / not done / not applicable.
 4. Compose once with the fixed input data for this form (if you have it). Record the output PDF sha256.
+
+Target: icm://<defaultTargetFolder>/<form>.wfd    Deployment report: <csv filename>
 
 Console output:
 <paste>
