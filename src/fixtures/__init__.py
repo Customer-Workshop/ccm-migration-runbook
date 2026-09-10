@@ -26,6 +26,8 @@ def load_pairs(path: Path = PAIRS_PATH) -> list[dict]:
         assert (form["target"] is None) == (form["status"] == "source_only"), (
             f"{form['form_id']}: status/target mismatch"
         )
+        if form["target"] is not None:
+            assert form["target"]["layout_xml"] is not None, f"{form['form_id']}: reference_pair needs layout_xml"
         assert form["source"]["file"].replace("-", "")[:6] == form["form_id"].replace("-", ""), (
             f"{form['form_id']}: source file name does not carry the form number"
         )

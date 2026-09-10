@@ -119,7 +119,9 @@ def test_convert_cli_raises_on_unparseable_input(tmp_path: Path) -> None:
         convert.main([str(bad), "-o", str(tmp_path / "out")])
 
 
-def _manifest(raw: Path, tmp_path: Path, *, with_target: bool, corrupt_hash: bool = False) -> Path:
+def _manifest(
+    raw: Path, tmp_path: Path, *, with_target: bool, corrupt_hash: bool = False, layout_only: bool = False
+) -> Path:
     source_sha = "0" * 64 if corrupt_hash else sha256_of(raw / "990001.xdp")
     form = {
         "form_id": "99-0001",
@@ -130,7 +132,7 @@ def _manifest(raw: Path, tmp_path: Path, *, with_target: bool, corrupt_hash: boo
     if with_target:
         form["target"] = {
             "layout_xml": {"file": "99-0001.xml", "sha256": sha256_of(raw / "99-0001.xml")},
-            "composed_pdf": {"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")},
+            "composed_pdf": None if layout_only else {"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")},
         }
     path = tmp_path / "pairs.yaml"
     path.write_text(yaml.safe_dump({"manifest_version": 1, "forms": [form]}), encoding="utf-8")
@@ -181,6 +183,28 @@ def test_pipeline_source_only_skips_target_gates(monkeypatch: pytest.MonkeyPatch
         "G4": "skipped",
         "G5": "skipped",
         "G6": "skipped",
+    }
+
+
+def test_pipeline_layout_only_pair_skips_g6(monkeypatch: pytest.MonkeyPatch, raw: Path, tmp_path: Path) -> None:
+    manifest = _manifest(raw, tmp_path, with_target=True, layout_only=True)
+    code, report = _run(monkeypatch, raw, manifest, tmp_path / "out")
+
+    assert code == 0
+    assert {k: v for k, v in _verdicts(report).items() if k in ("G0", "G1", "G2", "G3", "G4", "G5")} == {
+        "G0": "pass",
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "fail",
+        "G4": "fail",
+        "G5": "external",
+    }
+    assert report["forms"][0]["gates"][-1] == {
+        "gate": "G6",
+        "verdict": "skipped",
+        "reason": "no composed PDF supplied for this form",
+        "metrics": {},
+        "findings": [],
     }
 
 

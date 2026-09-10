@@ -84,16 +84,37 @@ GOLDEN = {
     },
     "18-1721": {
         "verdicts": {
-            "G0": "pass",
+            "G0": "fail",
             "G1": "pass",
             "G2": "pass",
             "G3": "fail",
-            "G4": "skipped",
-            "G5": "skipped",
+            "G4": "pass",
+            "G5": "external",
             "G6": "skipped",
         },
+        "G0": {"static_text_coverage": 0.8776},
         "G1": {"containers": 20, "fields": 79, "statics": 17},
-        "G3": {"bound_pct": 0.0, "scripts_total": 4, "nodes_requiring_human_touch": 79},
+        "G3": {
+            "bound_pct": 0.0,
+            "name_evidence_pct": 89.9,
+            "scripts_total": 4,
+            "scripts_mechanically_transferable_pct": 50.0,
+            "nodes_requiring_human_touch": 79,
+            "findings_routable": 89,
+            "findings_unrouted": 0,
+            "decisions_proposed": 89,
+        },
+        "G4": {
+            "field_match_pct": 0.8734,
+            "exact_name_pct": 0.038,
+            "crosswalk_rows_pending": 0,
+            "field_match_pct_if_proposed_verified": 0.8734,
+            "static_text_coverage": 0.8776,
+            "sections_matched": 0,
+            "sections_total": 5,
+            "target_form_controls": 73,
+            "target_data_variables": 449,
+        },
     },
 }
 
@@ -103,7 +124,9 @@ def _all_artifacts_present() -> bool:
     for pair in load_pairs():
         files = [pair["source"]["file"]]
         if pair["target"]:
-            files += [pair["target"]["layout_xml"]["file"], pair["target"]["composed_pdf"]["file"]]
+            files.append(pair["target"]["layout_xml"]["file"])
+            if pair["target"]["composed_pdf"] is not None:
+                files.append(pair["target"]["composed_pdf"]["file"])
         if not all((raw / f).exists() for f in files):
             return False
     return True
