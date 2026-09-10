@@ -219,3 +219,97 @@ elements:
     status: proposed
     evidence: "181026.xdp Signeddate caption 'DATE Signed by PAYER (MM/DD/YYYY)'; 18-1026_Quad_2.xml data variable PayerSignedDte"
     reviewed_by: null
+# 17-0574 (Reconsideration request): proposed by the converting session for the 22 source fields whose
+# XDP dataRef leaf is not the name used in "Forms_17-0574 (AEM to Quad).xml". Evidence pairs the XDP
+# dataRef (and caption where present) with a data variable under Def.Data.ReconApp in that export.
+  - id: tobacco.chew_used_more_than_12_per_year_date
+    label: Chew or snuff - date last used when frequency was more than 12 per year
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ReconsiderationRequest.ReasonForClass.TobaccoClassification.ChewUsedFrequency12year, caption 'Date last used when frequency was >12/year'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.TobaccoUseTable.ChewSnuffUsedMoreThan12PerYearDte"
+    reviewed_by: null
+  - id: tobacco.cigar_used_more_than_12_per_year_date
+    label: Cigars or pipe - date last used when frequency was more than 12 per year
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...TobaccoClassification.CigarsUsedFrequency12year, caption 'Date last used when frequency was >12/year'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.TobaccoUseTable.CigarLastUsedMoreThan12PerYearDte"
+    reviewed_by: null
+  - id: tobacco.other_used_more_than_12_per_year_date
+    label: Other tobacco - date last used when frequency was more than 12 per year
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...TobaccoClassification.OtherUsedFrequency12year, caption 'Date last used when frequency was >12/year'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.TobaccoUseTable.otherTobaccoUsedMoreThan12PerYearDte"
+    reviewed_by: null
+  - id: medical.remove_extra_premium_rating_text
+    label: Condition for which the extra premium rating should be removed or reduced
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.RemoveExtraPremium (text field under checkbox 'A. Remove/Reduce extra premium rating for'); Forms_17-0574 (AEM to Quad).xml data variable ReconApp.OtherMedical.RemoveReduceExtraPremRatingTxt"
+    reviewed_by: null
+  - id: medical.remove_extra_premium_last_symptoms_date
+    label: Extra premium rating - date of last symptoms
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.ALastSymptoms1, caption '1. Provide the date you last had symptoms'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.OtherMedical.RemoveLastSymptomsDte"
+    reviewed_by: null
+  - id: medical.remove_extra_premium_last_treatment_date
+    label: Extra premium rating - date of last treatment
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.ALastSymptoms2, caption '2. Provide the date you last had treatment'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.OtherMedical.RemoveLastTreatmentDte"
+    reviewed_by: null
+  - id: medical.remove_exclusion_last_symptoms_date
+    label: Exclusion rider - date of last symptoms
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.BLastSymptoms1, caption '1. Provide the date you last had symptoms' under 'B. Remove exclusion rider for'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.OtherMedical.LastSymptomsDte (sibling of RemoveExclusionRiderTxt)"
+    reviewed_by: null
+  - id: medical.remove_exclusion_last_treatment_date
+    label: Exclusion rider - date of last treatment
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.BLastSymptoms2, caption '2. Provide the date you last had treatment' under 'B. Remove exclusion rider for'; Forms_17-0574 (AEM to Quad).xml data variable ReconApp.OtherMedical.LastTreatmentDte (sibling of RemoveExclusionRiderTxt)"
+    reviewed_by: null
+  - id: medical.provider_consultation_date
+    label: Health care provider - date(s) of consultation
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...Medical.HealthCareProvider.Dates1/Dates2 (table column 'Dates'); Forms_17-0574 (AEM to Quad).xml data variables ReconApp.OtherMedicalTable1.ConsultationDte and OtherMedicalTable2.ConsultationDte"
+    reviewed_by: null
+  - id: travel.location
+    label: Foreign travel - destination
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...ForeignTravel.Destination.Row1..Row3; Forms_17-0574 (AEM to Quad).xml data variables ReconApp.TravelsTable1..3.LocationTxt"
+    reviewed_by: null
+  - id: travel.duration
+    label: Foreign travel - trip duration
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...ForeignTravel.TripDuration.Row1..Row3; Forms_17-0574 (AEM to Quad).xml data variables ReconApp.TravelsTable1..3.Duration"
+    reviewed_by: null
+  - id: travel.depart_date
+    label: Foreign travel - departure date
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...ForeignTravel.DepartureDate.Row1..Row3; Forms_17-0574 (AEM to Quad).xml data variables ReconApp.TravelsTable1..3.DepartDte"
+    reviewed_by: null
+  - id: travel.purpose
+    label: Foreign travel - purpose of trip
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "170574.xdp dataRef ...ForeignTravel.TripPurpose.Row1..Row3; Forms_17-0574 (AEM to Quad).xml data variables ReconApp.TravelsTable1..3.PurposeTxt"
+    reviewed_by: null
