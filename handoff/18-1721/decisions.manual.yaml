@@ -1,0 +1,1258 @@
+form_id: 18-1721
+session: https://partner-workshops.devinenterprise.com/sessions/060b9626e9ad430186f22f341a34278b
+filter: action in (manual_design, defer)
+decisions:
+- id: D-001
+  node: .EFormData.MainSubform.CheckBox3
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Route1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'checkbox field with caption "Route to: Advanced Business Services Division
+    - Life Product Department"; G0 static-text coverage is 0.8776 (< GOV-01 0.95)
+    against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target
+    names are proposed until a human confirms the pairing; the 12 target-only tokens
+    are a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-002
+  node: .EFormData.MainSubform.TextField1
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attention1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Attention:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-003
+  node: .EFormData.MainSubform.CheckBox3[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Business
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Business Case Management (BCM)"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-004
+  node: .EFormData.MainSubform.CheckBox3[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Corporate
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Corporate Inventory"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-005
+  node: .EFormData.MainSubform.CheckBox3[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/MCB
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "MCB Transactions"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-006
+  node: .EFormData.MainSubform.CheckBox3[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/VEL
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "VEL/VJL/CUL/SUL"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-007
+  node: .EFormData.MainSubform.CheckBox3[5]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: 'hold the binding; candidate target data variable Def.Data/SubTree0/Policy
+    or Policy2 (ambiguous: two sibling ''Policy*'' variables) is recorded as evidence
+    for the follow-up session that proposes the crosswalk row once the pairing is
+    confirmed'
+  rationale: checkbox field with caption "Policy Transaction"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-008
+  node: .EFormData.MainSubform.CheckBox3[6]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: 'hold the binding; candidate target data variable Def.Data/SubTree0/Policy2
+    or Policy (ambiguous: two sibling ''Policy*'' variables) is recorded as evidence
+    for the follow-up session that proposes the crosswalk row once the pairing is
+    confirmed'
+  rationale: checkbox field with caption "Policy Loan Agreement"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-009
+  node: .EFormData.MainSubform.CheckBox3[7]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Surrender
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Surrender of Paid-up Additions/Accumulation";
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-010
+  node: .EFormData.MainSubform.CheckBox3[8]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/SurrenderPlo
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Surrender of Policy"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-011
+  node: .EFormData.MainSubform.CheckBox3[9]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Withdrawal
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Withdrawal of Excess"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-012
+  node: .EFormData.MainSubform.CheckBox3[10]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Other
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Other:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-013
+  node: .EFormData.MainSubform.TextField1[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherS
+    (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: text field with caption empty (free-text companion of the preceding checkbox);
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-014
+  node: .EFormData.MainSubform.TextField1[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Comments
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: multiline_text field with caption "Comments/Special Instructions:"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-015
+  node: .EFormData.MainSubform.CheckBox3[11]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Route2
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'checkbox field with caption "Route to: Policy Change Portfolio Products
+    Division - Policyowner Services Department"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-016
+  node: .EFormData.MainSubform.TextField1[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attention2
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Attention:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-017
+  node: .EFormData.MainSubform.CheckBox3[12]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/90-1279-99
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "90-1279-99"; G0 static-text coverage is
+    0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-018
+  node: .EFormData.MainSubform.CheckBox3[13]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/90-1279
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "90-1279 (After GA input)"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-019
+  node: .EFormData.MainSubform.CheckBox3[14]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Pending
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Pending Requirements"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-020
+  node: .EFormData.MainSubform.TextField1[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherPstring
+    (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: text field with caption empty (free-text companion of the preceding checkbox);
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-021
+  node: .EFormData.MainSubform.CheckBox3[15]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Otherp
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Other:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-022
+  node: .EFormData.MainSubform.TextField1[5]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/GroupName
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Group Name:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-023
+  node: .EFormData.MainSubform.TextField1[6]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/PolicyNumber
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Policy Number(s):"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-024
+  node: .EFormData.MainSubform.TextField1[7]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/MCBNumber
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "MCB Number(s):"; G0 static-text coverage is
+    0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-025
+  node: .EFormData.MainSubform.TextField1[8]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/group
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "# of participants in group:"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-026
+  node: .EFormData.MainSubform.TextField1[9]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/ISA
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "ISA Number(s):"; G0 static-text coverage is
+    0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-027
+  node: .EFormData.MainSubform.TextField1[10]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Service
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Service Plan Number:"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-028
+  node: .EFormData.MainSubform.TextField1[11]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Comments2
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: multiline_text field with caption "Comments/Special Instructions:"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-029
+  node: .EFormData.MainSubform.DateField1
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/DATE
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: image field with caption "DATE (MM/DD/YYYY)"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-030
+  node: .EFormData.MainSubform.LastName
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/POLICYNUMBER
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "POLICY NUMBER(S) / ISA / MCB"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-031
+  node: .EFormData.MainSubform.FirstName
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/FR_Name
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "FINANCIAL REPRESENTATIVE' NAME"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-032
+  node: .EFormData.MainSubform.Insured
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/INSUREDNAME
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "INSURED NAME"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-033
+  node: .EFormData.MainSubform.FirstName[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/FR_No
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "FINANCIAL REPRESENTATIVE NO."; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-034
+  node: .EFormData.MainSubform.FirstName[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/NetworkOffice
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'text field with caption "NETWORK OFFICE #"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-035
+  node: .EFormData.MainSubform.FirstName[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/SubmittedBy
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "SUBMITTED BY"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-036
+  node: .EFormData.MainSubform.Tele.Phone.f2
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone1/Telephone2)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption "(" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-038
+  node: .EFormData.MainSubform.Tele.Phone.f2[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone1/Telephone2)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption ")" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-040
+  node: .EFormData.MainSubform.FirstName[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/GroupOffice
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "GROUP OFFICE CONTACT"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-041
+  node: .EFormData.MainSubform.Tele.Phone.f2[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone1/Telephone2)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption "(" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-043
+  node: .EFormData.MainSubform.Tele.Phone.f2[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone1/Telephone2)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption ")" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-045
+  node: .EFormData.page2.CheckBox3
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Route4
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'checkbox field with caption "Route to: Large Case Division - New Business
+    Department"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721
+    (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed
+    until a human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-046
+  node: .EFormData.page2.TextField1
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attention4
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Attention:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-047
+  node: .EFormData.page2.TextField1[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2S
+    (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: text field with caption empty (free-text companion of the preceding checkbox);
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-048
+  node: .EFormData.page2.CheckBox3[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Other:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-049
+  node: .EFormData.page2.CheckBox3[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/NAIC
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "NAIC Illustration"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-050
+  node: .EFormData.page2.CheckBox3[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/ERISA
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "ERISA"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-051
+  node: .EFormData.page2.CheckBox3[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attending
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Attending Physician Statement (APS)"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-052
+  node: .EFormData.page2.TextField1[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Comments3
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: multiline_text field with caption "Comments/Special Instructions:"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-053
+  node: .EFormData.page2.CheckBox3[5]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Route5
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'checkbox field with caption "Route to: Beneficiary & Title Division
+    - Policyowner Services Department"; G0 static-text coverage is 0.8776 (< GOV-01
+    0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4
+    no target names are proposed until a human confirms the pairing; the 12 target-only
+    tokens are a company name/address footer block, not form content, which suggests
+    a footer added in Designer rather than a different form revision, but that is
+    for the reviewer to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-054
+  node: .EFormData.page2.TextField1[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attention5
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Attention:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-055
+  node: .EFormData.page2.CheckBox3[6]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/'Nameof
+    change' (variable name contains a space) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: checkbox field with caption "Name Change of Owner, Beneficiary or Assignee";
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-056
+  node: .EFormData.page2.CheckBox3[7]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/SplitDollar
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Split Dollar Method - Assignment/Owner";
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-057
+  node: .EFormData.page2.CheckBox3[8]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Change
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Change of Beneficiary/Ownership"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-058
+  node: .EFormData.page2.TextField1[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Comments4
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: multiline_text field with caption "Comments/Special Instructions:"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-059
+  node: .EFormData.page2.TextField1[5]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2_2S
+    (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: text field with caption empty (free-text companion of the preceding checkbox);
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-060
+  node: .EFormData.page2.CheckBox3[9]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2_2
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Other:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-061
+  node: .EFormData.page2.CheckBox3[10]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Collateral
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Collateral Assignment/Release of Assignment";
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-062
+  node: .EFormData.page2.CheckBox3[11]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Route6
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'checkbox field with caption "Route to: Life Benefits Division - Policyowner
+    Services Department"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-063
+  node: .EFormData.page2.TextField1[6]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Attention6
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "Attention:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-064
+  node: .EFormData.page2.TextField1[7]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Other6S
+    (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up
+    session that proposes the crosswalk row once the pairing is confirmed
+  rationale: text field with caption empty (free-text companion of the preceding checkbox);
+    G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to
+    Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a
+    human confirms the pairing; the 12 target-only tokens are a company name/address
+    footer block, not form content, which suggests a footer added in Designer rather
+    than a different form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-065
+  node: .EFormData.page2.CheckBox3[12]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Other6
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Other:"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-066
+  node: .EFormData.page2.CheckBox3[13]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Substitute
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Substitute W-9 Form"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-067
+  node: .EFormData.page2.CheckBox3[14]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Beneficiary
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Beneficiary Claim Statement"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-068
+  node: .EFormData.page2.CheckBox3[15]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Certified
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: checkbox field with caption "Certified Death Certificate"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-069
+  node: .EFormData.page2.TextField1[8]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/Comments5
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: multiline_text field with caption "Comments/Special Instructions:"; G0
+    static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml,
+    so per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-070
+  node: .EFormData.page2.DateField1
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/DATE1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: image field with caption "DATE (MM/DD/YYYY)"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-071
+  node: .EFormData.page2.LastName
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/POLICYNUMBER1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "POLICY NUMBER(S) / ISA / MCB"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-072
+  node: .EFormData.page2.FirstName
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/FR_Name1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "FINANCIAL REPRESENTATIVE' NAME"; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-073
+  node: .EFormData.page2.Insured
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/INSUREDNAME1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "INSURED NAME"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-074
+  node: .EFormData.page2.FirstName[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/FR_No1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "FINANCIAL REPRESENTATIVE NO."; G0 static-text
+    coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so
+    per convert-xdp-form step 4 no target names are proposed until a human confirms
+    the pairing; the 12 target-only tokens are a company name/address footer block,
+    not form content, which suggests a footer added in Designer rather than a different
+    form revision, but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-075
+  node: .EFormData.page2.FirstName[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/NetworkOffice1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: 'text field with caption "NETWORK OFFICE #"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-076
+  node: .EFormData.page2.FirstName[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/SubmittedBy1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "SUBMITTED BY"; G0 static-text coverage is 0.8776
+    (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-077
+  node: .EFormData.page2.Tele.Phone.f2
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone11/Telephone12)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption "(" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-079
+  node: .EFormData.page2.Tele.Phone.f2[1]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone11/Telephone12)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption ")" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-081
+  node: .EFormData.page2.FirstName[4]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; candidate target data variable Def.Data/SubTree0/GroupOffice1
+    is recorded as evidence for the follow-up session that proposes the crosswalk
+    row once the pairing is confirmed
+  rationale: text field with caption "GROUP OFFICE CONTACT"; G0 static-text coverage
+    is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form
+    step 4 no target names are proposed until a human confirms the pairing; the 12
+    target-only tokens are a company name/address footer block, not form content,
+    which suggests a footer added in Designer rather than a different form revision,
+    but that is for the reviewer to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-082
+  node: .EFormData.page2.Tele.Phone.f2[2]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone11/Telephone12)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption "(" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-084
+  node: .EFormData.page2.Tele.Phone.f2[3]
+  finding: G3-UNBOUND
+  action: defer
+  proposal: hold the binding; the export carries two telephone variables (Telephone11/Telephone12)
+    for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits
+    the number into four numeric parts, so the part-to-variable mapping needs the
+    data steward
+  rationale: numeric field with caption ")" inside section .Tele 'TELEPHONE NUMBER
+    (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against
+    Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names
+    are proposed until a human confirms the pairing; the 12 target-only tokens are
+    a company name/address footer block, not form content, which suggests a footer
+    added in Designer rather than a different form revision, but that is for the reviewer
+    to confirm
+  status: proposed
+  decided_by: null
+  decided_on: null
