@@ -27,3 +27,195 @@ elements:
     status: proposed
     evidence: 170574.xdp dataRef ReconsiderationRequest.ReasonForClass.AviationInd; 17-0574.xml data variable AviationInd
     reviewed_by: null
+# 18-1026 (EFT Authorization): proposed by the converting session, see src/decisions/18-1026.yaml.
+# Evidence pairs an XDP caption or script idiom with a data variable in 18-1026_Quad_2.xml; the source
+# fields carry no dataRef, so the enterprise target_path stays null until a steward confirms.
+  - id: billing_account.isa_num
+    label: Billing (ISA) account number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Billaccno caption 'BILLING ACCOUNT NUMBER'; initialize script reads InsuranceServiceAccount.isaNum; 18-1026_Quad_2.xml data variable isaNum"
+    reviewed_by: null
+  - id: payer.business_or_trust_name
+    label: Payer business or trustee name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp BusinessName caption 'BUSINESS / TRUSTEE NAME (if applicable)'; 18-1026_Quad_2.xml data variable PayerBusinessOrTrustOrgztnNam"
+    reviewed_by: null
+  - id: payer.telephone_number
+    label: Payer telephone number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp PhoneNo caption 'PHONE NUMBER'; 18-1026_Quad_2.xml data variable PayerTelNum"
+    reviewed_by: null
+  - id: payer.phone_is_home
+    label: Payer phone is a home number
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Home caption 'Home'; mutual exclusion with S5GH.Business; 18-1026_Quad_2.xml data variable PayerHomeRadio"
+    reviewed_by: null
+  - id: payer.phone_is_business
+    label: Payer phone is a business number
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Business caption 'Business'; mutual exclusion with S5GH.Home; 18-1026_Quad_2.xml data variable PayerBusinessRadio"
+    reviewed_by: null
+  - id: payer.phone_is_mobile_yes
+    label: Payer phone is a mobile number (yes)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Yes caption 'Yes' on the phone row; question text only visual (UNS-03); 18-1026_Quad_2.xml data variable PayerMobileYesRadio"
+    reviewed_by: null
+  - id: payer.phone_is_mobile_no
+    label: Payer phone is a mobile number (no)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp No caption 'No' on the phone row; question text only visual (UNS-03); 18-1026_Quad_2.xml data variable PayerMobileNoRadio"
+    reviewed_by: null
+  - id: agent.full_name
+    label: Financial representative full name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp FirstName caption 'FINANCIAL REPRESENTATIVE NAME'; 18-1026_Quad_2.xml data variable AgentFullNam"
+    reviewed_by: null
+  - id: agent.network_office_number
+    label: Financial representative network office number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp ntwrkoffno caption 'NETWORK OFFICE NUMBER'; steward to confirm against AgentDsbNum; 18-1026_Quad_2.xml data variable AgentNoTerrNum"
+    reviewed_by: null
+  - id: agent.servicing_fr_number
+    label: Servicing financial representative number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp srvno caption 'SERVICING FR NUMBER'; steward to confirm against AgentNoTerrNum; 18-1026_Quad_2.xml data variable AgentDsbNum"
+    reviewed_by: null
+  - id: one_time_payment.amount
+    label: One-time payment amount
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp OneTimePaymentAmt uncaptioned text field in section 'ONE-TIME PAYMENT INFORMATION'; 18-1026_Quad_2.xml data variable oneTimePaymentAmountBilled"
+    reviewed_by: null
+  - id: one_time_payment.next_due_premium_ind
+    label: One-time payment drafts the next due premium
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Nextovrdueprm caption 'Next Due Premium OR'; 18-1026_Quad_2.xml data variable nextDuePremiumRadio"
+    reviewed_by: null
+  - id: one_time_payment.draft_date_ind
+    label: One-time payment drafts on a chosen date
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Draftdate caption 'DRAFT DATE (MM/DD/YYYY)' checkbox; 18-1026_Quad_2.xml data variable draftDteRadio"
+    reviewed_by: null
+  - id: one_time_payment.draft_date
+    label: One-time payment draft date
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp PaymentDate uncaptioned dateTimeEdit opened by Draftdate change script; 18-1026_Quad_2.xml data variable draftDte"
+    reviewed_by: null
+  - id: recurring_payment.amount_billed_ind
+    label: Recurring payment uses the amount billed
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Amtbilled caption 'AMOUNT BILLED EACH PAYMENT PERIOD'; 18-1026_Quad_2.xml data variable AmountBilledRadio"
+    reviewed_by: null
+  - id: recurring_payment.select_amount_ind
+    label: Recurring payment uses a selected amount
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Amountselected caption 'SELECT AMOUNT $'; 18-1026_Quad_2.xml data variable selectAmountRadio"
+    reviewed_by: null
+  - id: recurring_payment.select_amount
+    label: Recurring payment selected amount
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp OneTimePymntAmt uncaptioned text field opened by Amountselected change script; 18-1026_Quad_2.xml data variable selectAmount"
+    reviewed_by: null
+  - id: recurring_payment.frequency_monthly_ind
+    label: Recurring payment frequency monthly
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Freqmnthly caption 'MONTHLY'; 18-1026_Quad_2.xml data variable monthlyRadio"
+    reviewed_by: null
+  - id: recurring_payment.frequency_quarterly_ind
+    label: Recurring payment frequency quarterly
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Freqqutr caption 'QUARTERLY'; 18-1026_Quad_2.xml data variable quarterlyRadio"
+    reviewed_by: null
+  - id: recurring_payment.frequency_semi_annually_ind
+    label: Recurring payment frequency semi-annually
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Freqsemiann caption 'SEMI-ANNUALLY'; 18-1026_Quad_2.xml data variable semiAnnuallyRadio"
+    reviewed_by: null
+  - id: recurring_payment.frequency_annually_ind
+    label: Recurring payment frequency annually
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Freqann caption 'ANNUALLY'; 18-1026_Quad_2.xml data variable annuallyRadio"
+    reviewed_by: null
+  - id: bank.name
+    label: Bank or credit union name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Bankunname caption 'BANK OR CREDIT UNION NAME'; 18-1026_Quad_2.xml data variable bankName"
+    reviewed_by: null
+  - id: bank.account_type_checking_ind
+    label: Bank account type is checking
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp checking caption 'CHECKING'; 18-1026_Quad_2.xml data variable checkingRadio"
+    reviewed_by: null
+  - id: bank.account_type_saving_ind
+    label: Bank account type is savings
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp saving caption 'SAVINGS'; 18-1026_Quad_2.xml data variable savingRadio"
+    reviewed_by: null
+  - id: bank.routing_number
+    label: Bank routing number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Bankroutingno caption 'BANK ROUTING NUMBER (9 DIGITS)'; 18-1026_Quad_2.xml data variable bankRoutingNum"
+    reviewed_by: null
+  - id: bank.account_number
+    label: Bank account number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Accno caption 'ACCOUNT NUMBER (4 TO 17 DIGITS)'; 18-1026_Quad_2.xml data variable achBankAcctNum"
+    reviewed_by: null
+  - id: payer.signed_date
+    label: Date signed by payer
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "181026.xdp Signeddate caption 'DATE Signed by PAYER (MM/DD/YYYY)'; 18-1026_Quad_2.xml data variable PayerSignedDte"
+    reviewed_by: null
