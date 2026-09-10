@@ -219,3 +219,381 @@ elements:
     status: proposed
     evidence: "181026.xdp Signeddate caption 'DATE Signed by PAYER (MM/DD/YYYY)'; 18-1026_Quad_2.xml data variable PayerSignedDte"
     reviewed_by: null
+# 18-1721 (Corporate Market Transmittal Letter): proposed by the converting session, see src/decisions/18-1721.yaml. Source fields carry no dataRef; target_variable is the SubTree0 data variable in the supplied WFD export; target_path stays null until a steward confirms.
+  - id: transmittal.route.advanced_business_services_ind
+    label: Route to Advanced Business Services Division - Life Product Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''Route to: Advanced Business Services Division - Life Product Department''; Forms_18-1721
+      (AEM to Quad).xml data variable(s) Route1'
+    reviewed_by: null
+  - id: transmittal.attention
+    label: Attention (addressee within the routed department)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Attention:'; caption 'Attention:'; caption 'Attention:'; caption 'Attention:'; target
+      'Attention5 FormControl 2'; caption 'Attention:' (G4 score 0.947); Forms_18-1721 (AEM to Quad).xml data variable(s) Attention1,
+      Attention2, Attention4, Attention5, Attention6
+    reviewed_by: null
+  - id: transmittal.request.business_case_management_ind
+    label: Business Case Management (BCM)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Business Case Management (BCM)'; Forms_18-1721 (AEM to Quad).xml data variable(s)
+      Business
+    reviewed_by: null
+  - id: transmittal.request.corporate_inventory_ind
+    label: Corporate Inventory
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Corporate Inventory'; Forms_18-1721 (AEM to Quad).xml data variable(s) Corporate
+    reviewed_by: null
+  - id: transmittal.request.mcb_transactions_ind
+    label: MCB Transactions
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'MCB Transactions'; Forms_18-1721 (AEM to Quad).xml data variable(s) MCB
+    reviewed_by: null
+  - id: transmittal.request.vel_vjl_cul_sul_ind
+    label: VEL/VJL/CUL/SUL
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'VEL/VJL/CUL/SUL'; Forms_18-1721 (AEM to Quad).xml data variable(s) VEL
+    reviewed_by: null
+  - id: transmittal.request.policy_transaction_ind
+    label: Policy Transaction
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Policy Transaction'; Forms_18-1721 (AEM to Quad).xml data variable(s) Policy
+    reviewed_by: null
+  - id: transmittal.request.policy_loan_agreement_ind
+    label: Policy Loan Agreement
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Policy Loan Agreement'; target FormControl 'Policy FormControl 2' -> variable Policy2;
+      Forms_18-1721 (AEM to Quad).xml data variable(s) Policy2
+    reviewed_by: null
+  - id: transmittal.request.surrender_paid_up_additions_ind
+    label: Surrender of Paid-up Additions/Accumulation
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Surrender of Paid-up Additions/Accumulation'; Forms_18-1721 (AEM to Quad).xml data
+      variable(s) Surrender
+    reviewed_by: null
+  - id: transmittal.request.surrender_of_policy_ind
+    label: Surrender of Policy
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Surrender of Policy' (G4 score 0.828); Forms_18-1721 (AEM to Quad).xml data variable(s)
+      SurrenderPlo
+    reviewed_by: null
+  - id: transmittal.request.withdrawal_of_excess_ind
+    label: Withdrawal of Excess
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Withdrawal of Excess'; Forms_18-1721 (AEM to Quad).xml data variable(s) Withdrawal
+    reviewed_by: null
+  - id: transmittal.request.other_ind
+    label: Other request (checkbox)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Other:' (G4 score 1.0); caption 'Other:'; target Otherp is the Bool of the Otherp/OtherPstring
+      pair; caption 'Other:'; target 'OtherPage2 FormControl 1' -> variable OtherPage2; caption 'Other:'; target 'OtherPage2 FormControl
+      2' -> variable OtherPage2_2; caption 'Other:'; target Other6; Forms_18-1721 (AEM to Quad).xml data variable(s) Other, Otherp,
+      OtherPage2, OtherPage2_2, Other6
+    reviewed_by: null
+  - id: transmittal.request.other_text
+    label: Other request (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) uncaptioned text field following the 'Other:' checkbox; target FormControl OtherS follows
+      Other in the same order; uncaptioned text field paired with the block-2 'Other:' checkbox; target pair Otherp (Bool) / OtherPstring
+      (String); uncaptioned text field paired with the block-4 'Other:' checkbox; target pair OtherPage2 (Bool) / OtherPage2S
+      (String); uncaptioned text field paired with the block-5 'Other:' checkbox; target pair OtherPage2_2 (Bool) / OtherPage2_2S
+      (String); uncaptioned text field paired with the block-6 'Other:' checkbox; target pair Other6 (Bool) / Other6S (String);
+      Forms_18-1721 (AEM to Quad).xml data variable(s) OtherS, OtherPstring, OtherPage2S, OtherPage2_2S, Other6S
+    reviewed_by: null
+  - id: transmittal.comments
+    label: Comments / Special Instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Comments/Special Instructions:' (multiline); caption 'Comments/Special Instructions:'
+      (multiline); caption 'Comments/Special Instructions:' (multiline); caption 'Comments/Special Instructions:' (multiline);
+      caption 'Comments/Special Instructions:' (multiline); Forms_18-1721 (AEM to Quad).xml data variable(s) Comments, Comments2,
+      Comments3, Comments4, Comments5
+    reviewed_by: null
+  - id: transmittal.route.policy_change_portfolio_products_ind
+    label: Route to Policy Change Portfolio Products Division - Policyowner Services Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''Route to: Policy Change Portfolio Products Division - Policyowner Services Department'';
+      Forms_18-1721 (AEM to Quad).xml data variable(s) Route2'
+    reviewed_by: null
+  - id: transmittal.request.form_90_1279_99_ind
+    label: Form 90-1279-99 enclosed
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption '90-1279-99'; target FormControl '90-1279-99 FormControl 1' (G4 score 0.786); Forms_18-1721
+      (AEM to Quad).xml data variable(s) 90-1279-99
+    reviewed_by: null
+  - id: transmittal.request.form_90_1279_after_ga_input_ind
+    label: Form 90-1279 (after GA input) enclosed
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption '90-1279 (After GA input)'; Forms_18-1721 (AEM to Quad).xml data variable(s) 90-1279
+    reviewed_by: null
+  - id: transmittal.request.pending_requirements_ind
+    label: Pending Requirements
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Pending Requirements'; Forms_18-1721 (AEM to Quad).xml data variable(s) Pending
+    reviewed_by: null
+  - id: transmittal.group_name
+    label: Group Name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Group Name:' (G4 score 1.0); Forms_18-1721 (AEM to Quad).xml data variable(s) GroupName
+    reviewed_by: null
+  - id: transmittal.policy_numbers
+    label: Policy Number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Policy Number(s):' (G4 score 0.929); Forms_18-1721 (AEM to Quad).xml data variable(s)
+      PolicyNumber
+    reviewed_by: null
+  - id: transmittal.mcb_numbers
+    label: MCB Number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'MCB Number(s):' (G4 score 0.9); Forms_18-1721 (AEM to Quad).xml data variable(s)
+      MCBNumber
+    reviewed_by: null
+  - id: transmittal.participants_in_group
+    label: Number of participants in group
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption '# of participants in group:'; target FormControl 'group FormControl 1' sits between
+      MCBNumber and ISA in the same order as the source; Forms_18-1721 (AEM to Quad).xml data variable(s) group
+    reviewed_by: null
+  - id: transmittal.isa_numbers
+    label: ISA Number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'ISA Number(s):'; Forms_18-1721 (AEM to Quad).xml data variable(s) ISA
+    reviewed_by: null
+  - id: transmittal.service_plan_number
+    label: Service Plan Number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Service Plan Number:'; Forms_18-1721 (AEM to Quad).xml data variable(s) Service
+    reviewed_by: null
+  - id: transmittal.date
+    label: Date (MM/DD/YYYY)
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'DATE (MM/DD/YYYY)'; exit script is a conditional_clear format check (rule_translatable,
+      VAL-05); target DATE is a String variable so the MM/DD/YYYY format must be applied at compose time; caption 'DATE (MM/DD/YYYY)';
+      same conditional_clear exit script as page 1; target DATE1 is a String variable; Forms_18-1721 (AEM to Quad).xml data variable(s)
+      DATE, DATE1
+    reviewed_by: null
+  - id: transmittal.client.policy_isa_mcb_number
+    label: Policy number(s) / ISA / MCB
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'POLICY NUMBER(S) / ISA / MCB'; source leaf name LastName is a template remnant, not
+      a semantic (G4 score 0.774); caption 'POLICY NUMBER(S) / ISA / MCB'; Forms_18-1721 (AEM to Quad).xml data variable(s) POLICYNUMBER,
+      POLICYNUMBER1
+    reviewed_by: null
+  - id: transmittal.client.financial_representative_name
+    label: Financial representative name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption "FINANCIAL REPRESENTATIVE' NAME" (G4 score 0.824); caption "FINANCIAL REPRESENTATIVE'
+      NAME"; Forms_18-1721 (AEM to Quad).xml data variable(s) FR_Name, FR_Name1
+    reviewed_by: null
+  - id: transmittal.client.insured_name
+    label: Insured name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'INSURED NAME' (G4 score 1.0); caption 'INSURED NAME'; Forms_18-1721 (AEM to Quad).xml
+      data variable(s) INSUREDNAME, INSUREDNAME1
+    reviewed_by: null
+  - id: transmittal.client.financial_representative_number
+    label: Financial representative number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'FINANCIAL REPRESENTATIVE NO.'; G4 picked FR_Name (0.824) but the target has a distinct
+      FR_No control; caption 'FINANCIAL REPRESENTATIVE NO.'; Forms_18-1721 (AEM to Quad).xml data variable(s) FR_No, FR_No1
+    reviewed_by: null
+  - id: transmittal.client.network_office_number
+    label: Network office number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''NETWORK OFFICE #'' (G4 score 1.0); caption ''NETWORK OFFICE #''; Forms_18-1721
+      (AEM to Quad).xml data variable(s) NetworkOffice, NetworkOffice1'
+    reviewed_by: null
+  - id: transmittal.client.submitted_by
+    label: Submitted by
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'SUBMITTED BY' (G4 score 1.0); caption 'SUBMITTED BY'; Forms_18-1721 (AEM to Quad).xml
+      data variable(s) SubmittedBy, SubmittedBy1
+    reviewed_by: null
+  - id: transmittal.client.submitter_telephone
+    label: Submitter telephone number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) area-code part '(' of the first TELEPHONE NUMBER (INCLUDE AREA CODE) block; target has one
+      String Telephone1 for the whole number; local-number part ')' of the first TELEPHONE NUMBER block; joins f2 into Telephone1;
+      area-code part '(' of the page-2 first TELEPHONE NUMBER block; target Telephone11; local-number part ')' of the page-2 first
+      TELEPHONE NUMBER block; joins f2 into Telephone11; Forms_18-1721 (AEM to Quad).xml data variable(s) Telephone1, Telephone11
+    reviewed_by: null
+  - id: transmittal.client.group_office_contact
+    label: Group office contact
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'GROUP OFFICE CONTACT'; G4 picked FR_Name (0.824) but the target has a distinct GroupOffice
+      control; caption 'GROUP OFFICE CONTACT'; Forms_18-1721 (AEM to Quad).xml data variable(s) GroupOffice, GroupOffice1
+    reviewed_by: null
+  - id: transmittal.client.group_office_telephone
+    label: Group office contact telephone number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) area-code part '(' of the second TELEPHONE NUMBER block, following GROUP OFFICE CONTACT; target
+      Telephone2; local-number part ')' of the second TELEPHONE NUMBER block; joins f2[2] into Telephone2; area-code part '('
+      of the page-2 second TELEPHONE NUMBER block; target Telephone12; local-number part ')' of the page-2 second TELEPHONE NUMBER
+      block; joins f2[3] into Telephone12; Forms_18-1721 (AEM to Quad).xml data variable(s) Telephone2, Telephone12
+    reviewed_by: null
+  - id: transmittal.route.large_case_division_ind
+    label: Route to Large Case Division - New Business Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''Route to: Large Case Division - New Business Department''; Forms_18-1721 (AEM to
+      Quad).xml data variable(s) Route4'
+    reviewed_by: null
+  - id: transmittal.request.naic_illustration_ind
+    label: NAIC Illustration
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'NAIC Illustration'; Forms_18-1721 (AEM to Quad).xml data variable(s) NAIC
+    reviewed_by: null
+  - id: transmittal.request.erisa_ind
+    label: ERISA
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'ERISA' (G4 score 1.0); Forms_18-1721 (AEM to Quad).xml data variable(s) ERISA
+    reviewed_by: null
+  - id: transmittal.request.attending_physician_statement_ind
+    label: Attending Physician Statement (APS)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Attending Physician Statement (APS)'; Forms_18-1721 (AEM to Quad).xml data variable(s)
+      Attending
+    reviewed_by: null
+  - id: transmittal.route.beneficiary_title_division_ind
+    label: Route to Beneficiary & Title Division - Policyowner Services Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''Route to: Beneficiary & Title Division - Policyowner Services Department''; Forms_18-1721
+      (AEM to Quad).xml data variable(s) Route5'
+    reviewed_by: null
+  - id: transmittal.request.name_change_ind
+    label: Name Change of Owner, Beneficiary or Assignee
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Name Change of Owner, Beneficiary or Assignee'; target variable name contains a space
+      ('Nameof change') and needs a Designer naming check; Forms_18-1721 (AEM to Quad).xml data variable(s) Nameof change
+    reviewed_by: null
+  - id: transmittal.request.split_dollar_assignment_ind
+    label: Split Dollar Method - Assignment/Owner
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Split Dollar Method - Assignment/Owner'; Forms_18-1721 (AEM to Quad).xml data variable(s)
+      SplitDollar
+    reviewed_by: null
+  - id: transmittal.request.change_of_beneficiary_ownership_ind
+    label: Change of Beneficiary/Ownership
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Change of Beneficiary/Ownership'; Forms_18-1721 (AEM to Quad).xml data variable(s)
+      Change
+    reviewed_by: null
+  - id: transmittal.request.collateral_assignment_ind
+    label: Collateral Assignment/Release of Assignment
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Collateral Assignment/Release of Assignment'; Forms_18-1721 (AEM to Quad).xml data
+      variable(s) Collateral
+    reviewed_by: null
+  - id: transmittal.route.life_benefits_division_ind
+    label: Route to Life Benefits Division - Policyowner Services Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: '181721.xdp caption(s) caption ''Route to: Life Benefits Division - Policyowner Services Department''; Forms_18-1721
+      (AEM to Quad).xml data variable(s) Route6'
+    reviewed_by: null
+  - id: transmittal.request.substitute_w9_ind
+    label: Substitute W-9 Form
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Substitute W-9 Form'; Forms_18-1721 (AEM to Quad).xml data variable(s) Substitute
+    reviewed_by: null
+  - id: transmittal.request.beneficiary_claim_statement_ind
+    label: Beneficiary Claim Statement
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Beneficiary Claim Statement'; Forms_18-1721 (AEM to Quad).xml data variable(s) Beneficiary
+    reviewed_by: null
+  - id: transmittal.request.certified_death_certificate_ind
+    label: Certified Death Certificate
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 181721.xdp caption(s) caption 'Certified Death Certificate'; Forms_18-1721 (AEM to Quad).xml data variable(s) Certified
+    reviewed_by: null

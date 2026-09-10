@@ -1,0 +1,973 @@
+# Decision record for form 18-1721 (Corporate Market Transmittal Letter, revision hint 0810, tier C).
+# Written by the converting Devin session; every record is `proposed` until a named reviewer
+# sets decided_by/decided_on. Evidence sources: 181721.xdp captions/scripts (classified, not executed),
+# Forms_18-1721 (AEM to Quad).xml WorkFlow export (73 FormControls under Def.Data SubTree0, in the same
+# document order as the source fields), out/readiness.json G4 table.
+decisions_version: 1
+form_id: 18-1721
+session: https://partner-workshops.devinenterprise.com/sessions/d5df15f12ec449e1ade415c6a3a0239d
+decisions:
+- id: D-001
+  node: .EFormData.MainSubform.CheckBox3
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.route.advanced_business_services_ind -> target variable Route1 (SubTree0.Route1, Route1 FormControl
+    1)
+  rationale: 'caption ''Route to: Advanced Business Services Division - Life Product Department''; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-002
+  node: .EFormData.MainSubform.TextField1
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.attention -> target variable Attention1 (SubTree0.Attention1, Attention1 FormControl 1)
+  rationale: caption 'Attention:'; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-003
+  node: .EFormData.MainSubform.CheckBox3[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.business_case_management_ind -> target variable Business (SubTree0.Business, Business
+    FormControl 1)
+  rationale: caption 'Business Case Management (BCM)'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-004
+  node: .EFormData.MainSubform.CheckBox3[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.corporate_inventory_ind -> target variable Corporate (SubTree0.Corporate, Corporate
+    FormControl 1)
+  rationale: caption 'Corporate Inventory'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-005
+  node: .EFormData.MainSubform.CheckBox3[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.mcb_transactions_ind -> target variable MCB (SubTree0.MCB, MCB FormControl 1)
+  rationale: caption 'MCB Transactions'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-006
+  node: .EFormData.MainSubform.CheckBox3[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.vel_vjl_cul_sul_ind -> target variable VEL (SubTree0.VEL, VEL FormControl 1)
+  rationale: caption 'VEL/VJL/CUL/SUL'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-007
+  node: .EFormData.MainSubform.CheckBox3[5]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.policy_transaction_ind -> target variable Policy (SubTree0.Policy, Policy FormControl
+    1)
+  rationale: caption 'Policy Transaction'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-008
+  node: .EFormData.MainSubform.CheckBox3[6]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.policy_loan_agreement_ind -> target variable Policy2 (SubTree0.Policy2, Policy FormControl
+    2)
+  rationale: caption 'Policy Loan Agreement'; target FormControl 'Policy FormControl 2' -> variable Policy2; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-009
+  node: .EFormData.MainSubform.CheckBox3[7]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.surrender_paid_up_additions_ind -> target variable Surrender (SubTree0.Surrender,
+    Surrender FormControl 1)
+  rationale: caption 'Surrender of Paid-up Additions/Accumulation'; the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-010
+  node: .EFormData.MainSubform.CheckBox3[8]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.surrender_of_policy_ind -> target variable SurrenderPlo (SubTree0.SurrenderPlo, SurrenderPlo
+    FormControl 1)
+  rationale: caption 'Surrender of Policy' (G4 score 0.828); the target FormControl sequence follows the source field order
+    exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-011
+  node: .EFormData.MainSubform.CheckBox3[9]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.withdrawal_of_excess_ind -> target variable Withdrawal (SubTree0.Withdrawal, Withdrawal
+    FormControl 1)
+  rationale: caption 'Withdrawal of Excess'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-012
+  node: .EFormData.MainSubform.CheckBox3[10]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_ind -> target variable Other (SubTree0.Other, Other FormControl 1)
+  rationale: caption 'Other:' (G4 score 1.0); the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-013
+  node: .EFormData.MainSubform.TextField1[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_text -> target variable OtherS (SubTree0.OtherS, OtherS FormControl 1)
+  rationale: uncaptioned text field following the 'Other:' checkbox; target FormControl OtherS follows Other in the same order;
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-014
+  node: .EFormData.MainSubform.TextField1[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.comments -> target variable Comments (SubTree0.Comments, Comments FormControl 1)
+  rationale: caption 'Comments/Special Instructions:' (multiline); the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-015
+  node: .EFormData.MainSubform.CheckBox3[11]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.route.policy_change_portfolio_products_ind -> target variable Route2 (SubTree0.Route2, Route2
+    FormControl 1)
+  rationale: 'caption ''Route to: Policy Change Portfolio Products Division - Policyowner Services Department''; the target
+    FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-016
+  node: .EFormData.MainSubform.TextField1[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.attention -> target variable Attention2 (SubTree0.Attention2, Attention2 FormControl 1)
+  rationale: caption 'Attention:'; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-017
+  node: .EFormData.MainSubform.CheckBox3[12]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.form_90_1279_99_ind -> target variable 90-1279-99 (SubTree0.90-1279-99, 90-1279-99
+    FormControl 1)
+  rationale: caption '90-1279-99'; target FormControl '90-1279-99 FormControl 1' (G4 score 0.786); the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-018
+  node: .EFormData.MainSubform.CheckBox3[13]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.form_90_1279_after_ga_input_ind -> target variable 90-1279 (SubTree0.90-1279, 90-1279
+    FormControl 1)
+  rationale: caption '90-1279 (After GA input)'; the target FormControl sequence follows the source field order exactly (73
+    controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-019
+  node: .EFormData.MainSubform.CheckBox3[14]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.pending_requirements_ind -> target variable Pending (SubTree0.Pending, Pending FormControl
+    1)
+  rationale: caption 'Pending Requirements'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-020
+  node: .EFormData.MainSubform.TextField1[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_text -> target variable OtherPstring (SubTree0.OtherPstring, OtherPstring FormControl
+    1)
+  rationale: uncaptioned text field paired with the block-2 'Other:' checkbox; target pair Otherp (Bool) / OtherPstring (String);
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-021
+  node: .EFormData.MainSubform.CheckBox3[15]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_ind -> target variable Otherp (SubTree0.Otherp, Otherp FormControl 1)
+  rationale: caption 'Other:'; target Otherp is the Bool of the Otherp/OtherPstring pair; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-022
+  node: .EFormData.MainSubform.TextField1[5]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.group_name -> target variable GroupName (SubTree0.GroupName, GroupName FormControl 1)
+  rationale: caption 'Group Name:' (G4 score 1.0); the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-023
+  node: .EFormData.MainSubform.TextField1[6]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.policy_numbers -> target variable PolicyNumber (SubTree0.PolicyNumber, PolicyNumber FormControl
+    1)
+  rationale: caption 'Policy Number(s):' (G4 score 0.929); the target FormControl sequence follows the source field order
+    exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-024
+  node: .EFormData.MainSubform.TextField1[7]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.mcb_numbers -> target variable MCBNumber (SubTree0.MCBNumber, MCBNumber FormControl 1)
+  rationale: caption 'MCB Number(s):' (G4 score 0.9); the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-025
+  node: .EFormData.MainSubform.TextField1[8]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.participants_in_group -> target variable group (SubTree0.group, group FormControl 1)
+  rationale: caption '# of participants in group:'; target FormControl 'group FormControl 1' sits between MCBNumber and ISA
+    in the same order as the source; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-026
+  node: .EFormData.MainSubform.TextField1[9]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.isa_numbers -> target variable ISA (SubTree0.ISA, ISA FormControl 1)
+  rationale: caption 'ISA Number(s):'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-027
+  node: .EFormData.MainSubform.TextField1[10]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.service_plan_number -> target variable Service (SubTree0.Service, Service FormControl 1)
+  rationale: caption 'Service Plan Number:'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-028
+  node: .EFormData.MainSubform.TextField1[11]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.comments -> target variable Comments2 (SubTree0.Comments2, Comments2 FormControl 1)
+  rationale: caption 'Comments/Special Instructions:' (multiline); the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-029
+  node: .EFormData.MainSubform.DateField1
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.date -> target variable DATE (SubTree0.DATE, DATE FormControl 1)
+  rationale: caption 'DATE (MM/DD/YYYY)'; exit script is a conditional_clear format check (rule_translatable, VAL-05); target
+    DATE is a String variable so the MM/DD/YYYY format must be applied at compose time; the target FormControl sequence follows
+    the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-030
+  node: .EFormData.MainSubform.LastName
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.policy_isa_mcb_number -> target variable POLICYNUMBER (SubTree0.POLICYNUMBER, POLICYNUMBER
+    FormControl 1)
+  rationale: caption 'POLICY NUMBER(S) / ISA / MCB'; source leaf name LastName is a template remnant, not a semantic (G4 score
+    0.774); the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone
+    parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-031
+  node: .EFormData.MainSubform.FirstName
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.financial_representative_name -> target variable FR_Name (SubTree0.FR_Name, FR_Name
+    FormControl 1)
+  rationale: caption "FINANCIAL REPRESENTATIVE' NAME" (G4 score 0.824); the target FormControl sequence follows the source
+    field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-032
+  node: .EFormData.MainSubform.Insured
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.insured_name -> target variable INSUREDNAME (SubTree0.INSUREDNAME, INSUREDNAME FormControl
+    1)
+  rationale: caption 'INSURED NAME' (G4 score 1.0); the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-033
+  node: .EFormData.MainSubform.FirstName[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.financial_representative_number -> target variable FR_No (SubTree0.FR_No, FR_No FormControl
+    1)
+  rationale: caption 'FINANCIAL REPRESENTATIVE NO.'; G4 picked FR_Name (0.824) but the target has a distinct FR_No control;
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-034
+  node: .EFormData.MainSubform.FirstName[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.network_office_number -> target variable NetworkOffice (SubTree0.NetworkOffice, NetworkOffice
+    FormControl 1)
+  rationale: 'caption ''NETWORK OFFICE #'' (G4 score 1.0); the target FormControl sequence follows the source field order
+    exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-035
+  node: .EFormData.MainSubform.FirstName[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitted_by -> target variable SubmittedBy (SubTree0.SubmittedBy, SubmittedBy FormControl
+    1)
+  rationale: caption 'SUBMITTED BY' (G4 score 1.0); the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-036
+  node: .EFormData.MainSubform.Tele.Phone.f2
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitter_telephone -> target variable Telephone1 (SubTree0.Telephone1, Telephone1
+    FormControl 1)
+  rationale: area-code part '(' of the first TELEPHONE NUMBER (INCLUDE AREA CODE) block; target has one String Telephone1
+    for the whole number; the target FormControl sequence follows the source field order exactly (73 controls for 77 data
+    fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-037
+  node: .EFormData.MainSubform.Tele.Phone.f2[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitter_telephone -> target variable Telephone1 (SubTree0.Telephone1, Telephone1
+    FormControl 1)
+  rationale: local-number part ')' of the first TELEPHONE NUMBER block; joins f2 into Telephone1; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-038
+  node: .EFormData.MainSubform.FirstName[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_contact -> target variable GroupOffice (SubTree0.GroupOffice, GroupOffice
+    FormControl 1)
+  rationale: caption 'GROUP OFFICE CONTACT'; G4 picked FR_Name (0.824) but the target has a distinct GroupOffice control;
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-039
+  node: .EFormData.MainSubform.Tele.Phone.f2[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_telephone -> target variable Telephone2 (SubTree0.Telephone2, Telephone2
+    FormControl 1)
+  rationale: area-code part '(' of the second TELEPHONE NUMBER block, following GROUP OFFICE CONTACT; target Telephone2; the
+    target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-040
+  node: .EFormData.MainSubform.Tele.Phone.f2[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_telephone -> target variable Telephone2 (SubTree0.Telephone2, Telephone2
+    FormControl 1)
+  rationale: local-number part ')' of the second TELEPHONE NUMBER block; joins f2[2] into Telephone2; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-041
+  node: .EFormData.page2.CheckBox3
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.route.large_case_division_ind -> target variable Route4 (SubTree0.Route4, Route4 FormControl
+    1)
+  rationale: 'caption ''Route to: Large Case Division - New Business Department''; the target FormControl sequence follows
+    the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-042
+  node: .EFormData.page2.TextField1
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.attention -> target variable Attention4 (SubTree0.Attention4, Attention4 FormControl 1)
+  rationale: caption 'Attention:'; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-043
+  node: .EFormData.page2.TextField1[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_text -> target variable OtherPage2S (SubTree0.OtherPage2S, OtherPage2S FormControl
+    1)
+  rationale: uncaptioned text field paired with the block-4 'Other:' checkbox; target pair OtherPage2 (Bool) / OtherPage2S
+    (String); the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone
+    parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-044
+  node: .EFormData.page2.CheckBox3[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_ind -> target variable OtherPage2 (SubTree0.OtherPage2, OtherPage2 FormControl
+    1)
+  rationale: caption 'Other:'; target 'OtherPage2 FormControl 1' -> variable OtherPage2; the target FormControl sequence follows
+    the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-045
+  node: .EFormData.page2.CheckBox3[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.naic_illustration_ind -> target variable NAIC (SubTree0.NAIC, NAIC FormControl 1)
+  rationale: caption 'NAIC Illustration'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-046
+  node: .EFormData.page2.CheckBox3[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.erisa_ind -> target variable ERISA (SubTree0.ERISA, ERISA FormControl 1)
+  rationale: caption 'ERISA' (G4 score 1.0); the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-047
+  node: .EFormData.page2.CheckBox3[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.attending_physician_statement_ind -> target variable Attending (SubTree0.Attending,
+    Attending FormControl 1)
+  rationale: caption 'Attending Physician Statement (APS)'; the target FormControl sequence follows the source field order
+    exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-048
+  node: .EFormData.page2.TextField1[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.comments -> target variable Comments3 (SubTree0.Comments3, Comments3 FormControl 1)
+  rationale: caption 'Comments/Special Instructions:' (multiline); the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-049
+  node: .EFormData.page2.CheckBox3[5]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.route.beneficiary_title_division_ind -> target variable Route5 (SubTree0.Route5, Route5 FormControl
+    1)
+  rationale: 'caption ''Route to: Beneficiary & Title Division - Policyowner Services Department''; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-050
+  node: .EFormData.page2.TextField1[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.attention -> target variable Attention5 (SubTree0.Attention5, Attention5 FormControl 2)
+  rationale: caption 'Attention:'; target 'Attention5 FormControl 2'; the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-051
+  node: .EFormData.page2.CheckBox3[6]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.name_change_ind -> target variable Nameof change (SubTree0.Nameof change, Nameof change
+    FormControl 1)
+  rationale: caption 'Name Change of Owner, Beneficiary or Assignee'; target variable name contains a space ('Nameof change')
+    and needs a Designer naming check; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-052
+  node: .EFormData.page2.CheckBox3[7]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.split_dollar_assignment_ind -> target variable SplitDollar (SubTree0.SplitDollar,
+    SplitDollar FormControl 1)
+  rationale: caption 'Split Dollar Method - Assignment/Owner'; the target FormControl sequence follows the source field order
+    exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-053
+  node: .EFormData.page2.CheckBox3[8]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.change_of_beneficiary_ownership_ind -> target variable Change (SubTree0.Change, Change
+    FormControl 1)
+  rationale: caption 'Change of Beneficiary/Ownership'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-054
+  node: .EFormData.page2.TextField1[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.comments -> target variable Comments4 (SubTree0.Comments4, Comments4 FormControl 1)
+  rationale: caption 'Comments/Special Instructions:' (multiline); the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-055
+  node: .EFormData.page2.TextField1[5]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_text -> target variable OtherPage2_2S (SubTree0.OtherPage2_2S, OtherPage2_2S
+    FormControl 1)
+  rationale: uncaptioned text field paired with the block-5 'Other:' checkbox; target pair OtherPage2_2 (Bool) / OtherPage2_2S
+    (String); the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone
+    parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-056
+  node: .EFormData.page2.CheckBox3[9]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_ind -> target variable OtherPage2_2 (SubTree0.OtherPage2_2, OtherPage2 FormControl
+    2)
+  rationale: caption 'Other:'; target 'OtherPage2 FormControl 2' -> variable OtherPage2_2; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-057
+  node: .EFormData.page2.CheckBox3[10]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.collateral_assignment_ind -> target variable Collateral (SubTree0.Collateral, Collateral
+    FormControl 1)
+  rationale: caption 'Collateral Assignment/Release of Assignment'; the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-058
+  node: .EFormData.page2.CheckBox3[11]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.route.life_benefits_division_ind -> target variable Route6 (SubTree0.Route6, Route6 FormControl
+    1)
+  rationale: 'caption ''Route to: Life Benefits Division - Policyowner Services Department''; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-059
+  node: .EFormData.page2.TextField1[6]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.attention -> target variable Attention6 (SubTree0.Attention6, Attention6 FormControl 1)
+  rationale: caption 'Attention:' (G4 score 0.947); the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-060
+  node: .EFormData.page2.TextField1[7]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_text -> target variable Other6S (SubTree0.Other6S, Other6S FormControl 1)
+  rationale: uncaptioned text field paired with the block-6 'Other:' checkbox; target pair Other6 (Bool) / Other6S (String);
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-061
+  node: .EFormData.page2.CheckBox3[12]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.other_ind -> target variable Other6 (SubTree0.Other6, Other6 FormControl 1)
+  rationale: caption 'Other:'; target Other6; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-062
+  node: .EFormData.page2.CheckBox3[13]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.substitute_w9_ind -> target variable Substitute (SubTree0.Substitute, Substitute FormControl
+    1)
+  rationale: caption 'Substitute W-9 Form'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-063
+  node: .EFormData.page2.CheckBox3[14]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.beneficiary_claim_statement_ind -> target variable Beneficiary (SubTree0.Beneficiary,
+    Beneficiary FormControl 1)
+  rationale: caption 'Beneficiary Claim Statement'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-064
+  node: .EFormData.page2.CheckBox3[15]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.request.certified_death_certificate_ind -> target variable Certified (SubTree0.Certified,
+    Certified FormControl 1)
+  rationale: caption 'Certified Death Certificate'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-065
+  node: .EFormData.page2.TextField1[8]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.comments -> target variable Comments5 (SubTree0.Comments5, Comments5 FormControl 1)
+  rationale: caption 'Comments/Special Instructions:' (multiline); the target FormControl sequence follows the source field
+    order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-066
+  node: .EFormData.page2.DateField1
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.date -> target variable DATE1 (SubTree0.DATE1, DATE1 FormControl 1)
+  rationale: caption 'DATE (MM/DD/YYYY)'; same conditional_clear exit script as page 1; target DATE1 is a String variable;
+    the target FormControl sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing
+    2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-067
+  node: .EFormData.page2.LastName
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.policy_isa_mcb_number -> target variable POLICYNUMBER1 (SubTree0.POLICYNUMBER1, POLICYNUMBER1
+    FormControl 1)
+  rationale: caption 'POLICY NUMBER(S) / ISA / MCB'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-068
+  node: .EFormData.page2.FirstName
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.financial_representative_name -> target variable FR_Name1 (SubTree0.FR_Name1, FR_Name1
+    FormControl 1)
+  rationale: caption "FINANCIAL REPRESENTATIVE' NAME"; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-069
+  node: .EFormData.page2.Insured
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.insured_name -> target variable INSUREDNAME1 (SubTree0.INSUREDNAME1, INSUREDNAME1 FormControl
+    1)
+  rationale: caption 'INSURED NAME'; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-070
+  node: .EFormData.page2.FirstName[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.financial_representative_number -> target variable FR_No1 (SubTree0.FR_No1, FR_No1
+    FormControl 1)
+  rationale: caption 'FINANCIAL REPRESENTATIVE NO.'; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-071
+  node: .EFormData.page2.FirstName[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.network_office_number -> target variable NetworkOffice1 (SubTree0.NetworkOffice1, NetworkOffice1
+    FormControl 1)
+  rationale: 'caption ''NETWORK OFFICE #''; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-072
+  node: .EFormData.page2.FirstName[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitted_by -> target variable SubmittedBy1 (SubTree0.SubmittedBy1, SubmittedBy1 FormControl
+    1)
+  rationale: caption 'SUBMITTED BY'; the target FormControl sequence follows the source field order exactly (73 controls for
+    77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-073
+  node: .EFormData.page2.Tele.Phone.f2
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitter_telephone -> target variable Telephone11 (SubTree0.Telephone11, Telephone11
+    FormControl 1)
+  rationale: area-code part '(' of the page-2 first TELEPHONE NUMBER block; target Telephone11; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-074
+  node: .EFormData.page2.Tele.Phone.f2[1]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.submitter_telephone -> target variable Telephone11 (SubTree0.Telephone11, Telephone11
+    FormControl 1)
+  rationale: local-number part ')' of the page-2 first TELEPHONE NUMBER block; joins f2 into Telephone11; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-075
+  node: .EFormData.page2.FirstName[4]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_contact -> target variable GroupOffice1 (SubTree0.GroupOffice1, GroupOffice1
+    FormControl 1)
+  rationale: caption 'GROUP OFFICE CONTACT'; the target FormControl sequence follows the source field order exactly (73 controls
+    for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-076
+  node: .EFormData.page2.Tele.Phone.f2[2]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_telephone -> target variable Telephone12 (SubTree0.Telephone12, Telephone12
+    FormControl 1)
+  rationale: area-code part '(' of the page-2 second TELEPHONE NUMBER block; target Telephone12; the target FormControl sequence
+    follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-077
+  node: .EFormData.page2.Tele.Phone.f2[3]
+  finding: G3-UNBOUND
+  action: bind_to_element
+  proposal: element transmittal.client.group_office_telephone -> target variable Telephone12 (SubTree0.Telephone12, Telephone12
+    FormControl 1)
+  rationale: local-number part ')' of the page-2 second TELEPHONE NUMBER block; joins f2[3] into Telephone12; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-078
+  node: .EFormData.Page1.CurrentPage
+  finding: G3-UNBOUND
+  action: keep_unbound
+  proposal: no data binding; page number comes from the Quadient page counter (BND-07)
+  rationale: ready script 'this.rawValue = xfa.layout.page(this);' is page arithmetic (BND-07); the WFD carries PageCounter/GlobalPageCounter
+    variables and static '(Page of ) FE'; no input data path
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-079
+  node: .EFormData.Page1.PageCount
+  finding: G3-UNBOUND
+  action: keep_unbound
+  proposal: no data binding; page number comes from the Quadient page counter (BND-07)
+  rationale: ready script 'this.rawValue = xfa.layout.pageCount();' is page arithmetic (BND-07); the WFD carries GlobalPageCount;
+    no input data path
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-080
+  node: .EFormData.Page1.CurrentPage
+  finding: VAL-SCRIPT-MANUAL
+  action: translate_script
+  proposal: designer writes the footer expression from the Quadient page-counter variables; not derived from the script body
+  rationale: '''this.rawValue = xfa.layout.page(this);'' (38 chars, classified unknown) -> Quadient page-counter variable
+    (WFD PageCounter/GlobalPageCounter) in the footer ''(Page of ) FE''; no host API beyond xfa.layout'
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-081
+  node: .EFormData.Page1.PageCount
+  finding: VAL-SCRIPT-MANUAL
+  action: translate_script
+  proposal: designer writes the footer expression from the Quadient page-counter variables; not derived from the script body
+  rationale: '''this.rawValue = xfa.layout.pageCount();'' (39 chars, classified unknown) -> Quadient page-count variable (WFD
+    GlobalPageCount) in the footer ''(Page of ) FE'''
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-082
+  node: .EFormData.MainSubform.Tele.Phone.f2
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone1; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: no caption on the field itself; the enclosing Tele subform heading is 'TELEPHONE NUMBER (INCLUDE AREA CODE)'
+    and the '(' ')' captions mark area code / local number; name comes from the target variable Telephone1; the target FormControl
+    sequence follows the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-083
+  node: .EFormData.MainSubform.Tele.Phone.f2[1]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone1; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; local-number part of Telephone1; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-084
+  node: .EFormData.MainSubform.Tele.Phone.f2[2]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone2; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; area-code part of Telephone2 (GROUP OFFICE CONTACT phone); the target FormControl sequence follows
+    the source field order exactly (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-085
+  node: .EFormData.MainSubform.Tele.Phone.f2[3]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone2; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; local-number part of Telephone2; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-086
+  node: .EFormData.page2.Tele.Phone.f2
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone11; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; area-code part of Telephone11; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-087
+  node: .EFormData.page2.Tele.Phone.f2[1]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone11; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; local-number part of Telephone11; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-088
+  node: .EFormData.page2.Tele.Phone.f2[2]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone12; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; area-code part of Telephone12; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null
+- id: D-089
+  node: .EFormData.page2.Tele.Phone.f2[3]
+  finding: G3-NONAME
+  action: bind_to_element
+  proposal: name the field after target variable Telephone12; no element row (covered by the G3-UNBOUND record on the same
+    node)
+  rationale: as above; local-number part of Telephone12; the target FormControl sequence follows the source field order exactly
+    (73 controls for 77 data fields, phone parts pairing 2:1)
+  status: proposed
+  decided_by: null
+  decided_on: null

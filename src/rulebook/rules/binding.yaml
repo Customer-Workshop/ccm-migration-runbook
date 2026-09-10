@@ -85,9 +85,9 @@ rules:
     status: draft
     source: calculate scripts, page arithmetic, concatenations
     target: Quadient variable with a computed expression
-    evidence: "CurrentPage/PageCount -> system variables; concatenation scripts in 17-0574"
-    origin: {type: reference_pair, refs: ["17-0574"]}
-    fixtures: ["17-0574"]
+    evidence: "CurrentPage/PageCount -> system variables; concatenation scripts in 17-0574; 18-1721 CurrentPage/PageCount ready scripts (xfa.layout.page / pageCount) with PageCounter and GlobalPageCount variables present in the WFD export"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1721"]}
+    fixtures: ["17-0574", "18-1721"]
     implemented_in: []
     gates: [G3]
     reviewed_by: null
@@ -115,6 +115,19 @@ rules:
     origin: {type: reference_pair, refs: ["18-1026"]}
     fixtures: ["18-1026"]
     implemented_in: [gates.g4_coverage]
+    gates: [G3, G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-10
+    title: Split telephone fields (area code + local number) map to one target string variable
+    class: ASSIST
+    status: draft
+    source: "sibling numeric fields captioned '(' and ')' inside a Tele/Phone subform under a 'TELEPHONE NUMBER (INCLUDE AREA CODE)' heading"
+    target: one String variable per telephone number; the compose expression concatenates the parts with the '(' ')' punctuation as static text
+    evidence: "181721.xdp has four Tele.Phone.f2/f2[n] pairs (two per page) and the WFD export has exactly four String variables Telephone1, Telephone2, Telephone11, Telephone12 with matching FormControls; G4 name matching scores the parts 0.0 because they carry no caption"
+    origin: {type: reference_pair, refs: ["18-1721"]}
+    fixtures: ["18-1721"]
+    implemented_in: []
     gates: [G3, G4]
     reviewed_by: null
     reviewed_on: null

@@ -241,3 +241,678 @@ rows:
     status: proposed
     evidence: "D-028: caption 'DATE Signed by PAYER (MM/DD/YYYY)'; variable PayerSignedDte at CommonData.eSignInfo.PayerEsignInfo.PayerSignedDte in 18-1026_Quad_2.xml"
     reviewed_by: null
+# 18-1721: unbound source fields routed from the frozen mapping table; target_variable and data_path are proposed from the supplied WFD export.
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3
+    element: transmittal.route.advanced_business_services_ind
+    target_variable: Route1
+    data_path: SubTree0.Route1
+    status: proposed
+    evidence: 'D-001: caption ''Route to: Advanced Business Services Division - Life Product Department''; variable Route1 at
+      SubTree0.Route1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1
+    element: transmittal.attention
+    target_variable: Attention1
+    data_path: SubTree0.Attention1
+    status: proposed
+    evidence: 'D-002: caption ''Attention:''; variable Attention1 at SubTree0.Attention1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[1]
+    element: transmittal.request.business_case_management_ind
+    target_variable: Business
+    data_path: SubTree0.Business
+    status: proposed
+    evidence: 'D-003: caption ''Business Case Management (BCM)''; variable Business at SubTree0.Business in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[2]
+    element: transmittal.request.corporate_inventory_ind
+    target_variable: Corporate
+    data_path: SubTree0.Corporate
+    status: proposed
+    evidence: 'D-004: caption ''Corporate Inventory''; variable Corporate at SubTree0.Corporate in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[3]
+    element: transmittal.request.mcb_transactions_ind
+    target_variable: MCB
+    data_path: SubTree0.MCB
+    status: proposed
+    evidence: 'D-005: caption ''MCB Transactions''; variable MCB at SubTree0.MCB in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[4]
+    element: transmittal.request.vel_vjl_cul_sul_ind
+    target_variable: VEL
+    data_path: SubTree0.VEL
+    status: proposed
+    evidence: 'D-006: caption ''VEL/VJL/CUL/SUL''; variable VEL at SubTree0.VEL in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[5]
+    element: transmittal.request.policy_transaction_ind
+    target_variable: Policy
+    data_path: SubTree0.Policy
+    status: proposed
+    evidence: 'D-007: caption ''Policy Transaction''; variable Policy at SubTree0.Policy in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[6]
+    element: transmittal.request.policy_loan_agreement_ind
+    target_variable: Policy2
+    data_path: SubTree0.Policy2
+    status: proposed
+    evidence: 'D-008: caption ''Policy Loan Agreement''; target FormControl ''Policy FormControl 2'' -> variable Policy2; variable
+      Policy2 at SubTree0.Policy2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[7]
+    element: transmittal.request.surrender_paid_up_additions_ind
+    target_variable: Surrender
+    data_path: SubTree0.Surrender
+    status: proposed
+    evidence: 'D-009: caption ''Surrender of Paid-up Additions/Accumulation''; variable Surrender at SubTree0.Surrender in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[8]
+    element: transmittal.request.surrender_of_policy_ind
+    target_variable: SurrenderPlo
+    data_path: SubTree0.SurrenderPlo
+    status: proposed
+    evidence: 'D-010: caption ''Surrender of Policy'' (G4 score 0.828); variable SurrenderPlo at SubTree0.SurrenderPlo in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[9]
+    element: transmittal.request.withdrawal_of_excess_ind
+    target_variable: Withdrawal
+    data_path: SubTree0.Withdrawal
+    status: proposed
+    evidence: 'D-011: caption ''Withdrawal of Excess''; variable Withdrawal at SubTree0.Withdrawal in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[10]
+    element: transmittal.request.other_ind
+    target_variable: Other
+    data_path: SubTree0.Other
+    status: proposed
+    evidence: 'D-012: caption ''Other:'' (G4 score 1.0); variable Other at SubTree0.Other in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[1]
+    element: transmittal.request.other_text
+    target_variable: OtherS
+    data_path: SubTree0.OtherS
+    status: proposed
+    evidence: 'D-013: uncaptioned text field following the ''Other:'' checkbox; target FormControl OtherS follows Other in the
+      same order; variable OtherS at SubTree0.OtherS in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[2]
+    element: transmittal.comments
+    target_variable: Comments
+    data_path: SubTree0.Comments
+    status: proposed
+    evidence: 'D-014: caption ''Comments/Special Instructions:'' (multiline); variable Comments at SubTree0.Comments in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[11]
+    element: transmittal.route.policy_change_portfolio_products_ind
+    target_variable: Route2
+    data_path: SubTree0.Route2
+    status: proposed
+    evidence: 'D-015: caption ''Route to: Policy Change Portfolio Products Division - Policyowner Services Department''; variable
+      Route2 at SubTree0.Route2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[3]
+    element: transmittal.attention
+    target_variable: Attention2
+    data_path: SubTree0.Attention2
+    status: proposed
+    evidence: 'D-016: caption ''Attention:''; variable Attention2 at SubTree0.Attention2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[12]
+    element: transmittal.request.form_90_1279_99_ind
+    target_variable: 90-1279-99
+    data_path: SubTree0.90-1279-99
+    status: proposed
+    evidence: 'D-017: caption ''90-1279-99''; target FormControl ''90-1279-99 FormControl 1'' (G4 score 0.786); variable 90-1279-99
+      at SubTree0.90-1279-99 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[13]
+    element: transmittal.request.form_90_1279_after_ga_input_ind
+    target_variable: 90-1279
+    data_path: SubTree0.90-1279
+    status: proposed
+    evidence: 'D-018: caption ''90-1279 (After GA input)''; variable 90-1279 at SubTree0.90-1279 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[14]
+    element: transmittal.request.pending_requirements_ind
+    target_variable: Pending
+    data_path: SubTree0.Pending
+    status: proposed
+    evidence: 'D-019: caption ''Pending Requirements''; variable Pending at SubTree0.Pending in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[4]
+    element: transmittal.request.other_text
+    target_variable: OtherPstring
+    data_path: SubTree0.OtherPstring
+    status: proposed
+    evidence: 'D-020: uncaptioned text field paired with the block-2 ''Other:'' checkbox; target pair Otherp (Bool) / OtherPstring
+      (String); variable OtherPstring at SubTree0.OtherPstring in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.CheckBox3[15]
+    element: transmittal.request.other_ind
+    target_variable: Otherp
+    data_path: SubTree0.Otherp
+    status: proposed
+    evidence: 'D-021: caption ''Other:''; target Otherp is the Bool of the Otherp/OtherPstring pair; variable Otherp at SubTree0.Otherp
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[5]
+    element: transmittal.group_name
+    target_variable: GroupName
+    data_path: SubTree0.GroupName
+    status: proposed
+    evidence: 'D-022: caption ''Group Name:'' (G4 score 1.0); variable GroupName at SubTree0.GroupName in Forms_18-1721 (AEM to
+      Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[6]
+    element: transmittal.policy_numbers
+    target_variable: PolicyNumber
+    data_path: SubTree0.PolicyNumber
+    status: proposed
+    evidence: 'D-023: caption ''Policy Number(s):'' (G4 score 0.929); variable PolicyNumber at SubTree0.PolicyNumber in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[7]
+    element: transmittal.mcb_numbers
+    target_variable: MCBNumber
+    data_path: SubTree0.MCBNumber
+    status: proposed
+    evidence: 'D-024: caption ''MCB Number(s):'' (G4 score 0.9); variable MCBNumber at SubTree0.MCBNumber in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[8]
+    element: transmittal.participants_in_group
+    target_variable: group
+    data_path: SubTree0.group
+    status: proposed
+    evidence: 'D-025: caption ''# of participants in group:''; target FormControl ''group FormControl 1'' sits between MCBNumber
+      and ISA in the same order as the source; variable group at SubTree0.group in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[9]
+    element: transmittal.isa_numbers
+    target_variable: ISA
+    data_path: SubTree0.ISA
+    status: proposed
+    evidence: 'D-026: caption ''ISA Number(s):''; variable ISA at SubTree0.ISA in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[10]
+    element: transmittal.service_plan_number
+    target_variable: Service
+    data_path: SubTree0.Service
+    status: proposed
+    evidence: 'D-027: caption ''Service Plan Number:''; variable Service at SubTree0.Service in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.TextField1[11]
+    element: transmittal.comments
+    target_variable: Comments2
+    data_path: SubTree0.Comments2
+    status: proposed
+    evidence: 'D-028: caption ''Comments/Special Instructions:'' (multiline); variable Comments2 at SubTree0.Comments2 in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.DateField1
+    element: transmittal.date
+    target_variable: DATE
+    data_path: SubTree0.DATE
+    status: proposed
+    evidence: 'D-029: caption ''DATE (MM/DD/YYYY)''; exit script is a conditional_clear format check (rule_translatable, VAL-05);
+      target DATE is a String variable so the MM/DD/YYYY format must be applied at compose time; variable DATE at SubTree0.DATE
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.LastName
+    element: transmittal.client.policy_isa_mcb_number
+    target_variable: POLICYNUMBER
+    data_path: SubTree0.POLICYNUMBER
+    status: proposed
+    evidence: 'D-030: caption ''POLICY NUMBER(S) / ISA / MCB''; source leaf name LastName is a template remnant, not a semantic
+      (G4 score 0.774); variable POLICYNUMBER at SubTree0.POLICYNUMBER in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.FirstName
+    element: transmittal.client.financial_representative_name
+    target_variable: FR_Name
+    data_path: SubTree0.FR_Name
+    status: proposed
+    evidence: 'D-031: caption "FINANCIAL REPRESENTATIVE'' NAME" (G4 score 0.824); variable FR_Name at SubTree0.FR_Name in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.Insured
+    element: transmittal.client.insured_name
+    target_variable: INSUREDNAME
+    data_path: SubTree0.INSUREDNAME
+    status: proposed
+    evidence: 'D-032: caption ''INSURED NAME'' (G4 score 1.0); variable INSUREDNAME at SubTree0.INSUREDNAME in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.FirstName[1]
+    element: transmittal.client.financial_representative_number
+    target_variable: FR_No
+    data_path: SubTree0.FR_No
+    status: proposed
+    evidence: 'D-033: caption ''FINANCIAL REPRESENTATIVE NO.''; G4 picked FR_Name (0.824) but the target has a distinct FR_No
+      control; variable FR_No at SubTree0.FR_No in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.FirstName[2]
+    element: transmittal.client.network_office_number
+    target_variable: NetworkOffice
+    data_path: SubTree0.NetworkOffice
+    status: proposed
+    evidence: 'D-034: caption ''NETWORK OFFICE #'' (G4 score 1.0); variable NetworkOffice at SubTree0.NetworkOffice in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.FirstName[3]
+    element: transmittal.client.submitted_by
+    target_variable: SubmittedBy
+    data_path: SubTree0.SubmittedBy
+    status: proposed
+    evidence: 'D-035: caption ''SUBMITTED BY'' (G4 score 1.0); variable SubmittedBy at SubTree0.SubmittedBy in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.Tele.Phone.f2
+    element: transmittal.client.submitter_telephone
+    target_variable: Telephone1
+    data_path: SubTree0.Telephone1
+    status: proposed
+    evidence: 'D-036: area-code part ''('' of the first TELEPHONE NUMBER (INCLUDE AREA CODE) block; target has one String Telephone1
+      for the whole number; variable Telephone1 at SubTree0.Telephone1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.Tele.Phone.f2[1]
+    element: transmittal.client.submitter_telephone
+    target_variable: Telephone1
+    data_path: SubTree0.Telephone1
+    status: proposed
+    evidence: 'D-037: local-number part '')'' of the first TELEPHONE NUMBER block; joins f2 into Telephone1; variable Telephone1
+      at SubTree0.Telephone1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.FirstName[4]
+    element: transmittal.client.group_office_contact
+    target_variable: GroupOffice
+    data_path: SubTree0.GroupOffice
+    status: proposed
+    evidence: 'D-038: caption ''GROUP OFFICE CONTACT''; G4 picked FR_Name (0.824) but the target has a distinct GroupOffice control;
+      variable GroupOffice at SubTree0.GroupOffice in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.Tele.Phone.f2[2]
+    element: transmittal.client.group_office_telephone
+    target_variable: Telephone2
+    data_path: SubTree0.Telephone2
+    status: proposed
+    evidence: 'D-039: area-code part ''('' of the second TELEPHONE NUMBER block, following GROUP OFFICE CONTACT; target Telephone2;
+      variable Telephone2 at SubTree0.Telephone2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.MainSubform.Tele.Phone.f2[3]
+    element: transmittal.client.group_office_telephone
+    target_variable: Telephone2
+    data_path: SubTree0.Telephone2
+    status: proposed
+    evidence: 'D-040: local-number part '')'' of the second TELEPHONE NUMBER block; joins f2[2] into Telephone2; variable Telephone2
+      at SubTree0.Telephone2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3
+    element: transmittal.route.large_case_division_ind
+    target_variable: Route4
+    data_path: SubTree0.Route4
+    status: proposed
+    evidence: 'D-041: caption ''Route to: Large Case Division - New Business Department''; variable Route4 at SubTree0.Route4
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1
+    element: transmittal.attention
+    target_variable: Attention4
+    data_path: SubTree0.Attention4
+    status: proposed
+    evidence: 'D-042: caption ''Attention:''; variable Attention4 at SubTree0.Attention4 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[1]
+    element: transmittal.request.other_text
+    target_variable: OtherPage2S
+    data_path: SubTree0.OtherPage2S
+    status: proposed
+    evidence: 'D-043: uncaptioned text field paired with the block-4 ''Other:'' checkbox; target pair OtherPage2 (Bool) / OtherPage2S
+      (String); variable OtherPage2S at SubTree0.OtherPage2S in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[1]
+    element: transmittal.request.other_ind
+    target_variable: OtherPage2
+    data_path: SubTree0.OtherPage2
+    status: proposed
+    evidence: 'D-044: caption ''Other:''; target ''OtherPage2 FormControl 1'' -> variable OtherPage2; variable OtherPage2 at SubTree0.OtherPage2
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[2]
+    element: transmittal.request.naic_illustration_ind
+    target_variable: NAIC
+    data_path: SubTree0.NAIC
+    status: proposed
+    evidence: 'D-045: caption ''NAIC Illustration''; variable NAIC at SubTree0.NAIC in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[3]
+    element: transmittal.request.erisa_ind
+    target_variable: ERISA
+    data_path: SubTree0.ERISA
+    status: proposed
+    evidence: 'D-046: caption ''ERISA'' (G4 score 1.0); variable ERISA at SubTree0.ERISA in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[4]
+    element: transmittal.request.attending_physician_statement_ind
+    target_variable: Attending
+    data_path: SubTree0.Attending
+    status: proposed
+    evidence: 'D-047: caption ''Attending Physician Statement (APS)''; variable Attending at SubTree0.Attending in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[2]
+    element: transmittal.comments
+    target_variable: Comments3
+    data_path: SubTree0.Comments3
+    status: proposed
+    evidence: 'D-048: caption ''Comments/Special Instructions:'' (multiline); variable Comments3 at SubTree0.Comments3 in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[5]
+    element: transmittal.route.beneficiary_title_division_ind
+    target_variable: Route5
+    data_path: SubTree0.Route5
+    status: proposed
+    evidence: 'D-049: caption ''Route to: Beneficiary & Title Division - Policyowner Services Department''; variable Route5 at
+      SubTree0.Route5 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[3]
+    element: transmittal.attention
+    target_variable: Attention5
+    data_path: SubTree0.Attention5
+    status: proposed
+    evidence: 'D-050: caption ''Attention:''; target ''Attention5 FormControl 2''; variable Attention5 at SubTree0.Attention5
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[6]
+    element: transmittal.request.name_change_ind
+    target_variable: Nameof change
+    data_path: SubTree0.Nameof change
+    status: proposed
+    evidence: 'D-051: caption ''Name Change of Owner, Beneficiary or Assignee''; target variable name contains a space (''Nameof
+      change'') and needs a Designer naming check; variable Nameof change at SubTree0.Nameof change in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[7]
+    element: transmittal.request.split_dollar_assignment_ind
+    target_variable: SplitDollar
+    data_path: SubTree0.SplitDollar
+    status: proposed
+    evidence: 'D-052: caption ''Split Dollar Method - Assignment/Owner''; variable SplitDollar at SubTree0.SplitDollar in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[8]
+    element: transmittal.request.change_of_beneficiary_ownership_ind
+    target_variable: Change
+    data_path: SubTree0.Change
+    status: proposed
+    evidence: 'D-053: caption ''Change of Beneficiary/Ownership''; variable Change at SubTree0.Change in Forms_18-1721 (AEM to
+      Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[4]
+    element: transmittal.comments
+    target_variable: Comments4
+    data_path: SubTree0.Comments4
+    status: proposed
+    evidence: 'D-054: caption ''Comments/Special Instructions:'' (multiline); variable Comments4 at SubTree0.Comments4 in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[5]
+    element: transmittal.request.other_text
+    target_variable: OtherPage2_2S
+    data_path: SubTree0.OtherPage2_2S
+    status: proposed
+    evidence: 'D-055: uncaptioned text field paired with the block-5 ''Other:'' checkbox; target pair OtherPage2_2 (Bool) / OtherPage2_2S
+      (String); variable OtherPage2_2S at SubTree0.OtherPage2_2S in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[9]
+    element: transmittal.request.other_ind
+    target_variable: OtherPage2_2
+    data_path: SubTree0.OtherPage2_2
+    status: proposed
+    evidence: 'D-056: caption ''Other:''; target ''OtherPage2 FormControl 2'' -> variable OtherPage2_2; variable OtherPage2_2
+      at SubTree0.OtherPage2_2 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[10]
+    element: transmittal.request.collateral_assignment_ind
+    target_variable: Collateral
+    data_path: SubTree0.Collateral
+    status: proposed
+    evidence: 'D-057: caption ''Collateral Assignment/Release of Assignment''; variable Collateral at SubTree0.Collateral in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[11]
+    element: transmittal.route.life_benefits_division_ind
+    target_variable: Route6
+    data_path: SubTree0.Route6
+    status: proposed
+    evidence: 'D-058: caption ''Route to: Life Benefits Division - Policyowner Services Department''; variable Route6 at SubTree0.Route6
+      in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[6]
+    element: transmittal.attention
+    target_variable: Attention6
+    data_path: SubTree0.Attention6
+    status: proposed
+    evidence: 'D-059: caption ''Attention:'' (G4 score 0.947); variable Attention6 at SubTree0.Attention6 in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[7]
+    element: transmittal.request.other_text
+    target_variable: Other6S
+    data_path: SubTree0.Other6S
+    status: proposed
+    evidence: 'D-060: uncaptioned text field paired with the block-6 ''Other:'' checkbox; target pair Other6 (Bool) / Other6S
+      (String); variable Other6S at SubTree0.Other6S in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[12]
+    element: transmittal.request.other_ind
+    target_variable: Other6
+    data_path: SubTree0.Other6
+    status: proposed
+    evidence: 'D-061: caption ''Other:''; target Other6; variable Other6 at SubTree0.Other6 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[13]
+    element: transmittal.request.substitute_w9_ind
+    target_variable: Substitute
+    data_path: SubTree0.Substitute
+    status: proposed
+    evidence: 'D-062: caption ''Substitute W-9 Form''; variable Substitute at SubTree0.Substitute in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[14]
+    element: transmittal.request.beneficiary_claim_statement_ind
+    target_variable: Beneficiary
+    data_path: SubTree0.Beneficiary
+    status: proposed
+    evidence: 'D-063: caption ''Beneficiary Claim Statement''; variable Beneficiary at SubTree0.Beneficiary in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.CheckBox3[15]
+    element: transmittal.request.certified_death_certificate_ind
+    target_variable: Certified
+    data_path: SubTree0.Certified
+    status: proposed
+    evidence: 'D-064: caption ''Certified Death Certificate''; variable Certified at SubTree0.Certified in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.TextField1[8]
+    element: transmittal.comments
+    target_variable: Comments5
+    data_path: SubTree0.Comments5
+    status: proposed
+    evidence: 'D-065: caption ''Comments/Special Instructions:'' (multiline); variable Comments5 at SubTree0.Comments5 in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.DateField1
+    element: transmittal.date
+    target_variable: DATE1
+    data_path: SubTree0.DATE1
+    status: proposed
+    evidence: 'D-066: caption ''DATE (MM/DD/YYYY)''; same conditional_clear exit script as page 1; target DATE1 is a String variable;
+      variable DATE1 at SubTree0.DATE1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.LastName
+    element: transmittal.client.policy_isa_mcb_number
+    target_variable: POLICYNUMBER1
+    data_path: SubTree0.POLICYNUMBER1
+    status: proposed
+    evidence: 'D-067: caption ''POLICY NUMBER(S) / ISA / MCB''; variable POLICYNUMBER1 at SubTree0.POLICYNUMBER1 in Forms_18-1721
+      (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.FirstName
+    element: transmittal.client.financial_representative_name
+    target_variable: FR_Name1
+    data_path: SubTree0.FR_Name1
+    status: proposed
+    evidence: 'D-068: caption "FINANCIAL REPRESENTATIVE'' NAME"; variable FR_Name1 at SubTree0.FR_Name1 in Forms_18-1721 (AEM
+      to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.Insured
+    element: transmittal.client.insured_name
+    target_variable: INSUREDNAME1
+    data_path: SubTree0.INSUREDNAME1
+    status: proposed
+    evidence: 'D-069: caption ''INSURED NAME''; variable INSUREDNAME1 at SubTree0.INSUREDNAME1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.FirstName[1]
+    element: transmittal.client.financial_representative_number
+    target_variable: FR_No1
+    data_path: SubTree0.FR_No1
+    status: proposed
+    evidence: 'D-070: caption ''FINANCIAL REPRESENTATIVE NO.''; variable FR_No1 at SubTree0.FR_No1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.FirstName[2]
+    element: transmittal.client.network_office_number
+    target_variable: NetworkOffice1
+    data_path: SubTree0.NetworkOffice1
+    status: proposed
+    evidence: 'D-071: caption ''NETWORK OFFICE #''; variable NetworkOffice1 at SubTree0.NetworkOffice1 in Forms_18-1721 (AEM to
+      Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.FirstName[3]
+    element: transmittal.client.submitted_by
+    target_variable: SubmittedBy1
+    data_path: SubTree0.SubmittedBy1
+    status: proposed
+    evidence: 'D-072: caption ''SUBMITTED BY''; variable SubmittedBy1 at SubTree0.SubmittedBy1 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.Tele.Phone.f2
+    element: transmittal.client.submitter_telephone
+    target_variable: Telephone11
+    data_path: SubTree0.Telephone11
+    status: proposed
+    evidence: 'D-073: area-code part ''('' of the page-2 first TELEPHONE NUMBER block; target Telephone11; variable Telephone11
+      at SubTree0.Telephone11 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.Tele.Phone.f2[1]
+    element: transmittal.client.submitter_telephone
+    target_variable: Telephone11
+    data_path: SubTree0.Telephone11
+    status: proposed
+    evidence: 'D-074: local-number part '')'' of the page-2 first TELEPHONE NUMBER block; joins f2 into Telephone11; variable
+      Telephone11 at SubTree0.Telephone11 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.FirstName[4]
+    element: transmittal.client.group_office_contact
+    target_variable: GroupOffice1
+    data_path: SubTree0.GroupOffice1
+    status: proposed
+    evidence: 'D-075: caption ''GROUP OFFICE CONTACT''; variable GroupOffice1 at SubTree0.GroupOffice1 in Forms_18-1721 (AEM to
+      Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.Tele.Phone.f2[2]
+    element: transmittal.client.group_office_telephone
+    target_variable: Telephone12
+    data_path: SubTree0.Telephone12
+    status: proposed
+    evidence: 'D-076: area-code part ''('' of the page-2 second TELEPHONE NUMBER block; target Telephone12; variable Telephone12
+      at SubTree0.Telephone12 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null
+  - form_code: 18-1721
+    som: .EFormData.page2.Tele.Phone.f2[3]
+    element: transmittal.client.group_office_telephone
+    target_variable: Telephone12
+    data_path: SubTree0.Telephone12
+    status: proposed
+    evidence: 'D-077: local-number part '')'' of the page-2 second TELEPHONE NUMBER block; joins f2[3] into Telephone12; variable
+      Telephone12 at SubTree0.Telephone12 in Forms_18-1721 (AEM to Quad).xml'
+    reviewed_by: null

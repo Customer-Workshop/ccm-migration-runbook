@@ -80,16 +80,34 @@ GOLDEN = {
     },
     "18-1721": {
         "verdicts": {
-            "G0": "pass",
+            "G0": "fail",
             "G1": "pass",
             "G2": "pass",
             "G3": "fail",
-            "G4": "skipped",
-            "G5": "skipped",
+            "G4": "pass",
+            "G5": "external",
             "G6": "skipped",
         },
         "G1": {"containers": 20, "fields": 79, "statics": 17},
-        "G3": {"bound_pct": 0.0, "scripts_total": 4, "nodes_requiring_human_touch": 79},
+        "G3": {
+            "bound_pct": 0.0,
+            "name_evidence_pct": 89.9,
+            "scripts_total": 4,
+            "scripts_mechanically_transferable_pct": 50.0,
+            "nodes_requiring_human_touch": 79,
+            "findings_routable": 89,
+            "findings_unrouted": 0,
+            "decisions_proposed": 89,
+        },
+        "G4": {
+            "field_match_pct": 0.8734,
+            "exact_name_pct": 0.038,
+            "static_text_coverage": 0.8776,
+            "sections_matched": 0,
+            "sections_total": 5,
+            "target_form_controls": 73,
+            "target_data_variables": 449,
+        },
     },
 }
 
