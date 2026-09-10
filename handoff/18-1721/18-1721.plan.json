@@ -4,63 +4,623 @@
   "source_sha256": "dbe906bd8ce0b4528d003a09b2206c09aad869184fcfdc708b7f9234953424bb",
   "variables": [
     {
-      "id": "18-1721_UNRESOLVED_FD0001_CheckBox3",
-      "name": "UNRESOLVED_FD0001_CheckBox3",
+      "id": "18-1721_90-1279",
+      "name": "90-1279",
       "data_type": "Boolean",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
       "source_soms": [
-        ".EFormData.MainSubform.CheckBox3"
+        ".EFormData.MainSubform.CheckBox3[13]"
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0002_TextField1",
-      "name": "UNRESOLVED_FD0002_TextField1",
+      "id": "18-1721_90-1279-99",
+      "name": "90-1279-99",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[12]"
+      ]
+    },
+    {
+      "id": "18-1721_Attending",
+      "name": "Attending",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[4]"
+      ]
+    },
+    {
+      "id": "18-1721_Attention1",
+      "name": "Attention1",
       "data_type": "String",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
       "source_soms": [
         ".EFormData.MainSubform.TextField1"
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0003_CheckBox3",
-      "name": "UNRESOLVED_FD0003_CheckBox3",
+      "id": "18-1721_Attention2",
+      "name": "Attention2",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[3]"
+      ]
+    },
+    {
+      "id": "18-1721_Attention4",
+      "name": "Attention4",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1"
+      ]
+    },
+    {
+      "id": "18-1721_Attention5",
+      "name": "Attention5",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[3]"
+      ]
+    },
+    {
+      "id": "18-1721_Attention6",
+      "name": "Attention6",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[6]"
+      ]
+    },
+    {
+      "id": "18-1721_Beneficiary",
+      "name": "Beneficiary",
       "data_type": "Boolean",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[14]"
+      ]
+    },
+    {
+      "id": "18-1721_Business",
+      "name": "Business",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
       "source_soms": [
         ".EFormData.MainSubform.CheckBox3[1]"
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0004_CheckBox3",
-      "name": "UNRESOLVED_FD0004_CheckBox3",
+      "id": "18-1721_Certified",
+      "name": "Certified",
       "data_type": "Boolean",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[15]"
+      ]
+    },
+    {
+      "id": "18-1721_Change",
+      "name": "Change",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[8]"
+      ]
+    },
+    {
+      "id": "18-1721_Collateral",
+      "name": "Collateral",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[10]"
+      ]
+    },
+    {
+      "id": "18-1721_Comments",
+      "name": "Comments",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[2]"
+      ]
+    },
+    {
+      "id": "18-1721_Comments2",
+      "name": "Comments2",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[11]"
+      ]
+    },
+    {
+      "id": "18-1721_Comments3",
+      "name": "Comments3",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[2]"
+      ]
+    },
+    {
+      "id": "18-1721_Comments4",
+      "name": "Comments4",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[4]"
+      ]
+    },
+    {
+      "id": "18-1721_Comments5",
+      "name": "Comments5",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[8]"
+      ]
+    },
+    {
+      "id": "18-1721_Corporate",
+      "name": "Corporate",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
       "source_soms": [
         ".EFormData.MainSubform.CheckBox3[2]"
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0005_CheckBox3",
-      "name": "UNRESOLVED_FD0005_CheckBox3",
+      "id": "18-1721_ERISA",
+      "name": "ERISA",
       "data_type": "Boolean",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[3]"
+      ]
+    },
+    {
+      "id": "18-1721_FR_Name",
+      "name": "FR_Name",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.FirstName"
+      ]
+    },
+    {
+      "id": "18-1721_FR_Name1",
+      "name": "FR_Name1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.FirstName"
+      ]
+    },
+    {
+      "id": "18-1721_FR_No",
+      "name": "FR_No",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.FirstName[1]"
+      ]
+    },
+    {
+      "id": "18-1721_FR_No1",
+      "name": "FR_No1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.FirstName[1]"
+      ]
+    },
+    {
+      "id": "18-1721_GroupName",
+      "name": "GroupName",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[5]"
+      ]
+    },
+    {
+      "id": "18-1721_GroupOffice",
+      "name": "GroupOffice",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.FirstName[4]"
+      ]
+    },
+    {
+      "id": "18-1721_GroupOffice1",
+      "name": "GroupOffice1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.FirstName[4]"
+      ]
+    },
+    {
+      "id": "18-1721_INSUREDNAME",
+      "name": "INSUREDNAME",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.Insured"
+      ]
+    },
+    {
+      "id": "18-1721_INSUREDNAME1",
+      "name": "INSUREDNAME1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.Insured"
+      ]
+    },
+    {
+      "id": "18-1721_ISA",
+      "name": "ISA",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[9]"
+      ]
+    },
+    {
+      "id": "18-1721_MCB",
+      "name": "MCB",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
       "source_soms": [
         ".EFormData.MainSubform.CheckBox3[3]"
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0006_CheckBox3",
-      "name": "UNRESOLVED_FD0006_CheckBox3",
+      "id": "18-1721_MCBNumber",
+      "name": "MCBNumber",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[7]"
+      ]
+    },
+    {
+      "id": "18-1721_NAIC",
+      "name": "NAIC",
       "data_type": "Boolean",
       "data_path": null,
-      "resolution": "unresolved",
+      "resolution": "dictionary:proposed",
       "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[4]"
+        ".EFormData.page2.CheckBox3[2]"
+      ]
+    },
+    {
+      "id": "18-1721_Nameof change",
+      "name": "Nameof change",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[6]"
+      ]
+    },
+    {
+      "id": "18-1721_NetworkOffice",
+      "name": "NetworkOffice",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.FirstName[2]"
+      ]
+    },
+    {
+      "id": "18-1721_NetworkOffice1",
+      "name": "NetworkOffice1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.FirstName[2]"
+      ]
+    },
+    {
+      "id": "18-1721_Other",
+      "name": "Other",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[10]"
+      ]
+    },
+    {
+      "id": "18-1721_Other6",
+      "name": "Other6",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[12]"
+      ]
+    },
+    {
+      "id": "18-1721_Other6S",
+      "name": "Other6S",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[7]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherPage2",
+      "name": "OtherPage2",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[1]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherPage2S",
+      "name": "OtherPage2S",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[1]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherPage2_2",
+      "name": "OtherPage2_2",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[9]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherPage2_2S",
+      "name": "OtherPage2_2S",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.TextField1[5]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherPstring",
+      "name": "OtherPstring",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[4]"
+      ]
+    },
+    {
+      "id": "18-1721_OtherS",
+      "name": "OtherS",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[1]"
+      ]
+    },
+    {
+      "id": "18-1721_Otherp",
+      "name": "Otherp",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[15]"
+      ]
+    },
+    {
+      "id": "18-1721_POLICYNUMBER",
+      "name": "POLICYNUMBER",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.LastName"
+      ]
+    },
+    {
+      "id": "18-1721_POLICYNUMBER1",
+      "name": "POLICYNUMBER1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.LastName"
+      ]
+    },
+    {
+      "id": "18-1721_Pending",
+      "name": "Pending",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[14]"
+      ]
+    },
+    {
+      "id": "18-1721_PolicyNumber",
+      "name": "PolicyNumber",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[6]"
+      ]
+    },
+    {
+      "id": "18-1721_Route1",
+      "name": "Route1",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3"
+      ]
+    },
+    {
+      "id": "18-1721_Route2",
+      "name": "Route2",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[11]"
+      ]
+    },
+    {
+      "id": "18-1721_Route4",
+      "name": "Route4",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3"
+      ]
+    },
+    {
+      "id": "18-1721_Route5",
+      "name": "Route5",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[5]"
+      ]
+    },
+    {
+      "id": "18-1721_Route6",
+      "name": "Route6",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[11]"
+      ]
+    },
+    {
+      "id": "18-1721_Service",
+      "name": "Service",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[10]"
+      ]
+    },
+    {
+      "id": "18-1721_SplitDollar",
+      "name": "SplitDollar",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[7]"
+      ]
+    },
+    {
+      "id": "18-1721_SubmittedBy",
+      "name": "SubmittedBy",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.FirstName[3]"
+      ]
+    },
+    {
+      "id": "18-1721_SubmittedBy1",
+      "name": "SubmittedBy1",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.FirstName[3]"
+      ]
+    },
+    {
+      "id": "18-1721_Substitute",
+      "name": "Substitute",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.page2.CheckBox3[13]"
+      ]
+    },
+    {
+      "id": "18-1721_Surrender",
+      "name": "Surrender",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[7]"
+      ]
+    },
+    {
+      "id": "18-1721_SurrenderPlo",
+      "name": "SurrenderPlo",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[8]"
       ]
     },
     {
@@ -84,266 +644,6 @@
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0009_CheckBox3",
-      "name": "UNRESOLVED_FD0009_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[7]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0010_CheckBox3",
-      "name": "UNRESOLVED_FD0010_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[8]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0011_CheckBox3",
-      "name": "UNRESOLVED_FD0011_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[9]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0012_CheckBox3",
-      "name": "UNRESOLVED_FD0012_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[10]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0013_TextField1",
-      "name": "UNRESOLVED_FD0013_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0014_TextField1",
-      "name": "UNRESOLVED_FD0014_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[2]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0015_CheckBox3",
-      "name": "UNRESOLVED_FD0015_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[11]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0016_TextField1",
-      "name": "UNRESOLVED_FD0016_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[3]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0017_CheckBox3",
-      "name": "UNRESOLVED_FD0017_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[12]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0018_CheckBox3",
-      "name": "UNRESOLVED_FD0018_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[13]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0019_CheckBox3",
-      "name": "UNRESOLVED_FD0019_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[14]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0020_TextField1",
-      "name": "UNRESOLVED_FD0020_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[4]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0021_CheckBox3",
-      "name": "UNRESOLVED_FD0021_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.CheckBox3[15]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0022_TextField1",
-      "name": "UNRESOLVED_FD0022_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[5]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0023_TextField1",
-      "name": "UNRESOLVED_FD0023_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[6]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0024_TextField1",
-      "name": "UNRESOLVED_FD0024_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[7]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0025_TextField1",
-      "name": "UNRESOLVED_FD0025_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[8]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0026_TextField1",
-      "name": "UNRESOLVED_FD0026_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[9]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0027_TextField1",
-      "name": "UNRESOLVED_FD0027_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[10]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0028_TextField1",
-      "name": "UNRESOLVED_FD0028_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.TextField1[11]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0030_LastName",
-      "name": "UNRESOLVED_FD0030_LastName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.LastName"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0031_FirstName",
-      "name": "UNRESOLVED_FD0031_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.FirstName"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0032_Insured",
-      "name": "UNRESOLVED_FD0032_Insured",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.Insured"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0033_FirstName",
-      "name": "UNRESOLVED_FD0033_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.FirstName[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0034_FirstName",
-      "name": "UNRESOLVED_FD0034_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.FirstName[2]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0035_FirstName",
-      "name": "UNRESOLVED_FD0035_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.FirstName[3]"
-      ]
-    },
-    {
       "id": "18-1721_UNRESOLVED_FD0036_f2",
       "name": "UNRESOLVED_FD0036_f2",
       "data_type": "Currency",
@@ -361,16 +661,6 @@
       "resolution": "unresolved",
       "source_soms": [
         ".EFormData.MainSubform.Tele.Phone.f2[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0038_FirstName",
-      "name": "UNRESOLVED_FD0038_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.MainSubform.FirstName[4]"
       ]
     },
     {
@@ -394,316 +684,6 @@
       ]
     },
     {
-      "id": "18-1721_UNRESOLVED_FD0041_CheckBox3",
-      "name": "UNRESOLVED_FD0041_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0042_TextField1",
-      "name": "UNRESOLVED_FD0042_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0043_TextField1",
-      "name": "UNRESOLVED_FD0043_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0044_CheckBox3",
-      "name": "UNRESOLVED_FD0044_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0045_CheckBox3",
-      "name": "UNRESOLVED_FD0045_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[2]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0046_CheckBox3",
-      "name": "UNRESOLVED_FD0046_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[3]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0047_CheckBox3",
-      "name": "UNRESOLVED_FD0047_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[4]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0048_TextField1",
-      "name": "UNRESOLVED_FD0048_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[2]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0049_CheckBox3",
-      "name": "UNRESOLVED_FD0049_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[5]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0050_TextField1",
-      "name": "UNRESOLVED_FD0050_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[3]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0051_CheckBox3",
-      "name": "UNRESOLVED_FD0051_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[6]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0052_CheckBox3",
-      "name": "UNRESOLVED_FD0052_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[7]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0053_CheckBox3",
-      "name": "UNRESOLVED_FD0053_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[8]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0054_TextField1",
-      "name": "UNRESOLVED_FD0054_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[4]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0055_TextField1",
-      "name": "UNRESOLVED_FD0055_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[5]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0056_CheckBox3",
-      "name": "UNRESOLVED_FD0056_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[9]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0057_CheckBox3",
-      "name": "UNRESOLVED_FD0057_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[10]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0058_CheckBox3",
-      "name": "UNRESOLVED_FD0058_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[11]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0059_TextField1",
-      "name": "UNRESOLVED_FD0059_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[6]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0060_TextField1",
-      "name": "UNRESOLVED_FD0060_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[7]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0061_CheckBox3",
-      "name": "UNRESOLVED_FD0061_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[12]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0062_CheckBox3",
-      "name": "UNRESOLVED_FD0062_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[13]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0063_CheckBox3",
-      "name": "UNRESOLVED_FD0063_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[14]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0064_CheckBox3",
-      "name": "UNRESOLVED_FD0064_CheckBox3",
-      "data_type": "Boolean",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.CheckBox3[15]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0065_TextField1",
-      "name": "UNRESOLVED_FD0065_TextField1",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.TextField1[8]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0067_LastName",
-      "name": "UNRESOLVED_FD0067_LastName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.LastName"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0068_FirstName",
-      "name": "UNRESOLVED_FD0068_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.FirstName"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0069_Insured",
-      "name": "UNRESOLVED_FD0069_Insured",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.Insured"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0070_FirstName",
-      "name": "UNRESOLVED_FD0070_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.FirstName[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0071_FirstName",
-      "name": "UNRESOLVED_FD0071_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.FirstName[2]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0072_FirstName",
-      "name": "UNRESOLVED_FD0072_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.FirstName[3]"
-      ]
-    },
-    {
       "id": "18-1721_UNRESOLVED_FD0073_f2",
       "name": "UNRESOLVED_FD0073_f2",
       "data_type": "Currency",
@@ -721,16 +701,6 @@
       "resolution": "unresolved",
       "source_soms": [
         ".EFormData.page2.Tele.Phone.f2[1]"
-      ]
-    },
-    {
-      "id": "18-1721_UNRESOLVED_FD0075_FirstName",
-      "name": "UNRESOLVED_FD0075_FirstName",
-      "data_type": "String",
-      "data_path": null,
-      "resolution": "unresolved",
-      "source_soms": [
-        ".EFormData.page2.FirstName[4]"
       ]
     },
     {
@@ -771,6 +741,36 @@
       "resolution": "unresolved",
       "source_soms": [
         ".EFormData.Page1.PageCount"
+      ]
+    },
+    {
+      "id": "18-1721_VEL",
+      "name": "VEL",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[4]"
+      ]
+    },
+    {
+      "id": "18-1721_Withdrawal",
+      "name": "Withdrawal",
+      "data_type": "Boolean",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.CheckBox3[9]"
+      ]
+    },
+    {
+      "id": "18-1721_group",
+      "name": "group",
+      "data_type": "String",
+      "data_path": null,
+      "resolution": "dictionary:proposed",
+      "source_soms": [
+        ".EFormData.MainSubform.TextField1[8]"
       ]
     }
   ],
@@ -956,37 +956,37 @@
         {
           "kind": "variable",
           "caption": "Route to: Advanced Business Services Division - Life Product Department",
-          "variable_id": "18-1721_UNRESOLVED_FD0001_CheckBox3",
+          "variable_id": "18-1721_Route1",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Attention:",
-          "variable_id": "18-1721_UNRESOLVED_FD0002_TextField1",
+          "variable_id": "18-1721_Attention1",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Surrender of Policy",
-          "variable_id": "18-1721_UNRESOLVED_FD0010_CheckBox3",
+          "variable_id": "18-1721_SurrenderPlo",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Withdrawal of Excess",
-          "variable_id": "18-1721_UNRESOLVED_FD0011_CheckBox3",
+          "variable_id": "18-1721_Withdrawal",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Other:",
-          "variable_id": "18-1721_UNRESOLVED_FD0012_CheckBox3",
+          "variable_id": "18-1721_Other",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": null,
-          "variable_id": "18-1721_UNRESOLVED_FD0013_TextField1",
+          "variable_id": "18-1721_OtherS",
           "style_id": "ST003"
         },
         {
@@ -997,73 +997,73 @@
         {
           "kind": "variable",
           "caption": "Comments/Special Instructions:",
-          "variable_id": "18-1721_UNRESOLVED_FD0014_TextField1",
+          "variable_id": "18-1721_Comments",
           "style_id": "ST005"
         },
         {
           "kind": "variable",
           "caption": "Route to: Policy Change Portfolio Products Division - Policyowner Services Department",
-          "variable_id": "18-1721_UNRESOLVED_FD0015_CheckBox3",
+          "variable_id": "18-1721_Route2",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Attention:",
-          "variable_id": "18-1721_UNRESOLVED_FD0016_TextField1",
+          "variable_id": "18-1721_Attention2",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "90-1279 (After GA input)",
-          "variable_id": "18-1721_UNRESOLVED_FD0018_CheckBox3",
+          "variable_id": "18-1721_90-1279",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Pending Requirements",
-          "variable_id": "18-1721_UNRESOLVED_FD0019_CheckBox3",
+          "variable_id": "18-1721_Pending",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "90-1279-99",
-          "variable_id": "18-1721_UNRESOLVED_FD0017_CheckBox3",
+          "variable_id": "18-1721_90-1279-99",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Other:",
-          "variable_id": "18-1721_UNRESOLVED_FD0021_CheckBox3",
+          "variable_id": "18-1721_Otherp",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": null,
-          "variable_id": "18-1721_UNRESOLVED_FD0020_TextField1",
+          "variable_id": "18-1721_OtherPstring",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Group Name:",
-          "variable_id": "18-1721_UNRESOLVED_FD0022_TextField1",
+          "variable_id": "18-1721_GroupName",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Policy Number(s):",
-          "variable_id": "18-1721_UNRESOLVED_FD0023_TextField1",
+          "variable_id": "18-1721_PolicyNumber",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "MCB Number(s):",
-          "variable_id": "18-1721_UNRESOLVED_FD0024_TextField1",
+          "variable_id": "18-1721_MCBNumber",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Comments/Special Instructions:",
-          "variable_id": "18-1721_UNRESOLVED_FD0028_TextField1",
+          "variable_id": "18-1721_Comments2",
           "style_id": "ST006"
         },
         {
@@ -1087,13 +1087,13 @@
         {
           "kind": "variable",
           "caption": "Corporate Inventory",
-          "variable_id": "18-1721_UNRESOLVED_FD0004_CheckBox3",
+          "variable_id": "18-1721_Corporate",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "MCB Transactions",
-          "variable_id": "18-1721_UNRESOLVED_FD0005_CheckBox3",
+          "variable_id": "18-1721_MCB",
           "style_id": "ST002"
         },
         {
@@ -1105,7 +1105,7 @@
         {
           "kind": "variable",
           "caption": "VEL/VJL/CUL/SUL",
-          "variable_id": "18-1721_UNRESOLVED_FD0006_CheckBox3",
+          "variable_id": "18-1721_VEL",
           "style_id": "ST002"
         },
         {
@@ -1117,7 +1117,7 @@
         {
           "kind": "variable",
           "caption": "Surrender of Paid-up Additions/Accumulation",
-          "variable_id": "18-1721_UNRESOLVED_FD0009_CheckBox3",
+          "variable_id": "18-1721_Surrender",
           "style_id": "ST002"
         },
         {
@@ -1128,7 +1128,7 @@
         {
           "kind": "variable",
           "caption": "Business Case Management (BCM)",
-          "variable_id": "18-1721_UNRESOLVED_FD0003_CheckBox3",
+          "variable_id": "18-1721_Business",
           "style_id": "ST002"
         }
       ],
@@ -1143,19 +1143,19 @@
         {
           "kind": "variable",
           "caption": "ISA Number(s):",
-          "variable_id": "18-1721_UNRESOLVED_FD0026_TextField1",
+          "variable_id": "18-1721_ISA",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Service Plan Number:",
-          "variable_id": "18-1721_UNRESOLVED_FD0027_TextField1",
+          "variable_id": "18-1721_Service",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "# of participants in group:",
-          "variable_id": "18-1721_UNRESOLVED_FD0025_TextField1",
+          "variable_id": "18-1721_group",
           "style_id": "ST003"
         }
       ],
@@ -1170,43 +1170,43 @@
         {
           "kind": "variable",
           "caption": "INSURED NAME",
-          "variable_id": "18-1721_UNRESOLVED_FD0032_Insured",
+          "variable_id": "18-1721_INSUREDNAME",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "FINANCIAL REPRESENTATIVE NO.",
-          "variable_id": "18-1721_UNRESOLVED_FD0033_FirstName",
+          "variable_id": "18-1721_FR_No",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "NETWORK OFFICE #",
-          "variable_id": "18-1721_UNRESOLVED_FD0034_FirstName",
+          "variable_id": "18-1721_NetworkOffice",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "FINANCIAL REPRESENTATIVE' NAME",
-          "variable_id": "18-1721_UNRESOLVED_FD0031_FirstName",
+          "variable_id": "18-1721_FR_Name",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "SUBMITTED BY",
-          "variable_id": "18-1721_UNRESOLVED_FD0035_FirstName",
+          "variable_id": "18-1721_SubmittedBy",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "GROUP OFFICE CONTACT",
-          "variable_id": "18-1721_UNRESOLVED_FD0038_FirstName",
+          "variable_id": "18-1721_GroupOffice",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "POLICY NUMBER(S) / ISA / MCB",
-          "variable_id": "18-1721_UNRESOLVED_FD0030_LastName",
+          "variable_id": "18-1721_POLICYNUMBER",
           "style_id": "ST008"
         }
       ],
@@ -1317,49 +1317,49 @@
         {
           "kind": "variable",
           "caption": "Route to: Large Case Division - New Business Department",
-          "variable_id": "18-1721_UNRESOLVED_FD0041_CheckBox3",
+          "variable_id": "18-1721_Route4",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Attention:",
-          "variable_id": "18-1721_UNRESOLVED_FD0042_TextField1",
+          "variable_id": "18-1721_Attention4",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Attending Physician Statement (APS)",
-          "variable_id": "18-1721_UNRESOLVED_FD0047_CheckBox3",
+          "variable_id": "18-1721_Attending",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "ERISA",
-          "variable_id": "18-1721_UNRESOLVED_FD0046_CheckBox3",
+          "variable_id": "18-1721_ERISA",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "NAIC Illustration",
-          "variable_id": "18-1721_UNRESOLVED_FD0045_CheckBox3",
+          "variable_id": "18-1721_NAIC",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Other:",
-          "variable_id": "18-1721_UNRESOLVED_FD0044_CheckBox3",
+          "variable_id": "18-1721_OtherPage2",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": null,
-          "variable_id": "18-1721_UNRESOLVED_FD0043_TextField1",
+          "variable_id": "18-1721_OtherPage2S",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Comments/Special Instructions:",
-          "variable_id": "18-1721_UNRESOLVED_FD0048_TextField1",
+          "variable_id": "18-1721_Comments3",
           "style_id": "ST006"
         }
       ],
@@ -1374,43 +1374,43 @@
         {
           "kind": "variable",
           "caption": "Route to: Beneficiary & Title Division - Policyowner Services Department",
-          "variable_id": "18-1721_UNRESOLVED_FD0049_CheckBox3",
+          "variable_id": "18-1721_Route5",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Attention:",
-          "variable_id": "18-1721_UNRESOLVED_FD0050_TextField1",
+          "variable_id": "18-1721_Attention5",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Change of Beneficiary/Ownership",
-          "variable_id": "18-1721_UNRESOLVED_FD0053_CheckBox3",
+          "variable_id": "18-1721_Change",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Split Dollar Method - Assignment/Owner",
-          "variable_id": "18-1721_UNRESOLVED_FD0052_CheckBox3",
+          "variable_id": "18-1721_SplitDollar",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Name Change of Owner, Beneficiary or Assignee",
-          "variable_id": "18-1721_UNRESOLVED_FD0051_CheckBox3",
+          "variable_id": "18-1721_Nameof change",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Collateral Assignment/Release of Assignment",
-          "variable_id": "18-1721_UNRESOLVED_FD0057_CheckBox3",
+          "variable_id": "18-1721_Collateral",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Comments/Special Instructions:",
-          "variable_id": "18-1721_UNRESOLVED_FD0054_TextField1",
+          "variable_id": "18-1721_Comments4",
           "style_id": "ST006"
         }
       ],
@@ -1427,13 +1427,13 @@
         {
           "kind": "variable",
           "caption": "Other:",
-          "variable_id": "18-1721_UNRESOLVED_FD0056_CheckBox3",
+          "variable_id": "18-1721_OtherPage2_2",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": null,
-          "variable_id": "18-1721_UNRESOLVED_FD0055_TextField1",
+          "variable_id": "18-1721_OtherPage2_2S",
           "style_id": "ST003"
         }
       ],
@@ -1448,49 +1448,49 @@
         {
           "kind": "variable",
           "caption": "Route to: Life Benefits Division - Policyowner Services Department",
-          "variable_id": "18-1721_UNRESOLVED_FD0058_CheckBox3",
+          "variable_id": "18-1721_Route6",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Attention:",
-          "variable_id": "18-1721_UNRESOLVED_FD0059_TextField1",
+          "variable_id": "18-1721_Attention6",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Certified Death Certificate",
-          "variable_id": "18-1721_UNRESOLVED_FD0064_CheckBox3",
+          "variable_id": "18-1721_Certified",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Beneficiary Claim Statement",
-          "variable_id": "18-1721_UNRESOLVED_FD0063_CheckBox3",
+          "variable_id": "18-1721_Beneficiary",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Substitute W-9 Form",
-          "variable_id": "18-1721_UNRESOLVED_FD0062_CheckBox3",
+          "variable_id": "18-1721_Substitute",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": "Other:",
-          "variable_id": "18-1721_UNRESOLVED_FD0061_CheckBox3",
+          "variable_id": "18-1721_Other6",
           "style_id": "ST002"
         },
         {
           "kind": "variable",
           "caption": null,
-          "variable_id": "18-1721_UNRESOLVED_FD0060_TextField1",
+          "variable_id": "18-1721_Other6S",
           "style_id": "ST003"
         },
         {
           "kind": "variable",
           "caption": "Comments/Special Instructions:",
-          "variable_id": "18-1721_UNRESOLVED_FD0065_TextField1",
+          "variable_id": "18-1721_Comments5",
           "style_id": "ST006"
         }
       ],
@@ -1505,43 +1505,43 @@
         {
           "kind": "variable",
           "caption": "INSURED NAME",
-          "variable_id": "18-1721_UNRESOLVED_FD0069_Insured",
+          "variable_id": "18-1721_INSUREDNAME1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "FINANCIAL REPRESENTATIVE NO.",
-          "variable_id": "18-1721_UNRESOLVED_FD0070_FirstName",
+          "variable_id": "18-1721_FR_No1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "NETWORK OFFICE #",
-          "variable_id": "18-1721_UNRESOLVED_FD0071_FirstName",
+          "variable_id": "18-1721_NetworkOffice1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "FINANCIAL REPRESENTATIVE' NAME",
-          "variable_id": "18-1721_UNRESOLVED_FD0068_FirstName",
+          "variable_id": "18-1721_FR_Name1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "SUBMITTED BY",
-          "variable_id": "18-1721_UNRESOLVED_FD0072_FirstName",
+          "variable_id": "18-1721_SubmittedBy1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "GROUP OFFICE CONTACT",
-          "variable_id": "18-1721_UNRESOLVED_FD0075_FirstName",
+          "variable_id": "18-1721_GroupOffice1",
           "style_id": "ST008"
         },
         {
           "kind": "variable",
           "caption": "POLICY NUMBER(S) / ISA / MCB",
-          "variable_id": "18-1721_UNRESOLVED_FD0067_LastName",
+          "variable_id": "18-1721_POLICYNUMBER1",
           "style_id": "ST008"
         }
       ],
@@ -1699,27 +1699,9 @@
   "decisions_required": [
     {
       "node": ".EFormData.MainSubform.CheckBox3",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[1]",
@@ -1729,33 +1711,15 @@
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[2]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[3]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[4]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[4]",
@@ -1789,21 +1753,9 @@
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[7]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[7]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[8]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[8]",
@@ -1813,63 +1765,21 @@
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[9]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[9]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[10]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[10]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[11]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[11]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[12]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[12]",
@@ -1879,123 +1789,21 @@
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[13]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[13]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[14]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[14]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[4]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.CheckBox3[15]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.CheckBox3[15]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[5]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[6]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[7]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[8]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[9]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[10]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.TextField1[11]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.LastName",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.FirstName",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.Insured",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.FirstName[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.FirstName[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.FirstName[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.MainSubform.Tele.Phone.f2",
@@ -2005,12 +1813,6 @@
     },
     {
       "node": ".EFormData.MainSubform.Tele.Phone.f2[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.MainSubform.FirstName[4]",
       "decision": "target variable name and data path",
       "owner": "data_steward",
       "rule_id": "BND-04"
@@ -2029,33 +1831,9 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[1]",
@@ -2065,21 +1843,9 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[2]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[3]",
@@ -2089,45 +1855,15 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[4]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[4]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[5]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[5]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[6]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[6]",
@@ -2137,45 +1873,15 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[7]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[7]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
     },
     {
       "node": ".EFormData.page2.CheckBox3[8]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[8]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[4]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[5]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[9]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[9]",
@@ -2185,45 +1891,15 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[10]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[10]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
     },
     {
       "node": ".EFormData.page2.CheckBox3[11]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[11]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[6]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[7]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[12]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[12]",
@@ -2233,21 +1909,9 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[13]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[13]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[14]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.CheckBox3[14]",
@@ -2257,57 +1921,9 @@
     },
     {
       "node": ".EFormData.page2.CheckBox3[15]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.CheckBox3[15]",
       "decision": "checkbox/radio rendering (glyph, radio grouping)",
       "owner": "designer",
       "rule_id": "OBJ-06"
-    },
-    {
-      "node": ".EFormData.page2.TextField1[8]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.LastName",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.FirstName",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.Insured",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.FirstName[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.FirstName[2]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.FirstName[3]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
     },
     {
       "node": ".EFormData.page2.Tele.Phone.f2",
@@ -2317,12 +1933,6 @@
     },
     {
       "node": ".EFormData.page2.Tele.Phone.f2[1]",
-      "decision": "target variable name and data path",
-      "owner": "data_steward",
-      "rule_id": "BND-04"
-    },
-    {
-      "node": ".EFormData.page2.FirstName[4]",
       "decision": "target variable name and data path",
       "owner": "data_steward",
       "rule_id": "BND-04"
