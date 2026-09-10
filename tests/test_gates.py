@@ -49,6 +49,17 @@ def test_g0_passes_when_pair_hashes_match_and_static_text_is_covered(raw: Path, 
     assert result.metrics["static_text_coverage"] == 1.0
 
 
+def test_g0_layout_only_pair_skips_pdf_and_computes_static_text(raw: Path, synthetic_cim: dict) -> None:
+    pair = _pair(raw, True)
+    pair["target"]["composed_pdf"] = None
+    result = g0_pairing.run(pair, raw, synthetic_cim)
+
+    assert result.verdict == "pass"
+    assert result.metrics["composed_pdf_supplied"] is False
+    assert result.metrics["static_text_coverage"] == 1.0
+    assert "G0-NO-PDF" in [finding.code for finding in result.findings]
+
+
 def test_g0_hash_mismatch_is_a_blocker(raw: Path, synthetic_cim: dict) -> None:
     pair = _pair(raw, True)
     pair["source"]["sha256"] = "0" * 64

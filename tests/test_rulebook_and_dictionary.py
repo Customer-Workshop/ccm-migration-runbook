@@ -231,6 +231,49 @@ def test_pairs_manifest_rejects_status_target_mismatch(tmp_path: Path) -> None:
         load_pairs(path)
 
 
+def test_pairs_manifest_rejects_reference_pair_without_layout_xml(tmp_path: Path) -> None:
+    path = tmp_path / "pairs.yaml"
+    path.write_text(
+        yaml.safe_dump(
+            {
+                "manifest_version": 1,
+                "forms": [
+                    {
+                        "form_id": "99-0001",
+                        "status": "reference_pair",
+                        "source": {"file": "990001.xdp", "sha256": "0" * 64},
+                        "target": {"layout_xml": None, "composed_pdf": None},
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(AssertionError, match="99-0001: reference_pair needs layout_xml"):
+        load_pairs(path)
+
+
+def test_pairs_manifest_accepts_reference_pair_without_composed_pdf(tmp_path: Path) -> None:
+    path = tmp_path / "pairs.yaml"
+    path.write_text(
+        yaml.safe_dump(
+            {
+                "manifest_version": 1,
+                "forms": [
+                    {
+                        "form_id": "99-0001",
+                        "status": "reference_pair",
+                        "source": {"file": "990001.xdp", "sha256": "0" * 64},
+                        "target": {"layout_xml": {"file": "x", "sha256": "0" * 64}, "composed_pdf": None},
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    assert load_pairs(path)[0]["target"]["composed_pdf"] is None
+
+
 def test_pairs_manifest_rejects_source_file_not_carrying_form_number(tmp_path: Path) -> None:
     path = tmp_path / "pairs.yaml"
     path.write_text(

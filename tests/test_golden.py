@@ -103,7 +103,9 @@ def _all_artifacts_present() -> bool:
     for pair in load_pairs():
         files = [pair["source"]["file"]]
         if pair["target"]:
-            files += [pair["target"]["layout_xml"]["file"], pair["target"]["composed_pdf"]["file"]]
+            files.append(pair["target"]["layout_xml"]["file"])
+            if pair["target"]["composed_pdf"] is not None:
+                files.append(pair["target"]["composed_pdf"]["file"])
         if not all((raw / f).exists() for f in files):
             return False
     return True
