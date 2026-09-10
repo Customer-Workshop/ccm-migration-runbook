@@ -88,8 +88,9 @@ src/decisions/              per-form decision records written by the converting 
 src/tools/                  pipeline.py (all forms), convert.py (one form), corpus.py (batch), report.py (rulebook)
 references/             target grammar evidence the rulebook needs; currently a wanted-list only
 tests/                  behaviour tests + golden metrics for the three proof forms
-.agents/skills/         convert-xdp-form, triage-designer-errors, review-rulebook-change
-playbooks/              one-page launch prompts for Devin sessions
+.agents/skills/         assess-form-corpus, convert-xdp-form, prepare-designer-handoff,
+                        triage-designer-errors, validate-pdf-output, review-rulebook-change
+playbooks/              one-page launch prompts, one per session type
 knowledge/              account facts that cannot be code (stubs to fill)
 docs/                   validation and gap report
 ```

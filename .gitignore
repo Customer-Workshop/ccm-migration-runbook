@@ -1,0 +1,13 @@
+# Customer artifacts are never committed; src/fixtures/pairs.yaml records their hashes.
+src/fixtures/raw/*
+!src/fixtures/raw/README.md
+src/fixtures/import_logs/*.json
+src/fixtures/composition_logs/*.json
+
+out/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
