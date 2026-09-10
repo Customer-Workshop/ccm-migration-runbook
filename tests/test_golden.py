@@ -40,6 +40,8 @@ GOLDEN = {
         "G4": {
             "field_match_pct": 0.6341,
             "exact_name_pct": 0.0894,
+            "crosswalk_rows_pending": 24,
+            "field_match_pct_if_proposed_verified": 0.813,
             "static_text_coverage": 0.9608,
             "sections_matched": 0,
             "sections_total": 13,
@@ -71,6 +73,8 @@ GOLDEN = {
         "G4": {
             "field_match_pct": 0.6842,
             "exact_name_pct": 0.0,
+            "crosswalk_rows_pending": 27,
+            "field_match_pct_if_proposed_verified": 0.7895,
             "static_text_coverage": 0.9921,
             "sections_matched": 6,
             "sections_total": 8,

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from dictionary import CrosswalkRow
 from gates import g0_pairing, g1_shape, g2_completeness, g3_readiness, g4_coverage, g5_target, g6_pdf
 from gates.common import sha256_of
 from gates.target_inventory import inventory
@@ -267,6 +268,72 @@ def test_g4_value_field_never_matches_radio_variable(synthetic_cim: dict, synthe
     row = g4_coverage.run(cim, inv).metrics["fields"][0]
 
     assert row["matched_target"] is None
+
+
+def _crosswalk_row(*, som: str, target_variable: str, status: str) -> CrosswalkRow:
+    return CrosswalkRow(
+        form_code="99-0001",
+        som=som,
+        element="insured.address.state",
+        target_variable=target_variable,
+        data_path="InsuredData.Address.State",
+        status=status,
+        evidence="test",
+        reviewed_by="human" if status == "verified" else None,
+    )
+
+
+def test_g4_verified_crosswalk_overrides_name_match(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][0], kind="text", hint="NoTargetMatch")]
+    row = _crosswalk_row(som=cim["fields"][0]["som"], target_variable="AviationInd", status="verified")
+    result = g4_coverage.run(cim, synthetic_inventory, {("99-0001", row.som): row})
+    matched = result.metrics["fields"][0]
+
+    assert matched["matched_target"] == "AviationInd"
+    assert matched["matched_kind"] == "crosswalk:verified"
+    assert matched["exact"] is True
+    assert result.metrics["field_match_pct"] == 1.0
+
+
+def test_g4_proposed_crosswalk_reports_pending_without_self_certifying(
+    synthetic_cim: dict, synthetic_inventory: dict
+) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][2], kind="text", hint="NoTargetMatch")]
+    row = _crosswalk_row(som=cim["fields"][0]["som"], target_variable="AviationInd", status="proposed")
+    cim["fields"][0]["som"] = row.som
+    result = g4_coverage.run(cim, synthetic_inventory, {("99-0001", row.som): row})
+    codes = [finding.code for finding in result.findings]
+
+    assert result.metrics["fields"][0]["matched_target"] is None
+    assert "G4-CROSSWALK-PROPOSED" in codes
+    assert "G4-UNMATCHED" not in codes
+    assert result.metrics["crosswalk_rows_pending"] == 1
+    assert result.metrics["field_match_pct_if_proposed_verified"] > result.metrics["field_match_pct"]
+
+
+def test_g4_missing_crosswalk_target_is_major(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][2], kind="text", hint="NoTargetMatch")]
+    row = _crosswalk_row(som=cim["fields"][0]["som"], target_variable="MissingTarget", status="proposed")
+    cim["fields"][0]["som"] = row.som
+    result = g4_coverage.run(cim, synthetic_inventory, {("99-0001", row.som): row})
+    findings = [finding for finding in result.findings if finding.code == "G4-CROSSWALK-MISSING"]
+
+    assert len(findings) == 1
+    assert findings[0].severity == "major"
+
+
+def test_g4_rejected_crosswalk_is_ignored(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][0], kind="text", hint="AviationInd")]
+    row = _crosswalk_row(som=cim["fields"][0]["som"], target_variable="MissingTarget", status="rejected")
+    result = g4_coverage.run(cim, synthetic_inventory, {("99-0001", row.som): row})
+    matched = result.metrics["fields"][0]
+
+    assert matched["matched_target"] == "AviationInd"
+    assert not [finding for finding in result.findings if finding.code.startswith("G4-CROSSWALK")]
 
 
 # target inventory

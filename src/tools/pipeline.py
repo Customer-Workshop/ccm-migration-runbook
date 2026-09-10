@@ -60,7 +60,9 @@ def run_form(pair: dict, raw: Path, rules: dict, crosswalk: dict, out_dir: Path)
     layout = raw / pair["target"]["layout_xml"]["file"]
     pdf = raw / pair["target"]["composed_pdf"]["file"]
     gates.append(
-        g4_coverage.run(cim, inventory(layout)) if layout.exists() else skipped("G4", f"{layout.name} missing")
+        g4_coverage.run(cim, inventory(layout), crosswalk)
+        if layout.exists()
+        else skipped("G4", f"{layout.name} missing")
     )
     gates.append(g5_target.run(layout) if layout.exists() else skipped("G5", f"{layout.name} missing"))
     gates.append(g6_pdf.run(pdf) if pdf.exists() else skipped("G6", f"{pdf.name} missing"))

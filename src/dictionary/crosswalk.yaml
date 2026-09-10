@@ -241,3 +241,181 @@ rows:
     status: proposed
     evidence: "D-028: caption 'DATE Signed by PAYER (MM/DD/YYYY)'; variable PayerSignedDte at CommonData.eSignInfo.PayerEsignInfo.PayerSignedDte in 18-1026_Quad_2.xml"
     reviewed_by: null
+  # 17-0574: source fields bound by dataRef whose leaf differs from the target name. target_variable and
+  # data_path are the variable and its Def.Data path in "Forms_17-0574 (AEM to Quad).xml". Proposed only.
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.TabacooSF.SF1.Yes1
+    element: tobacco.chew_used_more_than_12_per_year_date
+    target_variable: ChewSnuffUsedMoreThan12PerYearDte
+    data_path: ReconApp.TobaccoUseTable.ChewSnuffUsedMoreThan12PerYearDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ChewUsedFrequency12year, caption 'Date last used when frequency was >12/year' under 'Chew or snuff'; variable + FormControl 'chewSnuffUsedMoreThan12PerYearDte FormControl 1' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.TabacooSF.SF2.Yes2
+    element: tobacco.cigar_used_more_than_12_per_year_date
+    target_variable: CigarLastUsedMoreThan12PerYearDte
+    data_path: ReconApp.TobaccoUseTable.CigarLastUsedMoreThan12PerYearDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf CigarsUsedFrequency12year, same caption under 'Cigars or pipe'; variable + FormControl 'CigarLastUsedMoreThan12PerYearDte FormControl 1' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.TabacooSF.SF3.SF3S.Yes3
+    element: tobacco.other_used_more_than_12_per_year_date
+    target_variable: otherTobaccoUsedMoreThan12PerYearDte
+    data_path: ReconApp.TobaccoUseTable.otherTobaccoUsedMoreThan12PerYearDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf OtherUsedFrequency12year, same caption under 'Other'; variable + FormControl 'otherTobaccoUsedMoreThan12PerYearDte FormControl 1' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.SFM.Yes
+    element: medical.remove_extra_premium_rating_text
+    target_variable: RemoveReduceExtraPremRatingTxt
+    data_path: ReconApp.OtherMedical.RemoveReduceExtraPremRatingTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf RemoveExtraPremium, text under checkbox 'A. Remove/Reduce extra premium rating for'; variable + FormControl 'RemoveReduceExtraPremRatingTxt FormControl 2' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Yes2a
+    element: medical.remove_extra_premium_last_symptoms_date
+    target_variable: RemoveLastSymptomsDte
+    data_path: ReconApp.OtherMedical.RemoveLastSymptomsDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ALastSymptoms1, caption '1. Provide the date you last had symptoms' in section A; variable + FormControl 'RemoveLastSymptomsDte FormControl 2' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Yes2b
+    element: medical.remove_extra_premium_last_treatment_date
+    target_variable: RemoveLastTreatmentDte
+    data_path: ReconApp.OtherMedical.RemoveLastTreatmentDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ALastSymptoms2, caption '2. Provide the date you last had treatment' in section A; variable + FormControl 'RemoveLastTreatmentDte FormControl 2' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Yes2c
+    element: medical.remove_exclusion_last_symptoms_date
+    target_variable: LastSymptomsDte
+    data_path: ReconApp.OtherMedical.LastSymptomsDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf BLastSymptoms1, caption '1. Provide the date you last had symptoms' in section B; variable + FormControl 'LastSymptomsDte FormControl 2' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Yes2d
+    element: medical.remove_exclusion_last_treatment_date
+    target_variable: LastTreatmentDte
+    data_path: ReconApp.OtherMedical.LastTreatmentDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf BLastSymptoms2, caption '2. Provide the date you last had treatment' in section B; variable + FormControl 'LastTreatmentDte FormControl 2' in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Box1.Yes3
+    element: medical.provider_consultation_date
+    target_variable: ConsultationDte
+    data_path: ReconApp.OtherMedicalTable1.ConsultationDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf HealthCareProvider.Dates1 (row 1 of the provider table); variable under OtherMedicalTable1 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.MedicalSF.Box1.Yes7
+    element: medical.provider_consultation_date
+    target_variable: ConsultationDte
+    data_path: ReconApp.OtherMedicalTable2.ConsultationDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf HealthCareProvider.Dates2 (row 2 of the provider table); variable under OtherMedicalTable2 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes1
+    element: travel.location
+    target_variable: LocationTxt
+    data_path: ReconApp.TravelsTable1.LocationTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.Destination.Row1; variable under TravelsTable1 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes4
+    element: travel.duration
+    target_variable: Duration
+    data_path: ReconApp.TravelsTable1.Duration
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripDuration.Row1; variable under TravelsTable1 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes5
+    element: travel.depart_date
+    target_variable: DepartDte
+    data_path: ReconApp.TravelsTable1.DepartDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.DepartureDate.Row1; variable under TravelsTable1 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes6
+    element: travel.purpose
+    target_variable: PurposeTxt
+    data_path: ReconApp.TravelsTable1.PurposeTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripPurpose.Row1; variable under TravelsTable1 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes7
+    element: travel.location
+    target_variable: LocationTxt
+    data_path: ReconApp.TravelsTable2.LocationTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.Destination.Row2; variable under TravelsTable2 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes10
+    element: travel.duration
+    target_variable: Duration
+    data_path: ReconApp.TravelsTable2.Duration
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripDuration.Row2; variable under TravelsTable2 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes11
+    element: travel.depart_date
+    target_variable: DepartDte
+    data_path: ReconApp.TravelsTable2.DepartDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.DepartureDate.Row2; variable under TravelsTable2 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes12
+    element: travel.purpose
+    target_variable: PurposeTxt
+    data_path: ReconApp.TravelsTable2.PurposeTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripPurpose.Row2; variable under TravelsTable2 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes13
+    element: travel.location
+    target_variable: LocationTxt
+    data_path: ReconApp.TravelsTable3.LocationTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.Destination.Row3; variable under TravelsTable3 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes16
+    element: travel.duration
+    target_variable: Duration
+    data_path: ReconApp.TravelsTable3.Duration
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripDuration.Row3; variable under TravelsTable3 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes17
+    element: travel.depart_date
+    target_variable: DepartDte
+    data_path: ReconApp.TravelsTable3.DepartDte
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.DepartureDate.Row3; variable under TravelsTable3 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Tab2.Yes18
+    element: travel.purpose
+    target_variable: PurposeTxt
+    data_path: ReconApp.TravelsTable3.PurposeTxt
+    status: proposed
+    evidence: "170574.xdp dataRef leaf ForeignTravel.TripPurpose.Row3; variable under TravelsTable3 in Forms_17-0574 (AEM to Quad).xml"
+    reviewed_by: null
