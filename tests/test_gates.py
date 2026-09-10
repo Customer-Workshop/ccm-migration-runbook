@@ -207,6 +207,68 @@ def test_g4_dangling_target_reference_is_major(synthetic_cim: dict, synthetic_in
     assert "G4-DANGLING" in [f.code for f in g4_coverage.run(synthetic_cim, inv).findings]
 
 
+def _g4_field(
+    source: dict,
+    *,
+    kind: str,
+    hint: str,
+    name: str | None = None,
+    source_path: str | None = None,
+) -> dict:
+    field = copy.deepcopy(source)
+    field["control"]["kind"] = kind
+    field["semantic"]["target_name_hint"] = hint
+    field["caption"] = hint
+    field["name"] = name or hint
+    field["binding"]["source_path"] = source_path
+    return field
+
+
+def test_g4_checkbox_prefers_radio_variable_and_text_uses_value_variable(
+    synthetic_cim: dict, synthetic_inventory: dict
+) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [
+        _g4_field(cim["fields"][2], kind="checkbox", hint="Draftdate"),
+        _g4_field(cim["fields"][0], kind="text", hint="PaymentDate", name="draftDte", source_path="draftDte"),
+    ]
+    inv = copy.deepcopy(synthetic_inventory)
+    inv["form_controls"] = []
+    inv["data_variables"] = ["draftDte", "draftDteRadio"]
+
+    rows = g4_coverage.run(cim, inv).metrics["fields"]
+
+    assert rows[0]["matched_target"] == "draftDteRadio"
+    assert rows[0]["matched_kind"] == "variable"
+    assert rows[1]["matched_target"] == "draftDte"
+    assert rows[1]["matched_kind"] == "variable"
+
+
+def test_g4_checkbox_falls_back_to_value_variable(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][2], kind="checkbox", hint="Draftdate")]
+    inv = copy.deepcopy(synthetic_inventory)
+    inv["form_controls"] = []
+    inv["data_variables"] = ["draftDte"]
+
+    row = g4_coverage.run(cim, inv).metrics["fields"][0]
+
+    assert row["matched_target"] == "draftDte"
+    assert row["matched_kind"] == "variable"
+
+
+def test_g4_value_field_never_matches_radio_variable(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    cim = copy.deepcopy(synthetic_cim)
+    cim["fields"] = [_g4_field(cim["fields"][0], kind="text", hint="Draftdate")]
+    inv = copy.deepcopy(synthetic_inventory)
+    inv["form_controls"] = []
+    inv["data_variables"] = ["draftDteRadio"]
+
+    row = g4_coverage.run(cim, inv).metrics["fields"][0]
+
+    assert row["matched_target"] is None
+
+
 # target inventory
 
 

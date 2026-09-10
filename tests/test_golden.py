@@ -69,7 +69,7 @@ GOLDEN = {
             "decisions_proposed": 37,
         },
         "G4": {
-            "field_match_pct": 0.6316,
+            "field_match_pct": 0.6842,
             "exact_name_pct": 0.0,
             "static_text_coverage": 0.9921,
             "sections_matched": 6,

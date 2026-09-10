@@ -114,7 +114,7 @@ rules:
     evidence: "Draftdate -> draftDteRadio and PaymentDate -> draftDte; Amountselected -> selectAmountRadio and OneTimePymntAmt -> selectAmount; Freq* -> depositFreqCde.*Radio; checking/saving -> isaAcctTypeCde.*Radio in 18-1026_Quad_2.xml. G4 name matching picks the value variable for the checkbox (score 0.947 draftDte, 1.0 selectAmount), which inverts the pairing"
     origin: {type: reference_pair, refs: ["18-1026"]}
     fixtures: ["18-1026"]
-    implemented_in: []
+    implemented_in: [gates.g4_coverage]
     gates: [G3, G4]
     reviewed_by: null
     reviewed_on: null

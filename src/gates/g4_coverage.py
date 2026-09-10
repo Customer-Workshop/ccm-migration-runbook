@@ -17,10 +17,15 @@ SECTION_ROLES = ("section", "header", "footer", "signature")
 def run(cim: dict, inv: dict) -> GateResult:
     result = GateResult(gate="G4", verdict="pass")
     controls = {norm(n): n for n in inv["form_controls"]}
-    variables = {norm(n): n for n in inv["data_variables"]}
+    radio_variables = {norm(n)[: -len(" radio")]: n for n in inv["data_variables"] if norm(n).endswith(" radio")}
+    value_variables = {norm(n): n for n in inv["data_variables"] if not norm(n).endswith(" radio")}
     containers = {norm(n): n for n in inv["tables"] + inv["rowsets"]}
 
-    field_rows = [_match_field(f, controls, variables) for f in cim["fields"] if f["control"]["kind"] != "action"]
+    field_rows = [
+        _match_field(f, controls, radio_variables, value_variables)
+        for f in cim["fields"]
+        if f["control"]["kind"] != "action"
+    ]
     section_rows = [_match_section(c, containers) for c in cim["containers"] if c["role"] in SECTION_ROLES]
 
     source_tokens = tokens(s["text"] for s in cim["statics"]) | tokens(f["caption"] for f in cim["fields"])
@@ -67,23 +72,34 @@ def run(cim: dict, inv: dict) -> GateResult:
     return result.finalize()
 
 
-def _match_field(field: dict, controls: dict, variables: dict) -> dict:
+def _match_field(field: dict, controls: dict, radio_variables: dict, value_variables: dict) -> dict:
     keys = [field["semantic"]["target_name_hint"], field["caption"], field["name"], field["binding"]["source_path"]]
-    best = (None, 0.0, None)
+    kind = field["control"]["kind"]
+    indexes = (
+        (("form_control", controls), ("variable", radio_variables))
+        if kind in ("checkbox", "radio")
+        else (("form_control", controls), ("variable", value_variables))
+    )
+    best = (None, 0.0, None, None)
     for key in keys:
-        for label, index in (("form_control", controls), ("variable", variables)):
+        for label, index in indexes:
             candidate, score = best_match(norm(key), list(index))
             if candidate and score > best[1]:
-                best = (index[candidate], score, label)
+                best = (index[candidate], score, label, candidate)
+    if kind in ("checkbox", "radio") and best[0] is None:
+        for key in keys:
+            candidate, score = best_match(norm(key), list(value_variables))
+            if candidate and score > best[1]:
+                best = (value_variables[candidate], score, "variable", candidate)
     return {
         "som": field["som"],
-        "kind": field["control"]["kind"],
+        "kind": kind,
         "binding_mode": field["binding"]["mode"],
         "proposed_name": field["semantic"]["target_name_hint"],
         "matched_target": best[0],
         "matched_kind": best[2],
         "score": best[1],
-        "exact": bool(best[0] and norm(field["semantic"]["target_name_hint"]) == norm(best[0])),
+        "exact": bool(best[0] and norm(field["semantic"]["target_name_hint"]) == best[3]),
     }
 
 
