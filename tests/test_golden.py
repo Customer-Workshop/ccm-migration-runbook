@@ -107,8 +107,8 @@ GOLDEN = {
         "G4": {
             "field_match_pct": 0.8734,
             "exact_name_pct": 0.038,
-            "crosswalk_rows_pending": 0,
-            "field_match_pct_if_proposed_verified": 0.8734,
+            "crosswalk_rows_pending": 67,
+            "field_match_pct_if_proposed_verified": 0.8987,
             "static_text_coverage": 0.8776,
             "sections_matched": 0,
             "sections_total": 5,

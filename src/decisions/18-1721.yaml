@@ -5,54 +5,54 @@ decisions:
   - id: D-001
     node: ".EFormData.MainSubform.CheckBox3"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Route1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Route to: Advanced Business Services Division - Life Product Department\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.absd_life_product_ind -> target data variable Route1 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Route to: Advanced Business Services Division - Life Product Department\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Route1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-002
     node: ".EFormData.MainSubform.TextField1"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attention1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Attention:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.absd_attention -> target data variable Attention1 (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"Attention:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attention1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-003
     node: ".EFormData.MainSubform.CheckBox3[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Business is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Business Case Management (BCM)\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.business_case_management_ind -> target data variable Business (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Business Case Management (BCM)\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Business under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-004
     node: ".EFormData.MainSubform.CheckBox3[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Corporate is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Corporate Inventory\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.corporate_inventory_ind -> target data variable Corporate (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Corporate Inventory\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Corporate under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-005
     node: ".EFormData.MainSubform.CheckBox3[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/MCB is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"MCB Transactions\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.mcb_transactions_ind -> target data variable MCB (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"MCB Transactions\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable MCB under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-006
     node: ".EFormData.MainSubform.CheckBox3[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/VEL is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"VEL/VJL/CUL/SUL\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.vel_vjl_cul_sul_ind -> target data variable VEL (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"VEL/VJL/CUL/SUL\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable VEL under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -60,8 +60,8 @@ decisions:
     node: ".EFormData.MainSubform.CheckBox3[5]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Policy or Policy2 (ambiguous: two sibling 'Policy*' variables) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Policy Transaction\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; candidate target data variables Policy / Policy2 (assignment ambiguous)"
+    rationale: "checkbox with caption \"Policy Transaction\"; the export has two sibling variables Policy and Policy2 under Def.Data/SubTree0 for the two 'Policy ...' checkboxes and their declaration order does not follow the XDP field order, so which is which needs the data steward; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -69,251 +69,251 @@ decisions:
     node: ".EFormData.MainSubform.CheckBox3[6]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Policy2 or Policy (ambiguous: two sibling 'Policy*' variables) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Policy Loan Agreement\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; candidate target data variables Policy / Policy2 (assignment ambiguous)"
+    rationale: "checkbox with caption \"Policy Loan Agreement\"; the export has two sibling variables Policy and Policy2 under Def.Data/SubTree0 for the two 'Policy ...' checkboxes and their declaration order does not follow the XDP field order, so which is which needs the data steward; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-009
     node: ".EFormData.MainSubform.CheckBox3[7]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Surrender is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Surrender of Paid-up Additions/Accumulation\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.surrender_paid_up_additions_ind -> target data variable Surrender (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Surrender of Paid-up Additions/Accumulation\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Surrender under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-010
     node: ".EFormData.MainSubform.CheckBox3[8]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/SurrenderPlo is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Surrender of Policy\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.surrender_of_policy_ind -> target data variable SurrenderPlo (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Surrender of Policy\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable SurrenderPlo under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-011
     node: ".EFormData.MainSubform.CheckBox3[9]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Withdrawal is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Withdrawal of Excess\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.withdrawal_of_excess_ind -> target data variable Withdrawal (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Withdrawal of Excess\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Withdrawal under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-012
     node: ".EFormData.MainSubform.CheckBox3[10]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Other is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Other:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.other_ind -> target data variable Other (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Other:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Other under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-013
     node: ".EFormData.MainSubform.TextField1[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherS (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption empty (free-text companion of the preceding checkbox); G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.other_text -> target data variable OtherS (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with empty caption, free-text companion of the preceding 'Other:' checkbox; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherS under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-014
     node: ".EFormData.MainSubform.TextField1[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Comments is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "multiline_text field with caption \"Comments/Special Instructions:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element absd.comments -> target data variable Comments (Def.Data/SubTree0)"
+    rationale: "multiline_text field on page 1 (MainSubform) with caption \"Comments/Special Instructions:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Comments under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-015
     node: ".EFormData.MainSubform.CheckBox3[11]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Route2 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Route to: Policy Change Portfolio Products Division - Policyowner Services Department\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.policy_change_ind -> target data variable Route2 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Route to: Policy Change Portfolio Products Division - Policyowner Services Department\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Route2 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-016
     node: ".EFormData.MainSubform.TextField1[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attention2 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Attention:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.policy_change_attention -> target data variable Attention2 (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"Attention:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attention2 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-017
     node: ".EFormData.MainSubform.CheckBox3[12]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/90-1279-99 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"90-1279-99\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.form_90_1279_99_ind -> target data variable 90-1279-99 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"90-1279-99\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable 90-1279-99 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-018
     node: ".EFormData.MainSubform.CheckBox3[13]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/90-1279 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"90-1279 (After GA input)\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.form_90_1279_ind -> target data variable 90-1279 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"90-1279 (After GA input)\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable 90-1279 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-019
     node: ".EFormData.MainSubform.CheckBox3[14]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Pending is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Pending Requirements\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.pending_requirements_ind -> target data variable Pending (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Pending Requirements\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Pending under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-020
     node: ".EFormData.MainSubform.TextField1[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherPstring (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption empty (free-text companion of the preceding checkbox); G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.other_text -> target data variable OtherPstring (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with empty caption, free-text companion of the preceding 'Other:' checkbox; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherPstring under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-021
     node: ".EFormData.MainSubform.CheckBox3[15]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Otherp is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Other:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.other_ind -> target data variable Otherp (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 1 (MainSubform) with caption \"Other:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Otherp under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-022
     node: ".EFormData.MainSubform.TextField1[5]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/GroupName is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Group Name:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.group_name -> target data variable GroupName (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"Group Name:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable GroupName under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-023
     node: ".EFormData.MainSubform.TextField1[6]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/PolicyNumber is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Policy Number(s):\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.policy_numbers -> target data variable PolicyNumber (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"Policy Number(s):\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable PolicyNumber under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-024
     node: ".EFormData.MainSubform.TextField1[7]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/MCBNumber is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"MCB Number(s):\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.mcb_numbers -> target data variable MCBNumber (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"MCB Number(s):\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable MCBNumber under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-025
     node: ".EFormData.MainSubform.TextField1[8]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/group is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"# of participants in group:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.group_participant_count -> target data variable group (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"# of participants in group:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable group under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-026
     node: ".EFormData.MainSubform.TextField1[9]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/ISA is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"ISA Number(s):\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.isa_numbers -> target data variable ISA (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"ISA Number(s):\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable ISA under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-027
     node: ".EFormData.MainSubform.TextField1[10]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Service is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Service Plan Number:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.service_plan_number -> target data variable Service (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"Service Plan Number:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Service under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-028
     node: ".EFormData.MainSubform.TextField1[11]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Comments2 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "multiline_text field with caption \"Comments/Special Instructions:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element policy_change.comments -> target data variable Comments2 (Def.Data/SubTree0)"
+    rationale: "multiline_text field on page 1 (MainSubform) with caption \"Comments/Special Instructions:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Comments2 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-029
     node: ".EFormData.MainSubform.DateField1"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/DATE is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "image field with caption \"DATE (MM/DD/YYYY)\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.date -> target data variable DATE (Def.Data/SubTree0)"
+    rationale: "image field on page 1 (MainSubform) with caption \"DATE (MM/DD/YYYY)\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable DATE under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-030
     node: ".EFormData.MainSubform.LastName"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/POLICYNUMBER is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"POLICY NUMBER(S) / ISA / MCB\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.policy_isa_mcb_number -> target data variable POLICYNUMBER (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"POLICY NUMBER(S) / ISA / MCB\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable POLICYNUMBER under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-031
     node: ".EFormData.MainSubform.FirstName"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/FR_Name is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"FINANCIAL REPRESENTATIVE' NAME\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.financial_representative_name -> target data variable FR_Name (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"FINANCIAL REPRESENTATIVE' NAME\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable FR_Name under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-032
     node: ".EFormData.MainSubform.Insured"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/INSUREDNAME is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"INSURED NAME\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.insured_name -> target data variable INSUREDNAME (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"INSURED NAME\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable INSUREDNAME under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-033
     node: ".EFormData.MainSubform.FirstName[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/FR_No is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"FINANCIAL REPRESENTATIVE NO.\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.financial_representative_number -> target data variable FR_No (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"FINANCIAL REPRESENTATIVE NO.\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable FR_No under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-034
     node: ".EFormData.MainSubform.FirstName[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/NetworkOffice is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"NETWORK OFFICE #\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.network_office_number -> target data variable NetworkOffice (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"NETWORK OFFICE #\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable NetworkOffice under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-035
     node: ".EFormData.MainSubform.FirstName[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/SubmittedBy is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"SUBMITTED BY\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.submitted_by -> target data variable SubmittedBy (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"SUBMITTED BY\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable SubmittedBy under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -321,8 +321,8 @@ decisions:
     node: ".EFormData.MainSubform.Tele.Phone.f2"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -339,8 +339,8 @@ decisions:
     node: ".EFormData.MainSubform.Tele.Phone.f2[1]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -356,9 +356,9 @@ decisions:
   - id: D-040
     node: ".EFormData.MainSubform.FirstName[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/GroupOffice is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"GROUP OFFICE CONTACT\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.group_office_contact -> target data variable GroupOffice (Def.Data/SubTree0)"
+    rationale: "text field on page 1 (MainSubform) with caption \"GROUP OFFICE CONTACT\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable GroupOffice under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -366,8 +366,8 @@ decisions:
     node: ".EFormData.MainSubform.Tele.Phone.f2[2]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -384,8 +384,8 @@ decisions:
     node: ".EFormData.MainSubform.Tele.Phone.f2[3]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone1/Telephone2) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -401,288 +401,288 @@ decisions:
   - id: D-045
     node: ".EFormData.page2.CheckBox3"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Route4 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Route to: Large Case Division - New Business Department\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.large_case_new_business_ind -> target data variable Route4 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Route to: Large Case Division - New Business Department\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Route4 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-046
     node: ".EFormData.page2.TextField1"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attention4 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Attention:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.large_case_attention -> target data variable Attention4 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"Attention:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attention4 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-047
     node: ".EFormData.page2.TextField1[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2S (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption empty (free-text companion of the preceding checkbox); G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.other_text -> target data variable OtherPage2S (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with empty caption, free-text companion of the preceding 'Other:' checkbox; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherPage2S under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-048
     node: ".EFormData.page2.CheckBox3[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Other:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.other_ind -> target data variable OtherPage2 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Other:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherPage2 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-049
     node: ".EFormData.page2.CheckBox3[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/NAIC is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"NAIC Illustration\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.naic_illustration_ind -> target data variable NAIC (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"NAIC Illustration\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable NAIC under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-050
     node: ".EFormData.page2.CheckBox3[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/ERISA is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"ERISA\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.erisa_ind -> target data variable ERISA (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"ERISA\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable ERISA under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-051
     node: ".EFormData.page2.CheckBox3[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attending is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Attending Physician Statement (APS)\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.attending_physician_statement_ind -> target data variable Attending (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Attending Physician Statement (APS)\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attending under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-052
     node: ".EFormData.page2.TextField1[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Comments3 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "multiline_text field with caption \"Comments/Special Instructions:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element large_case.comments -> target data variable Comments3 (Def.Data/SubTree0)"
+    rationale: "multiline_text field on page 2 (page2) with caption \"Comments/Special Instructions:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Comments3 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-053
     node: ".EFormData.page2.CheckBox3[5]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Route5 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Route to: Beneficiary & Title Division - Policyowner Services Department\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.beneficiary_title_ind -> target data variable Route5 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Route to: Beneficiary & Title Division - Policyowner Services Department\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Route5 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-054
     node: ".EFormData.page2.TextField1[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attention5 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Attention:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.beneficiary_title_attention -> target data variable Attention5 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"Attention:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attention5 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-055
     node: ".EFormData.page2.CheckBox3[6]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/'Nameof change' (variable name contains a space) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Name Change of Owner, Beneficiary or Assignee\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.name_change_ind -> target data variable Nameof change (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Name Change of Owner, Beneficiary or Assignee\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Nameof change under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-056
     node: ".EFormData.page2.CheckBox3[7]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/SplitDollar is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Split Dollar Method - Assignment/Owner\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.split_dollar_ind -> target data variable SplitDollar (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Split Dollar Method - Assignment/Owner\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable SplitDollar under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-057
     node: ".EFormData.page2.CheckBox3[8]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Change is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Change of Beneficiary/Ownership\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.change_of_beneficiary_ownership_ind -> target data variable Change (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Change of Beneficiary/Ownership\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Change under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-058
     node: ".EFormData.page2.TextField1[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Comments4 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "multiline_text field with caption \"Comments/Special Instructions:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.comments -> target data variable Comments4 (Def.Data/SubTree0)"
+    rationale: "multiline_text field on page 2 (page2) with caption \"Comments/Special Instructions:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Comments4 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-059
     node: ".EFormData.page2.TextField1[5]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2_2S (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption empty (free-text companion of the preceding checkbox); G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.other_text -> target data variable OtherPage2_2S (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with empty caption, free-text companion of the preceding 'Other:' checkbox; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherPage2_2S under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-060
     node: ".EFormData.page2.CheckBox3[9]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/OtherPage2_2 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Other:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.other_ind -> target data variable OtherPage2_2 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Other:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable OtherPage2_2 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-061
     node: ".EFormData.page2.CheckBox3[10]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Collateral is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Collateral Assignment/Release of Assignment\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element beneficiary_title.collateral_assignment_ind -> target data variable Collateral (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Collateral Assignment/Release of Assignment\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Collateral under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-062
     node: ".EFormData.page2.CheckBox3[11]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Route6 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Route to: Life Benefits Division - Policyowner Services Department\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.life_benefits_ind -> target data variable Route6 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Route to: Life Benefits Division - Policyowner Services Department\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Route6 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-063
     node: ".EFormData.page2.TextField1[6]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Attention6 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"Attention:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing.life_benefits_attention -> target data variable Attention6 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"Attention:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Attention6 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-064
     node: ".EFormData.page2.TextField1[7]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Other6S (free text next to the 'Other:' checkbox) is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption empty (free-text companion of the preceding checkbox); G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.other_text -> target data variable Other6S (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with empty caption, free-text companion of the preceding 'Other:' checkbox; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Other6S under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-065
     node: ".EFormData.page2.CheckBox3[12]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Other6 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Other:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.other_ind -> target data variable Other6 (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Other:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Other6 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-066
     node: ".EFormData.page2.CheckBox3[13]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Substitute is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Substitute W-9 Form\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.substitute_w9_ind -> target data variable Substitute (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Substitute W-9 Form\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Substitute under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-067
     node: ".EFormData.page2.CheckBox3[14]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Beneficiary is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Beneficiary Claim Statement\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.beneficiary_claim_statement_ind -> target data variable Beneficiary (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Beneficiary Claim Statement\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Beneficiary under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-068
     node: ".EFormData.page2.CheckBox3[15]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Certified is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "checkbox field with caption \"Certified Death Certificate\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.certified_death_certificate_ind -> target data variable Certified (Def.Data/SubTree0)"
+    rationale: "checkbox field on page 2 (page2) with caption \"Certified Death Certificate\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Certified under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-069
     node: ".EFormData.page2.TextField1[8]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/Comments5 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "multiline_text field with caption \"Comments/Special Instructions:\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element life_benefits.comments -> target data variable Comments5 (Def.Data/SubTree0)"
+    rationale: "multiline_text field on page 2 (page2) with caption \"Comments/Special Instructions:\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable Comments5 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-070
     node: ".EFormData.page2.DateField1"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/DATE1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "image field with caption \"DATE (MM/DD/YYYY)\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.date -> target data variable DATE1 (Def.Data/SubTree0)"
+    rationale: "image field on page 2 (page2) with caption \"DATE (MM/DD/YYYY)\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable DATE1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-071
     node: ".EFormData.page2.LastName"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/POLICYNUMBER1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"POLICY NUMBER(S) / ISA / MCB\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.policy_isa_mcb_number -> target data variable POLICYNUMBER1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"POLICY NUMBER(S) / ISA / MCB\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable POLICYNUMBER1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-072
     node: ".EFormData.page2.FirstName"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/FR_Name1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"FINANCIAL REPRESENTATIVE' NAME\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.financial_representative_name -> target data variable FR_Name1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"FINANCIAL REPRESENTATIVE' NAME\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable FR_Name1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-073
     node: ".EFormData.page2.Insured"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/INSUREDNAME1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"INSURED NAME\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.insured_name -> target data variable INSUREDNAME1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"INSURED NAME\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable INSUREDNAME1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-074
     node: ".EFormData.page2.FirstName[1]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/FR_No1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"FINANCIAL REPRESENTATIVE NO.\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.financial_representative_number -> target data variable FR_No1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"FINANCIAL REPRESENTATIVE NO.\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable FR_No1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-075
     node: ".EFormData.page2.FirstName[2]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/NetworkOffice1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"NETWORK OFFICE #\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.network_office_number -> target data variable NetworkOffice1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"NETWORK OFFICE #\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable NetworkOffice1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
   - id: D-076
     node: ".EFormData.page2.FirstName[3]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/SubmittedBy1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"SUBMITTED BY\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.submitted_by -> target data variable SubmittedBy1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"SUBMITTED BY\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable SubmittedBy1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -690,8 +690,8 @@ decisions:
     node: ".EFormData.page2.Tele.Phone.f2"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -708,8 +708,8 @@ decisions:
     node: ".EFormData.page2.Tele.Phone.f2[1]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -725,9 +725,9 @@ decisions:
   - id: D-081
     node: ".EFormData.page2.FirstName[4]"
     finding: G3-UNBOUND
-    action: defer
-    proposal: "hold the binding; candidate target data variable Def.Data/SubTree0/GroupOffice1 is recorded as evidence for the follow-up session that proposes the crosswalk row once the pairing is confirmed"
-    rationale: "text field with caption \"GROUP OFFICE CONTACT\"; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    action: bind_to_element
+    proposal: "element routing_sheet.group_office_contact -> target data variable GroupOffice1 (Def.Data/SubTree0)"
+    rationale: "text field on page 2 (page2) with caption \"GROUP OFFICE CONTACT\"; Forms_18-1721 (AEM to Quad).xml has exactly one data variable GroupOffice1 under Def.Data/SubTree0 whose name matches the caption and page (page-2 variables carry the suffix 1/Page2); pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -735,8 +735,8 @@ decisions:
     node: ".EFormData.page2.Tele.Phone.f2[2]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \"(\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null
@@ -753,8 +753,8 @@ decisions:
     node: ".EFormData.page2.Tele.Phone.f2[3]"
     finding: G3-UNBOUND
     action: defer
-    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block, while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
-    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; G0 static-text coverage is 0.8776 (< GOV-01 0.95) against Forms_18-1721 (AEM to Quad).xml, so per convert-xdp-form step 4 no target names are proposed until a human confirms the pairing; the 12 target-only tokens are a company name/address footer block, not form content, which suggests a footer added in Designer rather than a different form revision, but that is for the reviewer to confirm"
+    proposal: "hold the binding; the export carries two telephone variables (Telephone11/Telephone12) for this page's 'TELEPHONE NUMBER (INCLUDE AREA CODE)' block while the XDP splits the number into four numeric parts, so the part-to-variable mapping needs the data steward"
+    rationale: "numeric field with caption \")\" inside section .Tele 'TELEPHONE NUMBER (INCLUDE AREA CODE)'; pairing confirmed in the authoring session: the 12 target-only G0 tokens are the company address footer added in Designer, the form content is the same 0810 revision; G0 still records the drift because GOV-01 is not relaxed"
     status: proposed
     decided_by: null
     decided_on: null

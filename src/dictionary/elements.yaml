@@ -313,3 +313,419 @@ elements:
     status: proposed
     evidence: "170574.xdp dataRef ...ForeignTravel.TripPurpose.Row1..Row3; Forms_17-0574 (AEM to Quad).xml data variables ReconApp.TravelsTable1..3.PurposeTxt"
     reviewed_by: null
+# 18-1721 (routing sheet): proposed by the converting session, see src/decisions/18-1721.yaml.
+# Evidence pairs an XDP caption with a data variable in Forms_18-1721 (AEM to Quad).xml; the source fields carry no dataRef,
+# so the enterprise target_path stays null until a steward confirms. Page-2 fields reuse the page-1 element.
+  - id: routing.absd_life_product_ind
+    label: Route to ABSD Life Product Department
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3 caption 'Route to: Advanced Business Services Division - Life Product Department'; Forms_18-1721 (AEM to Quad).xml data variable Route1"
+    reviewed_by: null
+  - id: routing.absd_attention
+    label: ABSD routing - attention
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1 caption 'Attention:'; Forms_18-1721 (AEM to Quad).xml data variable Attention1"
+    reviewed_by: null
+  - id: absd.business_case_management_ind
+    label: ABSD - Business Case Management (BCM)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[1] caption 'Business Case Management (BCM)'; Forms_18-1721 (AEM to Quad).xml data variable Business"
+    reviewed_by: null
+  - id: absd.corporate_inventory_ind
+    label: ABSD - Corporate Inventory
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[2] caption 'Corporate Inventory'; Forms_18-1721 (AEM to Quad).xml data variable Corporate"
+    reviewed_by: null
+  - id: absd.mcb_transactions_ind
+    label: ABSD - MCB Transactions
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[3] caption 'MCB Transactions'; Forms_18-1721 (AEM to Quad).xml data variable MCB"
+    reviewed_by: null
+  - id: absd.vel_vjl_cul_sul_ind
+    label: ABSD - VEL/VJL/CUL/SUL
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[4] caption 'VEL/VJL/CUL/SUL'; Forms_18-1721 (AEM to Quad).xml data variable VEL"
+    reviewed_by: null
+  - id: absd.surrender_paid_up_additions_ind
+    label: ABSD - Surrender of paid-up additions/accumulation
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[7] caption 'Surrender of Paid-up Additions/Accumulation'; Forms_18-1721 (AEM to Quad).xml data variable Surrender"
+    reviewed_by: null
+  - id: absd.surrender_of_policy_ind
+    label: ABSD - Surrender of policy
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[8] caption 'Surrender of Policy'; Forms_18-1721 (AEM to Quad).xml data variable SurrenderPlo"
+    reviewed_by: null
+  - id: absd.withdrawal_of_excess_ind
+    label: ABSD - Withdrawal of excess
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[9] caption 'Withdrawal of Excess'; Forms_18-1721 (AEM to Quad).xml data variable Withdrawal"
+    reviewed_by: null
+  - id: absd.other_ind
+    label: ABSD - Other
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[10] caption 'Other:'; Forms_18-1721 (AEM to Quad).xml data variable Other"
+    reviewed_by: null
+  - id: absd.other_text
+    label: ABSD - Other (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[1] empty caption (free text next to the 'Other:' checkbox); Forms_18-1721 (AEM to Quad).xml data variable OtherS"
+    reviewed_by: null
+  - id: absd.comments
+    label: ABSD - Comments/special instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[2] caption 'Comments/Special Instructions:'; Forms_18-1721 (AEM to Quad).xml data variable Comments"
+    reviewed_by: null
+  - id: routing.policy_change_ind
+    label: Route to Policy Change Portfolio Products Division
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[11] caption 'Route to: Policy Change Portfolio Products Division - Policyowner Services Department'; Forms_18-1721 (AEM to Quad).xml data variable Route2"
+    reviewed_by: null
+  - id: routing.policy_change_attention
+    label: Policy Change routing - attention
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[3] caption 'Attention:'; Forms_18-1721 (AEM to Quad).xml data variable Attention2"
+    reviewed_by: null
+  - id: policy_change.form_90_1279_99_ind
+    label: Policy Change - form 90-1279-99
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[12] caption '90-1279-99'; Forms_18-1721 (AEM to Quad).xml data variable 90-1279-99"
+    reviewed_by: null
+  - id: policy_change.form_90_1279_ind
+    label: Policy Change - form 90-1279 (after GA input)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[13] caption '90-1279 (After GA input)'; Forms_18-1721 (AEM to Quad).xml data variable 90-1279"
+    reviewed_by: null
+  - id: policy_change.pending_requirements_ind
+    label: Policy Change - Pending requirements
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[14] caption 'Pending Requirements'; Forms_18-1721 (AEM to Quad).xml data variable Pending"
+    reviewed_by: null
+  - id: policy_change.other_text
+    label: Policy Change - Other (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[4] empty caption (free text next to the 'Other:' checkbox); Forms_18-1721 (AEM to Quad).xml data variable OtherPstring"
+    reviewed_by: null
+  - id: policy_change.other_ind
+    label: Policy Change - Other
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[15] caption 'Other:'; Forms_18-1721 (AEM to Quad).xml data variable Otherp"
+    reviewed_by: null
+  - id: policy_change.group_name
+    label: Policy Change - Group name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[5] caption 'Group Name:'; Forms_18-1721 (AEM to Quad).xml data variable GroupName"
+    reviewed_by: null
+  - id: policy_change.policy_numbers
+    label: Policy Change - Policy number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[6] caption 'Policy Number(s):'; Forms_18-1721 (AEM to Quad).xml data variable PolicyNumber"
+    reviewed_by: null
+  - id: policy_change.mcb_numbers
+    label: Policy Change - MCB number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[7] caption 'MCB Number(s):'; Forms_18-1721 (AEM to Quad).xml data variable MCBNumber"
+    reviewed_by: null
+  - id: policy_change.group_participant_count
+    label: Policy Change - number of participants in group
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[8] caption '# of participants in group:'; Forms_18-1721 (AEM to Quad).xml data variable group"
+    reviewed_by: null
+  - id: policy_change.isa_numbers
+    label: Policy Change - ISA number(s)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[9] caption 'ISA Number(s):'; Forms_18-1721 (AEM to Quad).xml data variable ISA"
+    reviewed_by: null
+  - id: policy_change.service_plan_number
+    label: Policy Change - Service plan number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[10] caption 'Service Plan Number:'; Forms_18-1721 (AEM to Quad).xml data variable Service"
+    reviewed_by: null
+  - id: policy_change.comments
+    label: Policy Change - Comments/special instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[11] caption 'Comments/Special Instructions:'; Forms_18-1721 (AEM to Quad).xml data variable Comments2"
+    reviewed_by: null
+  - id: routing_sheet.date
+    label: Routing sheet - date
+    data_type: date
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp DateField1 caption 'DATE (MM/DD/YYYY)'; Forms_18-1721 (AEM to Quad).xml data variable DATE; page-2 twin variable DATE1"
+    reviewed_by: null
+  - id: routing_sheet.policy_isa_mcb_number
+    label: Routing sheet - policy number(s)/ISA/MCB
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp LastName caption 'POLICY NUMBER(S) / ISA / MCB'; Forms_18-1721 (AEM to Quad).xml data variable POLICYNUMBER; page-2 twin variable POLICYNUMBER1"
+    reviewed_by: null
+  - id: routing_sheet.financial_representative_name
+    label: Routing sheet - financial representative name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp FirstName caption \"FINANCIAL REPRESENTATIVE' NAME\"; Forms_18-1721 (AEM to Quad).xml data variable FR_Name; page-2 twin variable FR_Name1"
+    reviewed_by: null
+  - id: routing_sheet.insured_name
+    label: Routing sheet - insured name
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp Insured caption 'INSURED NAME'; Forms_18-1721 (AEM to Quad).xml data variable INSUREDNAME; page-2 twin variable INSUREDNAME1"
+    reviewed_by: null
+  - id: routing_sheet.financial_representative_number
+    label: Routing sheet - financial representative number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp FirstName[1] caption 'FINANCIAL REPRESENTATIVE NO.'; Forms_18-1721 (AEM to Quad).xml data variable FR_No; page-2 twin variable FR_No1"
+    reviewed_by: null
+  - id: routing_sheet.network_office_number
+    label: Routing sheet - network office number
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp FirstName[2] caption 'NETWORK OFFICE #'; Forms_18-1721 (AEM to Quad).xml data variable NetworkOffice; page-2 twin variable NetworkOffice1"
+    reviewed_by: null
+  - id: routing_sheet.submitted_by
+    label: Routing sheet - submitted by
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp FirstName[3] caption 'SUBMITTED BY'; Forms_18-1721 (AEM to Quad).xml data variable SubmittedBy; page-2 twin variable SubmittedBy1"
+    reviewed_by: null
+  - id: routing_sheet.group_office_contact
+    label: Routing sheet - group office contact
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp FirstName[4] caption 'GROUP OFFICE CONTACT'; Forms_18-1721 (AEM to Quad).xml data variable GroupOffice; page-2 twin variable GroupOffice1"
+    reviewed_by: null
+  - id: routing.large_case_new_business_ind
+    label: Route to Large Case Division New Business
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3 caption 'Route to: Large Case Division - New Business Department'; Forms_18-1721 (AEM to Quad).xml data variable Route4"
+    reviewed_by: null
+  - id: routing.large_case_attention
+    label: Large Case routing - attention
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1 caption 'Attention:'; Forms_18-1721 (AEM to Quad).xml data variable Attention4"
+    reviewed_by: null
+  - id: large_case.other_text
+    label: Large Case - Other (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[1] empty caption (free text next to the 'Other:' checkbox); Forms_18-1721 (AEM to Quad).xml data variable OtherPage2S"
+    reviewed_by: null
+  - id: large_case.other_ind
+    label: Large Case - Other
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[1] caption 'Other:'; Forms_18-1721 (AEM to Quad).xml data variable OtherPage2"
+    reviewed_by: null
+  - id: large_case.naic_illustration_ind
+    label: Large Case - NAIC illustration
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[2] caption 'NAIC Illustration'; Forms_18-1721 (AEM to Quad).xml data variable NAIC"
+    reviewed_by: null
+  - id: large_case.erisa_ind
+    label: Large Case - ERISA
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[3] caption 'ERISA'; Forms_18-1721 (AEM to Quad).xml data variable ERISA"
+    reviewed_by: null
+  - id: large_case.attending_physician_statement_ind
+    label: Large Case - Attending physician statement (APS)
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[4] caption 'Attending Physician Statement (APS)'; Forms_18-1721 (AEM to Quad).xml data variable Attending"
+    reviewed_by: null
+  - id: large_case.comments
+    label: Large Case - Comments/special instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[2] caption 'Comments/Special Instructions:'; Forms_18-1721 (AEM to Quad).xml data variable Comments3"
+    reviewed_by: null
+  - id: routing.beneficiary_title_ind
+    label: Route to Beneficiary & Title Division
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[5] caption 'Route to: Beneficiary & Title Division - Policyowner Services Department'; Forms_18-1721 (AEM to Quad).xml data variable Route5"
+    reviewed_by: null
+  - id: routing.beneficiary_title_attention
+    label: Beneficiary & Title routing - attention
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[3] caption 'Attention:'; Forms_18-1721 (AEM to Quad).xml data variable Attention5"
+    reviewed_by: null
+  - id: beneficiary_title.name_change_ind
+    label: Beneficiary & Title - Name change of owner/beneficiary/assignee
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[6] caption 'Name Change of Owner, Beneficiary or Assignee'; Forms_18-1721 (AEM to Quad).xml data variable Nameof change"
+    reviewed_by: null
+  - id: beneficiary_title.split_dollar_ind
+    label: Beneficiary & Title - Split dollar method assignment/owner
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[7] caption 'Split Dollar Method - Assignment/Owner'; Forms_18-1721 (AEM to Quad).xml data variable SplitDollar"
+    reviewed_by: null
+  - id: beneficiary_title.change_of_beneficiary_ownership_ind
+    label: Beneficiary & Title - Change of beneficiary/ownership
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[8] caption 'Change of Beneficiary/Ownership'; Forms_18-1721 (AEM to Quad).xml data variable Change"
+    reviewed_by: null
+  - id: beneficiary_title.comments
+    label: Beneficiary & Title - Comments/special instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[4] caption 'Comments/Special Instructions:'; Forms_18-1721 (AEM to Quad).xml data variable Comments4"
+    reviewed_by: null
+  - id: beneficiary_title.other_text
+    label: Beneficiary & Title - Other (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[5] empty caption (free text next to the 'Other:' checkbox); Forms_18-1721 (AEM to Quad).xml data variable OtherPage2_2S"
+    reviewed_by: null
+  - id: beneficiary_title.other_ind
+    label: Beneficiary & Title - Other
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[9] caption 'Other:'; Forms_18-1721 (AEM to Quad).xml data variable OtherPage2_2"
+    reviewed_by: null
+  - id: beneficiary_title.collateral_assignment_ind
+    label: Beneficiary & Title - Collateral assignment/release
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[10] caption 'Collateral Assignment/Release of Assignment'; Forms_18-1721 (AEM to Quad).xml data variable Collateral"
+    reviewed_by: null
+  - id: routing.life_benefits_ind
+    label: Route to Life Benefits Division
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[11] caption 'Route to: Life Benefits Division - Policyowner Services Department'; Forms_18-1721 (AEM to Quad).xml data variable Route6"
+    reviewed_by: null
+  - id: routing.life_benefits_attention
+    label: Life Benefits routing - attention
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[6] caption 'Attention:'; Forms_18-1721 (AEM to Quad).xml data variable Attention6"
+    reviewed_by: null
+  - id: life_benefits.other_text
+    label: Life Benefits - Other (free text)
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[7] empty caption (free text next to the 'Other:' checkbox); Forms_18-1721 (AEM to Quad).xml data variable Other6S"
+    reviewed_by: null
+  - id: life_benefits.other_ind
+    label: Life Benefits - Other
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[12] caption 'Other:'; Forms_18-1721 (AEM to Quad).xml data variable Other6"
+    reviewed_by: null
+  - id: life_benefits.substitute_w9_ind
+    label: Life Benefits - Substitute W-9 form
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[13] caption 'Substitute W-9 Form'; Forms_18-1721 (AEM to Quad).xml data variable Substitute"
+    reviewed_by: null
+  - id: life_benefits.beneficiary_claim_statement_ind
+    label: Life Benefits - Beneficiary claim statement
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[14] caption 'Beneficiary Claim Statement'; Forms_18-1721 (AEM to Quad).xml data variable Beneficiary"
+    reviewed_by: null
+  - id: life_benefits.certified_death_certificate_ind
+    label: Life Benefits - Certified death certificate
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp CheckBox3[15] caption 'Certified Death Certificate'; Forms_18-1721 (AEM to Quad).xml data variable Certified"
+    reviewed_by: null
+  - id: life_benefits.comments
+    label: Life Benefits - Comments/special instructions
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: "181721.xdp TextField1[8] caption 'Comments/Special Instructions:'; Forms_18-1721 (AEM to Quad).xml data variable Comments5"
+    reviewed_by: null

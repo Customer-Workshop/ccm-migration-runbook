@@ -419,3 +419,541 @@ rows:
     status: proposed
     evidence: "170574.xdp dataRef leaf ForeignTravel.TripPurpose.Row3; variable under TravelsTable3 in Forms_17-0574 (AEM to Quad).xml"
     reviewed_by: null
+  # 18-1721 (routing sheet): unbound source fields; target_variable and data_path are the variable and its
+  # Def.Data path in Forms_18-1721 (AEM to Quad).xml. Proposed only; decision ids in src/decisions/18-1721.yaml.
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3
+    element: routing.absd_life_product_ind
+    target_variable: Route1
+    data_path: SubTree0.Route1
+    status: proposed
+    evidence: "D-001: caption 'Route to: Advanced Business Services Division - Life Product Department'; variable Route1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1
+    element: routing.absd_attention
+    target_variable: Attention1
+    data_path: SubTree0.Attention1
+    status: proposed
+    evidence: "D-002: caption 'Attention:'; variable Attention1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[1]
+    element: absd.business_case_management_ind
+    target_variable: Business
+    data_path: SubTree0.Business
+    status: proposed
+    evidence: "D-003: caption 'Business Case Management (BCM)'; variable Business at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[2]
+    element: absd.corporate_inventory_ind
+    target_variable: Corporate
+    data_path: SubTree0.Corporate
+    status: proposed
+    evidence: "D-004: caption 'Corporate Inventory'; variable Corporate at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[3]
+    element: absd.mcb_transactions_ind
+    target_variable: MCB
+    data_path: SubTree0.MCB
+    status: proposed
+    evidence: "D-005: caption 'MCB Transactions'; variable MCB at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[4]
+    element: absd.vel_vjl_cul_sul_ind
+    target_variable: VEL
+    data_path: SubTree0.VEL
+    status: proposed
+    evidence: "D-006: caption 'VEL/VJL/CUL/SUL'; variable VEL at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[7]
+    element: absd.surrender_paid_up_additions_ind
+    target_variable: Surrender
+    data_path: SubTree0.Surrender
+    status: proposed
+    evidence: "D-009: caption 'Surrender of Paid-up Additions/Accumulation'; variable Surrender at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[8]
+    element: absd.surrender_of_policy_ind
+    target_variable: SurrenderPlo
+    data_path: SubTree0.SurrenderPlo
+    status: proposed
+    evidence: "D-010: caption 'Surrender of Policy'; variable SurrenderPlo at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[9]
+    element: absd.withdrawal_of_excess_ind
+    target_variable: Withdrawal
+    data_path: SubTree0.Withdrawal
+    status: proposed
+    evidence: "D-011: caption 'Withdrawal of Excess'; variable Withdrawal at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[10]
+    element: absd.other_ind
+    target_variable: Other
+    data_path: SubTree0.Other
+    status: proposed
+    evidence: "D-012: caption 'Other:'; variable Other at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[1]
+    element: absd.other_text
+    target_variable: OtherS
+    data_path: SubTree0.OtherS
+    status: proposed
+    evidence: "D-013: empty caption (free text next to the 'Other:' checkbox); variable OtherS at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[2]
+    element: absd.comments
+    target_variable: Comments
+    data_path: SubTree0.Comments
+    status: proposed
+    evidence: "D-014: caption 'Comments/Special Instructions:'; variable Comments at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[11]
+    element: routing.policy_change_ind
+    target_variable: Route2
+    data_path: SubTree0.Route2
+    status: proposed
+    evidence: "D-015: caption 'Route to: Policy Change Portfolio Products Division - Policyowner Services Department'; variable Route2 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[3]
+    element: routing.policy_change_attention
+    target_variable: Attention2
+    data_path: SubTree0.Attention2
+    status: proposed
+    evidence: "D-016: caption 'Attention:'; variable Attention2 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[12]
+    element: policy_change.form_90_1279_99_ind
+    target_variable: "90-1279-99"
+    data_path: "SubTree0.90-1279-99"
+    status: proposed
+    evidence: "D-017: caption '90-1279-99'; variable 90-1279-99 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[13]
+    element: policy_change.form_90_1279_ind
+    target_variable: "90-1279"
+    data_path: "SubTree0.90-1279"
+    status: proposed
+    evidence: "D-018: caption '90-1279 (After GA input)'; variable 90-1279 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[14]
+    element: policy_change.pending_requirements_ind
+    target_variable: Pending
+    data_path: SubTree0.Pending
+    status: proposed
+    evidence: "D-019: caption 'Pending Requirements'; variable Pending at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[4]
+    element: policy_change.other_text
+    target_variable: OtherPstring
+    data_path: SubTree0.OtherPstring
+    status: proposed
+    evidence: "D-020: empty caption (free text next to the 'Other:' checkbox); variable OtherPstring at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.CheckBox3[15]
+    element: policy_change.other_ind
+    target_variable: Otherp
+    data_path: SubTree0.Otherp
+    status: proposed
+    evidence: "D-021: caption 'Other:'; variable Otherp at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[5]
+    element: policy_change.group_name
+    target_variable: GroupName
+    data_path: SubTree0.GroupName
+    status: proposed
+    evidence: "D-022: caption 'Group Name:'; variable GroupName at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[6]
+    element: policy_change.policy_numbers
+    target_variable: PolicyNumber
+    data_path: SubTree0.PolicyNumber
+    status: proposed
+    evidence: "D-023: caption 'Policy Number(s):'; variable PolicyNumber at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[7]
+    element: policy_change.mcb_numbers
+    target_variable: MCBNumber
+    data_path: SubTree0.MCBNumber
+    status: proposed
+    evidence: "D-024: caption 'MCB Number(s):'; variable MCBNumber at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[8]
+    element: policy_change.group_participant_count
+    target_variable: group
+    data_path: SubTree0.group
+    status: proposed
+    evidence: "D-025: caption '# of participants in group:'; variable group at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[9]
+    element: policy_change.isa_numbers
+    target_variable: ISA
+    data_path: SubTree0.ISA
+    status: proposed
+    evidence: "D-026: caption 'ISA Number(s):'; variable ISA at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[10]
+    element: policy_change.service_plan_number
+    target_variable: Service
+    data_path: SubTree0.Service
+    status: proposed
+    evidence: "D-027: caption 'Service Plan Number:'; variable Service at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.TextField1[11]
+    element: policy_change.comments
+    target_variable: Comments2
+    data_path: SubTree0.Comments2
+    status: proposed
+    evidence: "D-028: caption 'Comments/Special Instructions:'; variable Comments2 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.DateField1
+    element: routing_sheet.date
+    target_variable: DATE
+    data_path: SubTree0.DATE
+    status: proposed
+    evidence: "D-029: caption 'DATE (MM/DD/YYYY)'; variable DATE at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.LastName
+    element: routing_sheet.policy_isa_mcb_number
+    target_variable: POLICYNUMBER
+    data_path: SubTree0.POLICYNUMBER
+    status: proposed
+    evidence: "D-030: caption 'POLICY NUMBER(S) / ISA / MCB'; variable POLICYNUMBER at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.FirstName
+    element: routing_sheet.financial_representative_name
+    target_variable: FR_Name
+    data_path: SubTree0.FR_Name
+    status: proposed
+    evidence: "D-031: caption \"FINANCIAL REPRESENTATIVE' NAME\"; variable FR_Name at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.Insured
+    element: routing_sheet.insured_name
+    target_variable: INSUREDNAME
+    data_path: SubTree0.INSUREDNAME
+    status: proposed
+    evidence: "D-032: caption 'INSURED NAME'; variable INSUREDNAME at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.FirstName[1]
+    element: routing_sheet.financial_representative_number
+    target_variable: FR_No
+    data_path: SubTree0.FR_No
+    status: proposed
+    evidence: "D-033: caption 'FINANCIAL REPRESENTATIVE NO.'; variable FR_No at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.FirstName[2]
+    element: routing_sheet.network_office_number
+    target_variable: NetworkOffice
+    data_path: SubTree0.NetworkOffice
+    status: proposed
+    evidence: "D-034: caption 'NETWORK OFFICE #'; variable NetworkOffice at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.FirstName[3]
+    element: routing_sheet.submitted_by
+    target_variable: SubmittedBy
+    data_path: SubTree0.SubmittedBy
+    status: proposed
+    evidence: "D-035: caption 'SUBMITTED BY'; variable SubmittedBy at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.MainSubform.FirstName[4]
+    element: routing_sheet.group_office_contact
+    target_variable: GroupOffice
+    data_path: SubTree0.GroupOffice
+    status: proposed
+    evidence: "D-040: caption 'GROUP OFFICE CONTACT'; variable GroupOffice at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3
+    element: routing.large_case_new_business_ind
+    target_variable: Route4
+    data_path: SubTree0.Route4
+    status: proposed
+    evidence: "D-045: caption 'Route to: Large Case Division - New Business Department'; variable Route4 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1
+    element: routing.large_case_attention
+    target_variable: Attention4
+    data_path: SubTree0.Attention4
+    status: proposed
+    evidence: "D-046: caption 'Attention:'; variable Attention4 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[1]
+    element: large_case.other_text
+    target_variable: OtherPage2S
+    data_path: SubTree0.OtherPage2S
+    status: proposed
+    evidence: "D-047: empty caption (free text next to the 'Other:' checkbox); variable OtherPage2S at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[1]
+    element: large_case.other_ind
+    target_variable: OtherPage2
+    data_path: SubTree0.OtherPage2
+    status: proposed
+    evidence: "D-048: caption 'Other:'; variable OtherPage2 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[2]
+    element: large_case.naic_illustration_ind
+    target_variable: NAIC
+    data_path: SubTree0.NAIC
+    status: proposed
+    evidence: "D-049: caption 'NAIC Illustration'; variable NAIC at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[3]
+    element: large_case.erisa_ind
+    target_variable: ERISA
+    data_path: SubTree0.ERISA
+    status: proposed
+    evidence: "D-050: caption 'ERISA'; variable ERISA at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[4]
+    element: large_case.attending_physician_statement_ind
+    target_variable: Attending
+    data_path: SubTree0.Attending
+    status: proposed
+    evidence: "D-051: caption 'Attending Physician Statement (APS)'; variable Attending at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[2]
+    element: large_case.comments
+    target_variable: Comments3
+    data_path: SubTree0.Comments3
+    status: proposed
+    evidence: "D-052: caption 'Comments/Special Instructions:'; variable Comments3 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[5]
+    element: routing.beneficiary_title_ind
+    target_variable: Route5
+    data_path: SubTree0.Route5
+    status: proposed
+    evidence: "D-053: caption 'Route to: Beneficiary & Title Division - Policyowner Services Department'; variable Route5 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[3]
+    element: routing.beneficiary_title_attention
+    target_variable: Attention5
+    data_path: SubTree0.Attention5
+    status: proposed
+    evidence: "D-054: caption 'Attention:'; variable Attention5 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[6]
+    element: beneficiary_title.name_change_ind
+    target_variable: "Nameof change"
+    data_path: "SubTree0.Nameof change"
+    status: proposed
+    evidence: "D-055: caption 'Name Change of Owner, Beneficiary or Assignee'; variable Nameof change at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[7]
+    element: beneficiary_title.split_dollar_ind
+    target_variable: SplitDollar
+    data_path: SubTree0.SplitDollar
+    status: proposed
+    evidence: "D-056: caption 'Split Dollar Method - Assignment/Owner'; variable SplitDollar at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[8]
+    element: beneficiary_title.change_of_beneficiary_ownership_ind
+    target_variable: Change
+    data_path: SubTree0.Change
+    status: proposed
+    evidence: "D-057: caption 'Change of Beneficiary/Ownership'; variable Change at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[4]
+    element: beneficiary_title.comments
+    target_variable: Comments4
+    data_path: SubTree0.Comments4
+    status: proposed
+    evidence: "D-058: caption 'Comments/Special Instructions:'; variable Comments4 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[5]
+    element: beneficiary_title.other_text
+    target_variable: OtherPage2_2S
+    data_path: SubTree0.OtherPage2_2S
+    status: proposed
+    evidence: "D-059: empty caption (free text next to the 'Other:' checkbox); variable OtherPage2_2S at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[9]
+    element: beneficiary_title.other_ind
+    target_variable: OtherPage2_2
+    data_path: SubTree0.OtherPage2_2
+    status: proposed
+    evidence: "D-060: caption 'Other:'; variable OtherPage2_2 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[10]
+    element: beneficiary_title.collateral_assignment_ind
+    target_variable: Collateral
+    data_path: SubTree0.Collateral
+    status: proposed
+    evidence: "D-061: caption 'Collateral Assignment/Release of Assignment'; variable Collateral at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[11]
+    element: routing.life_benefits_ind
+    target_variable: Route6
+    data_path: SubTree0.Route6
+    status: proposed
+    evidence: "D-062: caption 'Route to: Life Benefits Division - Policyowner Services Department'; variable Route6 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[6]
+    element: routing.life_benefits_attention
+    target_variable: Attention6
+    data_path: SubTree0.Attention6
+    status: proposed
+    evidence: "D-063: caption 'Attention:'; variable Attention6 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[7]
+    element: life_benefits.other_text
+    target_variable: Other6S
+    data_path: SubTree0.Other6S
+    status: proposed
+    evidence: "D-064: empty caption (free text next to the 'Other:' checkbox); variable Other6S at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[12]
+    element: life_benefits.other_ind
+    target_variable: Other6
+    data_path: SubTree0.Other6
+    status: proposed
+    evidence: "D-065: caption 'Other:'; variable Other6 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[13]
+    element: life_benefits.substitute_w9_ind
+    target_variable: Substitute
+    data_path: SubTree0.Substitute
+    status: proposed
+    evidence: "D-066: caption 'Substitute W-9 Form'; variable Substitute at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[14]
+    element: life_benefits.beneficiary_claim_statement_ind
+    target_variable: Beneficiary
+    data_path: SubTree0.Beneficiary
+    status: proposed
+    evidence: "D-067: caption 'Beneficiary Claim Statement'; variable Beneficiary at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.CheckBox3[15]
+    element: life_benefits.certified_death_certificate_ind
+    target_variable: Certified
+    data_path: SubTree0.Certified
+    status: proposed
+    evidence: "D-068: caption 'Certified Death Certificate'; variable Certified at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.TextField1[8]
+    element: life_benefits.comments
+    target_variable: Comments5
+    data_path: SubTree0.Comments5
+    status: proposed
+    evidence: "D-069: caption 'Comments/Special Instructions:'; variable Comments5 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.DateField1
+    element: routing_sheet.date
+    target_variable: DATE1
+    data_path: SubTree0.DATE1
+    status: proposed
+    evidence: "D-070: caption 'DATE (MM/DD/YYYY)'; variable DATE1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.LastName
+    element: routing_sheet.policy_isa_mcb_number
+    target_variable: POLICYNUMBER1
+    data_path: SubTree0.POLICYNUMBER1
+    status: proposed
+    evidence: "D-071: caption 'POLICY NUMBER(S) / ISA / MCB'; variable POLICYNUMBER1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.FirstName
+    element: routing_sheet.financial_representative_name
+    target_variable: FR_Name1
+    data_path: SubTree0.FR_Name1
+    status: proposed
+    evidence: "D-072: caption \"FINANCIAL REPRESENTATIVE' NAME\"; variable FR_Name1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.Insured
+    element: routing_sheet.insured_name
+    target_variable: INSUREDNAME1
+    data_path: SubTree0.INSUREDNAME1
+    status: proposed
+    evidence: "D-073: caption 'INSURED NAME'; variable INSUREDNAME1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.FirstName[1]
+    element: routing_sheet.financial_representative_number
+    target_variable: FR_No1
+    data_path: SubTree0.FR_No1
+    status: proposed
+    evidence: "D-074: caption 'FINANCIAL REPRESENTATIVE NO.'; variable FR_No1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.FirstName[2]
+    element: routing_sheet.network_office_number
+    target_variable: NetworkOffice1
+    data_path: SubTree0.NetworkOffice1
+    status: proposed
+    evidence: "D-075: caption 'NETWORK OFFICE #'; variable NetworkOffice1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.FirstName[3]
+    element: routing_sheet.submitted_by
+    target_variable: SubmittedBy1
+    data_path: SubTree0.SubmittedBy1
+    status: proposed
+    evidence: "D-076: caption 'SUBMITTED BY'; variable SubmittedBy1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
+  - form_code: "18-1721"
+    som: .EFormData.page2.FirstName[4]
+    element: routing_sheet.group_office_contact
+    target_variable: GroupOffice1
+    data_path: SubTree0.GroupOffice1
+    status: proposed
+    evidence: "D-081: caption 'GROUP OFFICE CONTACT'; variable GroupOffice1 at Def.Data/SubTree0 in Forms_18-1721 (AEM to Quad).xml"
+    reviewed_by: null
