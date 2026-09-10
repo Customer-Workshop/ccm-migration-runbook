@@ -26,7 +26,7 @@ forms:
         pages: 9
     status: reference_pair
     notes:
-      - target layout was authored from a newer business-form revision than the XDP (G0 fails at 77.1% static-text coverage)
+      - first supplied target (17-0574.xml, sha256 cfc13c2b...) was authored from a different form revision (G0 77.1%); superseded by the WorkFlow export "Forms_17-0574 (AEM to Quad).xml" (G0 96.1%)
       - no fixed input data file was supplied, so G6 cannot compose an equivalent PDF
 
   - form_id: "18-1026"

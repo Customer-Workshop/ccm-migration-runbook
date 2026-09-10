@@ -8,9 +8,12 @@ Scope: when generating or validating Quadient artifacts, or triaging Designer im
   version for import until told otherwise; record any other version in the import log.
 - The reference layout exports use the declaration + body record structure inventoried by
   `src/gates/target_inventory.py`; `Def.Data`, `Def.Pages`, `Def.Font` and other `Def.*` roots appear as bodies
-  without declarations. Only these two exports have been inspected; do not assume other export variants
-  (workflow WFD, ICM package) look the same.
-- Whether the supplied `.xml` files are full WFD exports or a partial layout export is **not confirmed**.
+  without declarations. Two export variants have been observed and both are read by `target_inventory`:
+  a bare `<Layout>` root (`18-1026_Quad_2.xml`, the first `17-0574.xml`) and a full workflow export
+  `<WorkFlow version="17.0.436.3">` whose single `Layout` module wraps the same record list
+  (`Forms_17-0574 (AEM to Quad).xml`; `export_kind: workflow`). ICM packages have not been inspected.
+- The first `17-0574.xml` was authored from a different form revision than `170574.xdp` (G0 77%); the
+  later `Forms_17-0574 (AEM to Quad).xml` matches at 96%. Ask which export is the reference before pairing.
 
 ## Known (from quadient/migration-stack v17.0.30, commit 5a710c0)
 

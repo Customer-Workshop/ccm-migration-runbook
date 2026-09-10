@@ -7,7 +7,7 @@ decisions:
     finding: G3-UNBOUND
     action: manual_design
     proposal: "designer builds the PDF417 Barcode object inside 0574_BarcodeFlowArea_Page2 (per OBJ-08); barcode content is composed at run time, no data variable is bound"
-    rationale: "XDP <barcode type=pdf417 dataLength=100 errorCorrectionLevel=5 moduleWidth=0.013306in>, read-only/protected, bind mode none, no script; 17-0574.xml has one *_BarcodeFlowArea_* per page and no NB6001 variable; build plan already skips the control (OBJ-08). Nothing to bind, so the finding is resolved by design work, not a dictionary row"
+    rationale: "XDP <barcode type=pdf417 dataLength=100 errorCorrectionLevel=5 moduleWidth=0.013306in>, read-only/protected, bind mode none, no script; both reference exports (17-0574.xml and Forms_17-0574 (AEM to Quad).xml) have one *_BarcodeFlowArea_* per page and no NB6001 variable; build plan already skips the control (OBJ-08). Nothing to bind, so the finding is resolved by design work, not a dictionary row"
     status: proposed
     decided_by: null
     decided_on: null
