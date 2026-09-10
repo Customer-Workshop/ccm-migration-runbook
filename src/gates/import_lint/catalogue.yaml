@@ -1,0 +1,46 @@
+# Designer import-error catalogue.
+#
+# One entry per error class observed (or expected) when importing a generated WFD / Layout XML into
+# Quadient Inspire Designer. Each entry names the offline lint check that reproduces the error
+# before import, the rulebook rule that prevents it, and the evidence that the error is real.
+#
+# status: observed   -> reproduced from a real Designer import error (paste the message in evidence)
+#         inferred   -> derived from the reference exports' structural invariants; never seen in Designer
+#
+# The actual Designer error list from the partner leave-request imports (partner email thread) has not been
+# supplied. Every entry below is therefore `inferred`.
+- code: IMP-001
+  title: Declaration without a body for a non-Group object
+  status: inferred
+  check: gates.import_lint.declarations_have_bodies
+  rule_id: GOV-03
+  evidence: "17-0574.xml / 18-1026_Quad_2.xml: every non-Group declaration has exactly one body record with the same Id"
+  designer_message: null
+- code: IMP-002
+  title: Body record whose Id is not declared (outside the Def.* roots)
+  status: inferred
+  check: gates.import_lint.bodies_are_declared
+  rule_id: GOV-03
+  evidence: "only Def.* roots (Def.Data, Def.Pages, Def.Font, ...) appear as bodies without a declaration"
+  designer_message: null
+- code: IMP-003
+  title: Numeric id reference to an object that does not exist
+  status: inferred
+  check: gates.import_lint.no_dangling_references
+  rule_id: GOV-03
+  evidence: "both reference exports have zero dangling references"
+  designer_message: null
+- code: IMP-004
+  title: Declaration whose ParentId is neither a declared object nor a Def.* root
+  status: inferred
+  check: gates.import_lint.no_orphan_declarations
+  rule_id: OBJ-01
+  evidence: "all declarations in the reference exports chain to a Def.* root"
+  designer_message: null
+- code: IMP-005
+  title: Layout without a Page or without a Flow reachable from Def.Pages
+  status: inferred
+  check: gates.import_lint.has_page_and_flow
+  rule_id: LAY-01
+  evidence: "reference exports declare >=1 Page under Def.Pages and >=1 Flow"
+  designer_message: null

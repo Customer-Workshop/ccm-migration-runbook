@@ -1,0 +1,133 @@
+family: LAY
+title: Layout transformation (geometry, containers, pagination)
+rules:
+  - id: LAY-01
+    title: Page size from medium/@short x @long, swapped for landscape
+    class: AUTO
+    status: draft
+    source: pageArea/medium
+    target: Page.Width/Height in metres
+    evidence: Letter -> 0.2159 x 0.2794 exactly, both targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor.extract_pages]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-02
+    title: contentArea -> FlowArea with Pos/Size in metres, then hand adjustment
+    class: ASSIST
+    status: draft
+    source: contentArea x/y/w/h
+    target: FlowArea Pos/Size
+    evidence: "source 12.7/9.398/190.5x263.595 mm -> target 12.17/17.0/191.03x238.0 mm"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-03
+    title: Functional zones get their own FlowArea per page
+    class: AUTO
+    status: draft
+    source: body, footer, barcode, logo, e-sign visibility zones
+    target: one FlowArea per zone per page
+    evidence: 60 FlowArea records across 9 pages in 17-0574, named by zone
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-04
+    title: subform/@layout drives the target container
+    class: AUTO
+    status: draft
+    source: "layout=position | tb | lr-tb"
+    target: "position -> placed Cells in a RowSet; tb -> stacked RowSets; lr-tb -> RowSet with left-to-right Cells"
+    evidence: "PForm layout=lr-tb -> PremiumPayer_RowSet 3..5 with per-field cells"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-05
+    title: Label/field row -> one RowSet; label and input -> Cells; input cell carries a bottom-line border
+    class: AUTO
+    status: draft
+    source: label draw + field on one row band
+    target: RowSet with Cells; BottomLine_Empty / BottomLine_Filled / Underline_InCell styles
+    evidence: styles observed in both targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-06
+    title: Cell and control sizing is re-authored, not transferred
+    class: ASSIST
+    status: draft
+    source: field/draw geometry used only for column proportions and row order
+    target: absolute widths set by a designer pass
+    evidence: "measured deltas: 89.83->91.5, 57.82->53.8, 12.70->14.0, 86.04->73.0, 28.27->44.6 mm"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: []
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-07
+    title: Section headings -> shaded bold heading RowSet at the top of the section Table
+    class: AUTO
+    status: draft
+    source: heading draw (OBJ-03)
+    target: heading RowSet using FillStyle + bold TextStyle from the library
+    evidence: PolicyInformation draws -> heading rows using Arial_10pt_Bold + FillStyle
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-08
+    title: Header/footer subforms -> page-level repeating FlowAreas referenced by every Page
+    class: AUTO
+    status: draft
+    source: header/footer subforms and master-page content (OBJ-12)
+    target: 18-1026_Header, 18-1026_Footer, *_FooterFlowArea_PageN
+    evidence: observed in both targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._container_role]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-09
+    title: Growable subforms -> RowSet repetition; pagination is emergent and must be verified against the reference PDF
+    class: ASSIST
+    status: draft
+    source: occur/@max=-1
+    target: repeating RowSet inside a flowing Table
+    evidence: 17-0574 target spreads 98 tables over 9 pages while the source declares 1 pageArea with growable content
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._occur]
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: LAY-10
+    title: Long legal/instruction blocks (>300 chars) -> single flowing Flow in a full-width RowSet
+    class: AUTO
+    status: draft
+    source: draw text longer than 300 characters
+    target: one Flow; XFA line breaking is not preserved
+    evidence: 18-1026 target reflows the payer authorisation paragraph into a single run set
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._draw]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null

@@ -1,0 +1,146 @@
+family: UNS
+title: Unsupported and low-confidence features
+rules:
+  - id: UNS-01
+    title: Missing bind (0-12% bound forms)
+    class: MANUAL
+    status: draft
+    source: field without bind/@ref
+    target: data steward + dictionary
+    evidence: no data contract in the source
+    origin: {type: reference_pair, refs: ["18-1026", "18-1721"]}
+    fixtures: ["18-1026", "18-1721"]
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-02
+    title: Opaque source names (S5GH, PForm, CheckBox16, Yes2c)
+    class: MANUAL
+    status: draft
+    source: field/subform names with no business meaning
+    target: analyst decision using label and geometry evidence
+    evidence: observed in all three sources
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-03
+    title: Meaning that exists only visually
+    class: ASSIST
+    status: draft
+    source: a checkbox whose question is three draws to the left
+    target: geometry-based proposal confirmed by an analyst
+    evidence: observed in 18-1026
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: []
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-04
+    title: Advanced JavaScript (resolveNode loops, host API, SOAP)
+    class: MANUAL
+    status: draft
+    source: scripts classified external_call or unclassified
+    target: usually dropped as capture-channel behaviour
+    evidence: observed in 17-0574
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._scripts]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-05
+    title: subformSet / alternate content / complex occur
+    class: MANUAL
+    status: draft
+    source: subformSet; occur beyond min/max/initial
+    target: redesign as repeating RowSets
+    evidence: recorded as diagnostics.unsupported by the extractor
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: []
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._walk_subform]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-06
+    title: Dynamic pagination differences
+    class: ASSIST
+    status: draft
+    source: XFA growable subforms
+    target: verify against the reference PDF
+    evidence: 17-0574 target spans 9 pages
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: []
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-07
+    title: Signature / e-signature capture
+    class: MANUAL
+    status: draft
+    source: ui/signature
+    target: dedicated 1pt e-sign visibility mechanism in the target
+    evidence: observed in 18-1026
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._field]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-08
+    title: Barcode fidelity (symbology, checksum, HR text)
+    class: ASSIST
+    status: draft
+    source: ui/barcode
+    target: designer verification
+    evidence: encoding parameters are not fully expressed in XFA
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: []
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-09
+    title: Embedded base64 images and logos
+    class: ASSIST
+    status: draft
+    source: draw/value/image
+    target: externalised asset referenced by hash
+    evidence: byte-identical re-embedding is not guaranteed
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._draw]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-10
+    title: Revision drift between the XDP and the business form the target was built from
+    class: MANUAL
+    status: draft
+    source: static text of the XDP vs the target
+    target: revision gate GOV-01
+    evidence: 17-0574 pair at 77.1% static-text coverage
+    origin: {type: coverage_report, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [gates.g0_pairing]
+    gates: [G0]
+    reviewed_by: null
+    reviewed_on: null
+  - id: UNS-11
+    title: Anything that requires Inspire Designer to confirm
+    class: MANUAL
+    status: draft
+    source: import validity, rendered pagination, font metrics
+    target: Designer smoke test per form
+    evidence: no Designer in this analysis
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: []
+    implemented_in: [gates.g5_target, gates.g6_pdf]
+    gates: [G5, G6]
+    reviewed_by: null
+    reviewed_on: null

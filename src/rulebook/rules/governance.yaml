@@ -1,0 +1,96 @@
+family: GOV
+title: Governance and construction
+rules:
+  - id: GOV-01
+    title: Revision gate; refuse a pair whose static-text coverage is below the threshold
+    class: AUTO
+    status: draft
+    source: static text of the XDP
+    target: static text of the reference layout XML
+    evidence: 17-0574 pair at 77.1% coverage was silently a revision mismatch
+    origin: {type: coverage_report, refs: ["17-0574"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [gates.g0_pairing]
+    gates: [G0]
+    parameters: {static_text_coverage_min: 0.95}
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-02
+    title: Every generated artefact records source SHA-256, extractor version and rule ids
+    class: AUTO
+    status: draft
+    source: input file bytes
+    target: form.source_sha256, form.extractor, provenance.rule_id
+    evidence: implemented in the extractor
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor.build]
+    gates: [G1]
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-03
+    title: Generate WFDs through the Quadient migration stack builder APIs, never by emitting raw XML
+    class: AUTO
+    status: draft
+    source: CIM
+    target: com.quadient.migration builders (DocumentObjectBuilder, VariableBuilder, ...)
+    evidence: "both reference targets show exact declaration/body pairing, builder-allocated ids, IndexInParent ordering, Forward references, zero dangling references"
+    origin: {type: analysis, refs: ["00_Evidence_Base.md", "https://github.com/quadient/migration-stack"]}
+    fixtures: []
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    groovy_entrypoint: src/converters/cim_to_inspire/groovy/CimBuildPlanImport.groovy
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-04
+    title: All source artefacts and generated output are untrusted input
+    class: AUTO
+    status: draft
+    source: XDP, XML, PDF, CIM
+    target: size limits, no external entity expansion, no script execution, no secrets in CIM or reports
+    evidence: implemented in the extractor and gates
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: []
+    implemented_in: [converters.xdp_to_cim.extractor.MAX_INPUT_BYTES, gates.common.load_xml]
+    gates: [G1]
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-05
+    title: Human decisions are recorded as data so reruns reproduce them
+    class: AUTO
+    status: draft
+    source: dictionary entries, name overrides, accepted losses
+    target: references/customer/data-dictionary.yaml, src/fixtures/forms/<id>/overrides.yaml
+    evidence: design requirement for the override store
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: []
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-06
+    title: A form is not migration-ready while any rule it depends on is still draft
+    class: AUTO
+    status: draft
+    source: provenance.rule_id on every CIM node
+    target: G3 readiness report lists draft rules per form
+    evidence: the POC rules were Devin-generated and never verified by a Quadient designer
+    origin: {type: analysis, refs: ["7-devin-mechanism-rulebook-cim-validators-in-git.md"]}
+    fixtures: []
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: GOV-07
+    title: Every blocker or major readiness finding carries a decision record authored in a Devin session and accepted by a named reviewer
+    class: ASSIST
+    status: draft
+    source: G3 findings with a node (unbound fields, manual validations, unsupported constructs, duplicates)
+    target: src/decisions/<form_id>.yaml with session URL; status proposed (agent) -> accepted/rejected (human)
+    evidence: 9 Sep 2026 working session; partner unit testing and routing of discrepancies is manual and unrecorded
+    origin: {type: analysis, refs: ["7-devin-mechanism-rulebook-cim-validators-in-git.md", "13-sep-9-working-session-readout-and-next-steps.md"]}
+    fixtures: []
+    implemented_in: [decisions, gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null

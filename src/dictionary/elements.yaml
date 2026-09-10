@@ -1,0 +1,29 @@
+# Canonical business elements mined from the corpus (see deliverable file 8).
+# Format:
+#   id:           stable dotted element id
+#   label:        human label
+#   data_type:    string | boolean | date | decimal | integer
+#   target_path:  enterprise data path on the Quadient side (null until a steward confirms)
+#   status:       auto | proposed | verified | rejected
+#   evidence:     where the element came from
+#   reviewed_by:  named steward, required when status is verified
+#
+# Only elements with two independent sources of evidence are listed: an XDP
+# dataRef in 170574.xdp and a data variable of the same leaf name in the paired
+# 17-0574.xml.  Everything else waits for the bulk inventory.
+dictionary_version: 1
+elements:
+  - id: insured.address.state
+    label: Insured address state
+    data_type: string
+    target_path: null
+    status: proposed
+    evidence: 170574.xdp dataRef InsuredData.Address.State; 17-0574.xml data variable State
+    reviewed_by: null
+  - id: reconsideration.reason.aviation_ind
+    label: Reconsideration reason is aviation
+    data_type: boolean
+    target_path: null
+    status: proposed
+    evidence: 170574.xdp dataRef ReconsiderationRequest.ReasonForClass.AviationInd; 17-0574.xml data variable AviationInd
+    reviewed_by: null

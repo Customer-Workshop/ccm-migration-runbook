@@ -1,0 +1,25 @@
+# Per-form resolution of a source field (XFA SOM path) to a canonical element
+# and to the variable name the Quadient side uses.  Format:
+#   form_code, som, element (id in elements.yaml), target_variable, data_path,
+#   status (auto | proposed | verified | rejected), evidence, reviewed_by
+#
+# target_variable is what appears in the reference Layout XML today; it is not
+# a customer naming decision until a steward verifies the row.
+dictionary_version: 1
+rows:
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.Information.State
+    element: insured.address.state
+    target_variable: State
+    data_path: InsuredData.Address.State
+    status: proposed
+    evidence: exact leaf-name match between XDP dataRef and 17-0574.xml data variable
+    reviewed_by: null
+  - form_code: "17-0574"
+    som: .EFormsData.MainSubform.CheckBox1
+    element: reconsideration.reason.aviation_ind
+    target_variable: AviationInd
+    data_path: ReconsiderationRequest.ReasonForClass.AviationInd
+    status: proposed
+    evidence: exact leaf-name match between XDP dataRef and 17-0574.xml data variable
+    reviewed_by: null

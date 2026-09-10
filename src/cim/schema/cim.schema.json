@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Cognition-Partner-Workshops/AEM-migration-to-Quadient/cim/schema/cim.schema.json",
+  "title": "Canonical Intermediate Model (CIM) for AEM XFA/XDP to Quadient Inspire migration",
+  "description": "Vendor-neutral, loss-aware representation of a source form. Produced deterministically from XDP; consumed by the Quadient migration-stack builder. Every node carries provenance and a confidence classification so that automated work and human work stay separable and auditable.",
+  "type": "object",
+  "required": ["cim_version", "form", "pages", "containers", "fields", "statics", "styles", "data_dictionary", "diagnostics"],
+  "additionalProperties": false,
+  "properties": {
+    "cim_version": { "const": "1.1" },
+    "form": {
+      "type": "object",
+      "required": ["source_file", "source_sha256", "form_code", "title", "packets"],
+      "additionalProperties": true,
+      "properties": {
+        "source_file": { "type": "string" },
+        "source_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "form_code": { "type": ["string", "null"], "description": "Business form number, e.g. 18-1026. Extracted from static text or file name." },
+        "title": { "type": ["string", "null"] },
+        "revision_hint": { "type": ["string", "null"], "description": "Any revision/date marker found in static text. Used by the revision-drift gate." },
+        "locale": { "type": ["string", "null"] },
+        "packets": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "medium", "content_areas"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": ["string", "null"] },
+          "medium": {
+            "type": "object",
+            "required": ["width_mm", "height_mm"],
+            "properties": {
+              "width_mm": { "type": "number" },
+              "height_mm": { "type": "number" },
+              "stock": { "type": ["string", "null"] },
+              "orientation": { "enum": ["portrait", "landscape", null] }
+            }
+          },
+          "content_areas": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/box" }
+          },
+          "occur": { "$ref": "#/$defs/occur" }
+        }
+      }
+    },
+    "containers": {
+      "type": "array",
+      "description": "Subform tree flattened to a list. Maps to Quadient Table / RowSet / Cell nesting.",
+      "items": {
+        "type": "object",
+        "required": ["id", "som", "name", "depth", "parent_id", "layout", "role", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "parent_id": { "type": ["string", "null"] },
+          "som": { "type": "string", "description": "XFA SOM path, the stable identity of the node." },
+          "name": { "type": ["string", "null"] },
+          "depth": { "type": "integer", "minimum": 0 },
+          "layout": { "enum": ["position", "tb", "lr-tb", "rl-tb", "table", "row", null] },
+          "role": { "enum": ["page_body", "master_page", "section", "row", "group", "header", "footer", "signature", "barcode_zone", "unknown"] },
+          "section_number": { "type": ["string", "null"], "description": "e.g. '1' parsed from the heading '1. PREMIUM PAYER'." },
+          "section_heading": { "type": ["string", "null"], "description": "Verbatim heading draw text found as first child; the primary naming source for Quadient container names." },
+          "target_name_hint": { "type": ["string", "null"], "description": "PascalCase name derived from section_heading, e.g. PremiumPayer." },
+          "geometry": { "$ref": "#/$defs/box" },
+          "occur": { "$ref": "#/$defs/occur" },
+          "break_before": { "type": ["string", "null"] },
+          "keep_together": { "type": ["boolean", "null"] },
+          "confidence": { "$ref": "#/$defs/confidence" },
+          "provenance": { "$ref": "#/$defs/provenance" }
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "som", "name", "container_id", "control", "datatype", "semantic", "binding", "geometry", "validations", "scripts", "confidence", "provenance"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "som": { "type": "string" },
+          "name": { "type": ["string", "null"] },
+          "container_id": { "type": ["string", "null"] },
+          "control": {
+            "type": "object",
+            "required": ["xfa_ui", "kind"],
+            "properties": {
+              "xfa_ui": { "type": ["string", "null"], "description": "textEdit | checkButton | dateTimeEdit | numericEdit | choiceList | barcode | imageEdit | signature | button | passwordEdit" },
+              "kind": { "enum": ["text", "multiline_text", "checkbox", "radio", "dropdown", "date", "number", "currency", "barcode", "image", "signature", "action", "computed", "unknown"] },
+              "radio_group_som": { "type": ["string", "null"] },
+              "items": { "type": "array", "items": { "type": "object", "properties": { "value": { "type": ["string", "null"] }, "label": { "type": ["string", "null"] } } } },
+              "max_chars": { "type": ["integer", "null"] },
+              "comb_cells": { "type": ["integer", "null"] },
+              "read_only": { "type": ["boolean", "null"] },
+              "access": { "enum": ["open", "readOnly", "protected", "nonInteractive", null] },
+              "presence": { "enum": ["visible", "hidden", "invisible", "inactive", null] }
+            }
+          },
+          "datatype": { "enum": ["string", "boolean", "date", "datetime", "integer", "decimal", "currency", "image", "barcode", "void"] },
+          "caption": { "type": ["string", "null"] },
+          "label_candidates": {
+            "type": "array",
+            "description": "Ordered label evidence used for semantic naming: own caption, nearest left/above draw, ancestor section heading.",
+            "items": { "type": "object", "properties": { "text": { "type": "string" }, "source": { "enum": ["caption", "left_draw", "above_draw", "section_heading", "tooltip"] }, "distance_mm": { "type": ["number", "null"] } } }
+          },
+          "semantic": {
+            "type": "object",
+            "required": ["role", "target_name_hint", "requires_review"],
+            "properties": {
+              "role": { "type": ["string", "null"], "description": "Business role token, e.g. person.first_name, bank.routing_number, payment.frequency" },
+              "target_name_hint": { "type": ["string", "null"], "description": "Proposed Quadient FormControl/variable name. NEVER authoritative: see confidence." },
+              "dictionary_key": { "type": ["string", "null"], "description": "Key resolved against the enterprise data dictionary crosswalk, when a match exists." },
+              "requires_review": { "type": "boolean" }
+            }
+          },
+          "binding": {
+            "type": "object",
+            "required": ["mode", "source_path"],
+            "properties": {
+              "mode": { "enum": ["dataRef", "global", "none", "script", "unresolved"] },
+              "match": { "type": ["string", "null"] },
+              "source_path": { "type": ["string", "null"], "description": "Normalised dot path derived from XFA bind ref, e.g. EFormsData.PayerData.custFirstNam" },
+              "xsd_type": { "type": ["string", "null"], "description": "Type resolved from the embedded XFA XSD packets, when available." },
+              "target_variable_hint": { "type": ["string", "null"] },
+              "nullable": { "type": ["boolean", "null"] }
+            }
+          },
+          "geometry": { "$ref": "#/$defs/box" },
+          "style_ref": { "type": ["string", "null"] },
+          "format": {
+            "type": "object",
+            "properties": {
+              "display_picture": { "type": ["string", "null"] },
+              "edit_picture": { "type": ["string", "null"] },
+              "data_picture": { "type": ["string", "null"] }
+            }
+          },
+          "validations": { "type": "array", "items": { "$ref": "#/$defs/validation" } },
+          "scripts": { "type": "array", "items": { "$ref": "#/$defs/script" } },
+          "confidence": { "$ref": "#/$defs/confidence" },
+          "provenance": { "$ref": "#/$defs/provenance" }
+        }
+      }
+    },
+    "statics": {
+      "type": "array",
+      "description": "Non-interactive content: headings, instructions, legal blocks, rules/lines, logos.",
+      "items": {
+        "type": "object",
+        "required": ["id", "som", "kind", "container_id", "confidence", "provenance"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "som": { "type": "string" },
+          "container_id": { "type": ["string", "null"] },
+          "kind": { "enum": ["text", "rich_text", "image", "line", "rectangle", "unknown"] },
+          "text": { "type": ["string", "null"] },
+          "is_heading": { "type": "boolean" },
+          "is_legal_block": { "type": "boolean" },
+          "geometry": { "$ref": "#/$defs/box" },
+          "style_ref": { "type": ["string", "null"] },
+          "image_ref": { "type": ["string", "null"], "description": "Externalised asset id. Base64 image payloads are written to the asset store, never inlined in the CIM." },
+          "confidence": { "$ref": "#/$defs/confidence" },
+          "provenance": { "$ref": "#/$defs/provenance" }
+        }
+      }
+    },
+    "styles": {
+      "type": "array",
+      "description": "Deduplicated source style set. Each entry maps to one Quadient TextStyle/ParaStyle/BorderStyle/FillStyle after font substitution.",
+      "items": {
+        "type": "object",
+        "required": ["id", "usage_count"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "typeface": { "type": ["string", "null"] },
+          "size_pt": { "type": ["number", "null"] },
+          "bold": { "type": ["boolean", "null"] },
+          "italic": { "type": ["boolean", "null"] },
+          "underline": { "type": ["boolean", "null"] },
+          "color": { "type": ["string", "null"] },
+          "align": { "type": ["string", "null"] },
+          "v_align": { "type": ["string", "null"] },
+          "border": { "type": ["object", "null"] },
+          "fill": { "type": ["string", "null"] },
+          "margins_mm": { "type": ["object", "null"] },
+          "usage_count": { "type": "integer" },
+          "target_name_hint": { "type": ["string", "null"], "description": "e.g. Arial_10pt_Bold after applying the font substitution policy." }
+        }
+      }
+    },
+    "data_dictionary": {
+      "type": "object",
+      "description": "Data contract recovered from the XDP itself (embedded XFA XSD packets + connectionSet). This is the source-side contract; it is NOT the Quadient variable naming standard.",
+      "required": ["connections", "types"],
+      "properties": {
+        "connections": { "type": "array", "items": { "type": "object" } },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["namespace", "type_name", "elements"],
+            "properties": {
+              "namespace": { "type": ["string", "null"] },
+              "type_name": { "type": "string" },
+              "elements": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "type"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "type": { "type": ["string", "null"] },
+                    "min_occurs": { "type": ["string", "null"] },
+                    "max_occurs": { "type": ["string", "null"] }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "description": "Machine-readable extraction summary. Drives the automation-readiness metrics and the human review queue.",
+      "required": ["counts", "review_queue"],
+      "properties": {
+        "counts": { "type": "object" },
+        "unsupported": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+        "review_queue": { "type": "array", "items": { "$ref": "#/$defs/finding" } }
+      }
+    }
+  },
+  "$defs": {
+    "box": {
+      "type": ["object", "null"],
+      "properties": {
+        "x_mm": { "type": ["number", "null"] },
+        "y_mm": { "type": ["number", "null"] },
+        "w_mm": { "type": ["number", "null"] },
+        "h_mm": { "type": ["number", "null"] },
+        "page_index": { "type": ["integer", "null"] },
+        "anchor": { "type": ["string", "null"] },
+        "positioned": { "type": ["boolean", "null"], "description": "true when the parent subform layout is 'position' (absolute), false when flowed." }
+      }
+    },
+    "occur": {
+      "type": ["object", "null"],
+      "properties": {
+        "min": { "type": ["integer", "null"] },
+        "max": { "type": ["integer", "null"], "description": "-1 means unbounded." },
+        "initial": { "type": ["integer", "null"] },
+        "repeating": { "type": ["boolean", "null"] }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": ["kind", "transferability"],
+      "properties": {
+        "kind": { "enum": ["mandatory", "picture_format", "script", "range", "enumeration", "mutual_exclusion", "cross_field", "length", "signature_required"] },
+        "expression": { "type": ["string", "null"] },
+        "picture": { "type": ["string", "null"] },
+        "message": { "type": ["string", "null"] },
+        "severity": { "enum": ["error", "warning", "info", null] },
+        "transferability": {
+          "enum": ["declarative", "rule_translatable", "runtime_only", "manual"],
+          "description": "declarative = expressible in the Quadient object model; rule_translatable = expressible as a Quadient script/condition; runtime_only = belongs to the capture channel, not the print/compose layout; manual = requires an analyst."
+        },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "script": {
+      "type": "object",
+      "required": ["activity", "language", "classification"],
+      "properties": {
+        "activity": { "type": ["string", "null"], "description": "click | change | exit | enter | calculate | validate | initialize | docReady" },
+        "language": { "type": ["string", "null"] },
+        "body": { "type": ["string", "null"] },
+        "length": { "type": "integer" },
+        "classification": {
+          "enum": ["formatting", "uppercase", "mutual_exclusion", "conditional_clear", "visibility", "calculation", "navigation", "submit", "signature", "external_call", "unknown"]
+        },
+        "targets": { "type": "array", "items": { "type": "string" }, "description": "SOM paths referenced by the script." },
+        "transferability": { "enum": ["declarative", "rule_translatable", "runtime_only", "manual"] },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["structural", "semantic"],
+      "properties": {
+        "structural": { "enum": ["deterministic", "derived", "unknown"], "description": "deterministic = read directly from the XDP; derived = computed by a documented rule; unknown = could not be established." },
+        "semantic": { "enum": ["bound", "dictionary", "heuristic", "unresolved"], "description": "bound = an explicit XFA binding exists; dictionary = resolved via the enterprise crosswalk; heuristic = inferred from labels/geometry; unresolved = needs an analyst." },
+        "score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "reasons": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source"],
+      "properties": {
+        "source": { "type": "string", "description": "file#xpath or file#SOM of the originating node." },
+        "extractor": { "type": ["string", "null"] },
+        "rule_id": { "type": ["string", "null"], "description": "Rulebook identifier that produced a derived value, e.g. OBJ-04." }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": { "type": "string" },
+        "severity": { "enum": ["blocker", "major", "minor", "info"] },
+        "message": { "type": "string" },
+        "node": { "type": ["string", "null"] },
+        "rule_id": { "type": ["string", "null"] },
+        "owner": { "enum": ["automation", "analyst", "designer", "data_steward", null] }
+      }
+    }
+  }
+}

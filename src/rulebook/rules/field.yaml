@@ -1,0 +1,122 @@
+family: FLD
+title: Field mapping (identity, control kind, data type, naming)
+rules:
+  - id: FLD-01
+    title: Field identity is the XFA SOM path, never the field name
+    class: AUTO
+    status: draft
+    source: field ancestry; sibling duplicates indexed as name[1]
+    target: stable key for every derived object
+    evidence: "25 duplicate leaf names in 17-0574 (Yes, Yes1, Date5, CheckBox16)"
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._unique_som]
+    gates: [G1]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-02
+    title: Control kind comes from the first child of ui
+    class: AUTO
+    status: draft
+    source: "ui/{textEdit|checkButton|dateTimeEdit|numericEdit|choiceList|barcode|imageEdit|signature|button}"
+    target: "text (multiLine=1 -> multiline_text), checkbox, date, number, dropdown, barcode, image, signature, action"
+    evidence: classification succeeded for 100% of 234 fields across the three sources
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.UI_TO_KIND]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-03
+    title: Data type = control kind refined by picture clause and embedded XSD type
+    class: AUTO
+    status: draft
+    source: "format/picture ($, zzz9.99, num{} -> currency; date{}, MM/DD/YYYY -> date); xsd type of bound leaf"
+    target: CIM datatype (string, boolean, date, integer, decimal, currency, ...)
+    evidence: "417 complexTypes in 17-0574 give xsd:boolean/xsd:double/xsd:string for bound leaves"
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._datatype]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-04
+    title: Duplicate names are disambiguated by ancestor section
+    class: ASSIST
+    status: draft
+    source: field name + section heading of the nearest ancestor
+    target: "<Section><Label><TypeSuffix>; without a section heading the field goes to review"
+    evidence: "PForm.FirstName and Finform.FirstName -> PremiumPayerFirstName vs FinancialAgentFullNam"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._semantic]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-05
+    title: Naming evidence is ranked and the rank used is recorded
+    class: ASSIST
+    status: draft
+    source: "(1) bind/@ref leaf, (2) caption, (3) nearest left/above draw, (4) section heading, (5) field name"
+    target: semantic.target_name_hint plus label_candidates
+    evidence: "name evidence available for 100% / 100% / 89.6% of fields (17-0574 / 18-1026 / 18-1721)"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._labels, converters.xdp_to_cim.extractor.XdpExtractor._semantic]
+    gates: [G3]
+    notes: "rank (3) nearest left/above draw is not yet implemented in the extractor; only caption, tooltip and section heading are collected"
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-06
+    title: Type suffix convention on target names
+    class: AUTO
+    status: draft
+    source: CIM datatype / control kind
+    target: "Ind boolean, Dte date, Num number/identifier, Amt amount, Cde code, Nam name, Txt free text, Radio/RadioID_n radio member"
+    evidence: "achBankAcctNum, depositFreqCde, PayerPersonalFirstNam, formSubmittedInd"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._semantic]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-07
+    title: A proposed name is never authoritative; names resolve against the enterprise dictionary
+    class: AUTO*
+    status: draft
+    source: semantic.target_name_hint
+    target: references/customer/data-dictionary.yaml entry, or a review item
+    evidence: "exact-name agreement with the human-authored target was 0.0% (18-1026) and 12.2% (17-0574)"
+    origin: {type: coverage_report, refs: ["18-1026", "17-0574"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-08
+    title: Buttons, submit controls and page-arithmetic fields are out of compose scope
+    class: AUTO
+    status: draft
+    source: "ui/button; CurrentPage; PageCount"
+    target: recorded as capture-channel objects, no FormControl
+    evidence: "HTTPSubmitButton1, CurrentPage, PageCount in 18-1026 have no target FormControl"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [gates.g4_coverage]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: FLD-09
+    title: Checkbox clusters answering one question collapse to one variable plus N FormControls
+    class: ASSIST
+    status: draft
+    source: checkboxes sharing a parent subform, a y row band and a label pattern
+    target: one code variable + N radio FormControls
+    evidence: "14 source checkboxes in 18-1026 -> 8 radio FormControls + code variables"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: []
+    gates: [G4]
+    notes: cluster detection is not implemented; only explicit exclGroup members are grouped (OBJ-06)
+    reviewed_by: null
+    reviewed_on: null

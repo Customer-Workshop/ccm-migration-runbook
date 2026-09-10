@@ -1,0 +1,107 @@
+family: BND
+title: Binding transformation (data paths, variables, dictionary)
+rules:
+  - id: BND-01
+    title: Normalise bind/@ref into a dotted canonical path
+    class: AUTO
+    status: draft
+    source: "bind/@ref with $record., $data., $., ! and [*] stripped"
+    target: EFormsData.PayerData.custFirstNam
+    evidence: 120/123 fields in 17-0574
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._binding]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-02
+    title: The canonical path defines the target variable tree
+    class: AUTO
+    status: draft
+    source: canonical path segments
+    target: Variable groups under Def.Data, typed leaves, parents created on demand
+    evidence: 314 / 58 non-system variables organised in nested groups in the two targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-03
+    title: Leaf type from the embedded XSD when the leaf name resolves uniquely
+    class: AUTO
+    status: draft
+    source: xsd complexType elements in the schema packet
+    target: "xsd:boolean -> boolean, xsd:double -> number"
+    evidence: 417 complexTypes in 17-0574
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._resolve_xsd_types]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-04
+    title: Unbound fields cannot yield a data path and are routed to a data steward
+    class: MANUAL
+    status: draft
+    source: field without bind/@ref
+    target: review item with all label evidence attached
+    evidence: "binding density 97.6% (17-0574), 12.1% (18-1026), 0% (18-1721)"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._field, gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-05
+    title: Target variable names come from the enterprise dictionary crosswalk, not the path leaf
+    class: AUTO*
+    status: draft
+    source: canonical path
+    target: references/customer/data-dictionary.yaml entry (canonical_path -> quadient_variable)
+    evidence: "three naming universes: Accno / AccountNumber / achBankAcctNum"
+    origin: {type: coverage_report, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [gates.g3_readiness]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-06
+    title: FormControl references its variable; the Flow references the FormControl through <O Id>
+    class: AUTO
+    status: draft
+    source: field
+    target: builder-allocated ids and Forward references
+    evidence: "<O Id=\"246\"/> inside FlowContent resolving to FormControl declarations; 0 dangling references in both targets"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [gates.g5_target, gates.target_inventory]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-07
+    title: Script-populated values map to computed variables, never to input variables
+    class: ASSIST
+    status: draft
+    source: calculate scripts, page arithmetic, concatenations
+    target: Quadient variable with a computed expression
+    evidence: "CurrentPage/PageCount -> system variables; concatenation scripts in 17-0574"
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: []
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: BND-08
+    title: External data connections are out of layout scope; record the contract
+    class: MANUAL
+    status: draft
+    source: "connectionSet (xsdConnection -> EFormsDataSet.xsd, WSDL/SOAP)"
+    target: data_dictionary.connections in the CIM, handed to the data pipeline
+    evidence: "xsdConnection DataConnection -> ..\\..\\..\\SCHEMA\\1.0\\LIFE\\EFormsDataSet.xsd"
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor.data_dictionary]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null

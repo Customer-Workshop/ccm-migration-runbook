@@ -1,0 +1,65 @@
+# Source/target pairing manifest. Pairing is by the digits in the file names
+# (170574.xdp <-> 17-0574.xml), which is the convention the reference pairs were delivered with.
+#
+# Raw artefacts are NOT committed (see src/fixtures/raw/README.md). Each entry records the SHA-256 so
+# that a locally supplied file can be verified before any gate runs on it. `CCM_FIXTURE_ROOT`
+# (default: src/fixtures/raw/) is where the pipeline looks for the files.
+manifest_version: 1
+forms:
+  - form_id: "17-0574"
+    title_hint: Request for Reconsideration
+    tier: A
+    source:
+      file: 170574.xdp
+      sha256: c3fdaa36a9a7d55e65a8ba122249ca2606c47e9f08c0429d8e48109fe824e975
+      bytes: 1111158
+    target:
+      layout_xml:
+        file: 17-0574.xml
+        sha256: cfc13c2baf92376af2c3e7fa7ea838ca2ed7537e21ef57463d75b60647285b1e
+        bytes: 3504237
+      composed_pdf:
+        file: 17-0574_Quad.pdf
+        sha256: 38fc7b64aa6998e3084d59fa9b5db2b1b2b6f937779552b341e9d0cade22c93f
+        bytes: 358740
+        producer: Quadient Inspire Designer 17.0.436.3
+        pages: 9
+    status: reference_pair
+    notes:
+      - target layout was authored from a newer business-form revision than the XDP (G0 fails at 77.1% static-text coverage)
+      - no fixed input data file was supplied, so G6 cannot compose an equivalent PDF
+
+  - form_id: "18-1026"
+    title_hint: EFT Authorization
+    tier: B
+    source:
+      file: 181026.xdp
+      sha256: 6b504e747c4097b7954117cc94b1b87d3712ca291fb7640ae9396000c7c693ce
+      bytes: 224864
+    target:
+      layout_xml:
+        file: 18-1026_Quad_2.xml
+        sha256: 65049b9395e5feb03b4cd0daf42faaf4ec0fbb928b8bb224f2f3388bc62f5288
+        bytes: 453783
+      composed_pdf:
+        file: 181026_Quad.pdf
+        sha256: 284e06d9f620e004aa222ca50bee04286d84cca934ce108badf19685c8bdab5d
+        bytes: 68991
+        producer: Quadient Inspire Designer 17.0.436.3
+        pages: 1
+    status: reference_pair
+    notes:
+      - delivered as "18-1026_Quad 2.xml"; the partner tooling referred to it as 18-1026_Quad.xml. Same content is assumed but unverified because the earlier file was not supplied
+      - no fixed input data file was supplied, so G6 cannot compose an equivalent PDF
+
+  - form_id: "18-1721"
+    title_hint: null
+    tier: C
+    source:
+      file: 181721.xdp
+      sha256: dbe906bd8ce0b4528d003a09b2206c09aad869184fcfdc708b7f9234953424bb
+      bytes: 147127
+    target: null
+    status: source_only
+    notes:
+      - no Quadient layout XML or composed PDF was supplied for this form; gates G0, G4, G5, G6 are skipped

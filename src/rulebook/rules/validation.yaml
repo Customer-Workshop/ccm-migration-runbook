@@ -1,0 +1,120 @@
+family: VAL
+title: Validation and script transformation
+rules:
+  - id: VAL-01
+    title: validate/@nullTest -> mandatory flag with message carried over
+    class: AUTO
+    status: draft
+    source: "validate[@nullTest=error|warning]"
+    target: mandatory flag on the FormControl
+    evidence: 2 / 3 / 10 validate nodes across the sources
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._validations]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-02
+    title: picture clauses -> Quadient format mask
+    class: AUTO
+    status: draft
+    source: "validate/picture; format/picture"
+    target: "date pictures -> date formatting; num{}/$ -> numeric/currency formatting"
+    evidence: picture clauses on date and amount fields
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._validations]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-03
+    title: validate/script -> condition when it only reads sibling values, otherwise manual
+    class: ASSIST
+    status: draft
+    source: validate/script
+    target: Quadient condition/rule
+    evidence: 3 script validations in 18-1026
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._validations]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-04
+    title: maxChars/minLength -> length constraint
+    class: AUTO
+    status: draft
+    source: field/@maxChars, field/@minLength
+    target: length constraint on the FormControl
+    evidence: maxChars present on several text fields
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._validations]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-05
+    title: Event scripts are classified by idiom before translation
+    class: AUTO
+    status: draft
+    source: event/script body (text only, never executed)
+    target: "uppercase, mutual_exclusion, conditional_clear, visibility, calculation, formatting, navigation, submit, signature, external_call"
+    evidence: 68 scripts classified across the three sources; 82-100% fall into mechanically translatable idioms
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
+    fixtures: ["17-0574", "18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.SCRIPT_CLASSIFIERS]
+    gates: [G2, G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-06
+    title: signature, external_call and unclassified idioms are never auto-translated
+    class: MANUAL
+    status: draft
+    source: scripts classified manual
+    target: review item with the script body attached
+    evidence: 4 manual-class scripts in 18-1026 (submit + signature)
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._scripts]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-07
+    title: navigation/submit idioms belong to the capture channel and are dropped with a runtime_only record
+    class: AUTO
+    status: draft
+    source: "HTTPSubmitButton1, xfa.host calls"
+    target: runtime_only script record, nothing in the layout
+    evidence: observed in 18-1026
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.SCRIPT_CLASSIFIERS]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-08
+    title: Mutual exclusion scripts are re-expressed structurally as a radio group
+    class: ASSIST
+    status: draft
+    source: "Yes.rawValue=0 when No is picked"
+    target: radio group (OBJ-06)
+    evidence: radio FormControls in both targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: []
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: VAL-09
+    title: Interactive behaviours with no compose equivalent are recorded as accepted losses
+    class: MANUAL
+    status: draft
+    source: focus/exit handlers, tooltips, dynamic access changes
+    target: accepted-loss record
+    evidence: presence/access mutations in 17-0574 scripts
+    origin: {type: reference_pair, refs: ["17-0574"]}
+    fixtures: ["17-0574"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._scripts]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null

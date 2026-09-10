@@ -1,0 +1,160 @@
+# Rulebook format is documented once in src/rulebook/README.md.
+family: OBJ
+title: Object mapping (XFA construct -> Quadient object)
+rules:
+  - id: OBJ-01
+    title: Root subform -> Layout root; pageArea -> Page; contentArea -> FlowArea
+    class: AUTO
+    status: draft
+    source: template/subform[root]; pageArea; contentArea
+    target: Layout; Page; FlowArea (one per contentArea plus one per functional zone)
+    evidence: "17-0574: 9 pageArea names -> 9 Page declarations, 60 FlowArea records named *_BodyFlowArea_PageN, *_FooterFlowArea_PageN, *_BarcodeFlowArea_PageN, *_LogoFlowArea_PageN, *_eSignVisibilityFlowArea_PageN"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor.extract_pages]
+    gates: [G1, G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-02
+    title: Section subform -> Table; child rows -> RowSet; leaf content -> Cell; text -> Flow
+    class: AUTO
+    status: draft
+    source: subform with a section heading draw
+    target: Table > RowSet > Cell > Flow/FlowContent
+    evidence: "18-1026: 22 subforms -> 20 Table + 46 RowSet + 73 Cell + 78 Flow"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._walk_subform]
+    gates: [G1, G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-03
+    title: Container business name comes from its first heading draw, not the subform name
+    class: AUTO
+    status: draft
+    source: first non-blob draw inside the subform, leading ordinal stripped
+    target: PascalCase name suffixed _Table N / _RowSet N
+    evidence: "'1. PREMIUM PAYER' -> PremiumPayer_Table 1; source names are opaque (PForm, S5GH, Bankform). 6/6 sections in 18-1026 matched"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._heading_of]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-04
+    title: "Name prefixes: form code for page-level objects, module tag for FormControls"
+    class: ASSIST
+    status: draft
+    source: form code from file name or static text; module tag is a human decision
+    target: "17-0574_RequestForReconsideration_Page2, 18-1026_Footer, 'EFTAuth BankAcctNum_FormControl'"
+    evidence: observed in both targets; the module tag (EFTAuth) is not derivable from the XDP
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-05
+    title: draw maps by its value child
+    class: AUTO
+    status: draft
+    source: draw/value/{text|exData|line|rectangle|image}
+    target: "text/exData -> Flow+FlowContent/P/T; line/rectangle -> PathObject; image -> image object referencing an externalised asset"
+    evidence: "18-1026: 35 draws -> 76 text runs + 10 PathObject; both targets contain exactly 10 PathObject"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._draw]
+    gates: [G2, G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-06
+    title: exclGroup and same-question checkbox clusters -> one radio group
+    class: AUTO
+    status: draft
+    source: exclGroup/field; checkbox clusters (see FLD-09)
+    target: one FormControl per member sharing RadioID_n, backed by a single code variable
+    evidence: "*MobileYes_FormControl / *MobileNo_FormControl; frequency cluster of 4 checkboxes -> depositFreqCde"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._excl_group]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-07
+    title: Repeated visual property sets become deduplicated library styles
+    class: AUTO
+    status: draft
+    source: font/para/border combinations
+    target: TextStyle, ParaStyle, BorderStyle, FillStyle, Color, Font, FormStyleSkin
+    evidence: "23 distinct source combinations -> 11 TextStyle + 5 ParaStyle + 7 BorderStyle in the 18-1026 target"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-08
+    title: ui/barcode -> Barcode object in its own FlowArea
+    class: ASSIST
+    status: draft
+    source: field/ui/barcode
+    target: Barcode inside *_BarcodeFlowArea_*; symbology, module width and HR line verified against the reference PDF
+    evidence: "17-0574 has 3 barcode fields; 18-1026 target has 1 Barcode"
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._field]
+    gates: [G6]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-09
+    title: Interactive field -> FormControl plus a data Variable, linked through an inline <O> placeholder
+    class: AUTO
+    status: draft
+    source: field
+    target: FormControl (interactive channel) + Variable (compose channel) + <O Id> in the rendering Flow
+    evidence: "18-1026: 30 FormControl, 58 non-system Variable, inline <O> placeholders inside FlowContent"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G4, G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-10
+    title: Read-only, hidden and page-arithmetic fields -> Def.SystemVariables, not new data variables
+    class: AUTO
+    status: draft
+    source: field[@access=readOnly|@presence=hidden]; CurrentPage; PageCount
+    target: Def.SystemVariables (PageIndex, GlobalPageCount, ...)
+    evidence: 33 system variables present in both targets, identical set
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G4]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-11
+    title: subformSet, area and occur-driven alternates have no direct analogue
+    class: MANUAL
+    status: draft
+    source: subformSet; area; nested occur alternates
+    target: flatten to the selected branch and record the loss (UNS-05)
+    evidence: see UNS-05
+    origin: {type: analysis, refs: ["01_Conversion_Rulebook.md"]}
+    fixtures: ["18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._walk_subform]
+    gates: [G3]
+    reviewed_by: null
+    reviewed_on: null
+  - id: OBJ-12
+    title: Master-page (pageSet/pageArea) content is extracted as a master_page container
+    class: AUTO
+    status: draft
+    source: subform/pageSet/pageArea/{draw|field}
+    target: page-level header/footer/logo/barcode objects referenced by every Page (see LAY-08)
+    evidence: "181026.xdp carries 5 fields and 4 draws (logo, page numbering, barcode, formSubmittedInd) on the master page; the v1.0 extractor dropped them silently"
+    origin: {type: lossless_gate, refs: ["G2-LOSSLESS on 18-1026 and 18-1721"]}
+    fixtures: ["18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor.walk]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null

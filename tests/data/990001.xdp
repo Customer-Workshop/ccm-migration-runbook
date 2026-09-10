@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/">
+<template xmlns="http://www.xfa.org/schema/xfa-template/3.3/">
+   <subform name="EFormData" layout="tb">
+      <pageSet>
+         <pageArea name="Page1" id="Page1">
+            <contentArea x="12.7mm" y="27.94mm" w="190.5mm" h="238.76mm"/>
+            <draw name="Footer" w="57.15mm" h="5mm" y="270mm" x="12.7mm">
+               <ui><textEdit/></ui>
+               <value><text>99-0001 (0126)</text></value>
+            </draw>
+            <medium stock="letter" short="215.9mm" long="279.4mm"/>
+         </pageArea>
+      </pageSet>
+      <subform name="MainSubform" layout="tb">
+         <draw name="Title" w="190mm" h="8mm" x="0mm" y="0mm">
+            <ui><textEdit/></ui>
+            <value><text>Synthetic Test Form</text></value>
+            <font typeface="Arial" size="12pt" weight="bold"/>
+            <para hAlign="center"/>
+         </draw>
+         <subform name="Information" layout="position" h="30mm" w="190mm">
+            <draw name="Heading" w="190mm" h="5mm" x="0mm" y="0mm">
+               <ui><textEdit/></ui>
+               <value><text>1. Insured Information</text></value>
+               <font typeface="Arial" size="10pt"/>
+            </draw>
+            <field name="State" w="20mm" h="7mm" x="0mm" y="6mm">
+               <ui><textEdit/></ui>
+               <caption><value><text>State</text></value></caption>
+               <font typeface="Arial" size="9pt"/>
+               <bind match="dataRef" ref="$record.InsuredData.Address.State"/>
+            </field>
+            <field name="Notes" w="80mm" h="7mm" x="30mm" y="6mm">
+               <ui><textEdit multiLine="1"/></ui>
+               <caption><value><text>Notes</text></value></caption>
+               <bind match="none"/>
+            </field>
+            <field name="AviationInd" w="6mm" h="6mm" x="0mm" y="15mm">
+               <ui><checkButton/></ui>
+               <caption><value><text>Aviation</text></value></caption>
+               <bind match="dataRef" ref="$record.ReconsiderationRequest.ReasonForClass.AviationInd"/>
+               <event activity="click" name="event__click">
+                  <script contentType="application/x-javascript">app.alert("clicked");</script>
+               </event>
+            </field>
+         </subform>
+      </subform>
+   </subform>
+</template>
+</xdp:xdp>

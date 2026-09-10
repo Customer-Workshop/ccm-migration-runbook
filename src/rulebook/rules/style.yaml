@@ -1,0 +1,43 @@
+family: STY
+title: Style mapping
+rules:
+  - id: STY-01
+    title: Font substitution is a policy recorded once per form
+    class: AUTO*
+    status: draft
+    source: Myriad Pro (100% of source nodes)
+    target: Arial (targets use Arial only)
+    evidence: both reference targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.cim_to_inspire.build_plan]
+    gates: [G5]
+    reviewed_by: null
+    reviewed_on: null
+  - id: STY-02
+    title: Style naming convention
+    class: ASSIST
+    status: draft
+    source: font/para/border combination
+    target: "<Font>_<Size>pt[_Bold][_Italic] plus semantic decorators (BottomLine_Empty, Underline_InCell, Align_Right, 3.18mm_Before, ...)"
+    evidence: target style libraries
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    gates: [G5]
+    notes: base name is AUTO, decorators are ASSIST
+    reviewed_by: null
+    reviewed_on: null
+  - id: STY-03
+    title: Deduplicate styles per form and reuse a shared corporate library across forms
+    class: AUTO
+    status: draft
+    source: all style combinations in the form
+    target: "11 TextStyles from 23 combinations; FormStyleSkin counts 2 and 4"
+    evidence: both reference targets
+    origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
+    fixtures: ["17-0574", "18-1026"]
+    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    gates: [G2]
+    reviewed_by: null
+    reviewed_on: null
