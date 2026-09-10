@@ -1,0 +1,31 @@
+decisions_version: 1
+form_id: "17-0574"
+session: https://partner-workshops.devinenterprise.com/sessions/060b9626e9ad430186f22f341a34278b
+decisions:
+  - id: D-001
+    node: ".EFormsData.MainSubform.Footer1.NB6001_barcode"
+    finding: G3-UNBOUND
+    action: manual_design
+    proposal: "designer builds the PDF417 Barcode object inside 0574_BarcodeFlowArea_Page2 (per OBJ-08); barcode content is composed at run time, no data variable is bound"
+    rationale: "XDP <barcode type=pdf417 dataLength=100 errorCorrectionLevel=5 moduleWidth=0.013306in>, read-only/protected, bind mode none, no script; 17-0574.xml has one *_BarcodeFlowArea_* per page and no NB6001 variable; build plan already skips the control (OBJ-08). Nothing to bind, so the finding is resolved by design work, not a dictionary row"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-002
+    node: ".EFormsData.MainSubform.Footer1.NB6001_barcode[1]"
+    finding: G3-UNBOUND
+    action: manual_design
+    proposal: "second footer instance of the same PDF417 barcode; same Barcode object placed in the next page's 0574_BarcodeFlowArea_*"
+    rationale: "identical <barcode> definition to D-001 (same name NB6001_barcode, occurrence [1]); the reference layout repeats the FlowArea per page (Page2..Page8, Page_Consent) rather than binding a variable"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-003
+    node: ".EFormsData.MainSubform.Footer1.NB6001_barcode[2]"
+    finding: G3-UNBOUND
+    action: manual_design
+    proposal: "third footer instance of the same PDF417 barcode; same Barcode object placed in the next page's 0574_BarcodeFlowArea_*"
+    rationale: "identical <barcode> definition to D-001 (occurrence [2]); symbology, module width and HR line must be checked against 17-0574_Quad.pdf by the designer (OBJ-08 evidence clause)"
+    status: proposed
+    decided_by: null
+    decided_on: null
