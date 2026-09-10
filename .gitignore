@@ -5,6 +5,7 @@ src/fixtures/import_logs/*.json
 src/fixtures/composition_logs/*.json
 
 out/
+handoff/
 __pycache__/
 *.pyc
 *.egg-info/

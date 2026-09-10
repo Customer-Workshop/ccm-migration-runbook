@@ -1,0 +1,423 @@
+# Decision record for form 18-1026 (EFT Authorization, revision hint 414, tier B).
+# Written by the converting Devin session; every record is `proposed` until a named reviewer
+# sets decided_by/decided_on. Evidence sources: 181026.xdp (captions, dataRefs, script idioms,
+# classified not executed), 18-1026_Quad_2.xml (data variables and EFTAuth FormControls),
+# out/readiness.json G4 match table.
+decisions_version: 1
+form_id: "18-1026"
+session: https://partner-workshops.devinenterprise.com/sessions/060b9626e9ad430186f22f341a34278b
+decisions:
+  # --- Billing account -------------------------------------------------------------------
+  - id: D-001
+    node: ".EFormsData.EFTA.PAYER.Billaccno"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element billing_account.isa_num -> target variable isaNum (EFTAuth BillingAcctNum_FormControl)"
+    rationale: >-
+      caption 'BILLING ACCOUNT NUMBER'; the field's initialize script reads
+      EFormsData.InsuranceServiceAccount.isaNum..isaNum6; target export has data variable isaNum and
+      FormControl 'EFTAuth BillingAcctNum_FormControl' (G4 score 0.923)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-002
+    node: ".EFormsData.EFTA.PAYER.Billaccno"
+    finding: VAL-SCRIPT-MANUAL
+    action: translate_script
+    proposal: >-
+      compose-time expression: join non-empty InsuranceServiceAccount.isaNum, isaNum2..isaNum6 with ', '
+      into the Billaccno display value
+    rationale: >-
+      initialize script (1488 chars, classified unknown) is a pure concatenation of up to six sibling
+      account numbers separated by ', '; no host API, no network; the target static text contains the
+      target-only token 'accounts' (G0), consistent with a multi-account display. Translation must be
+      written by the designer, not derived from the script body
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Premium payer block ---------------------------------------------------------------
+  - id: D-003
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.BusinessName"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.business_or_trust_name -> PayerBusinessOrTrustOrgztnNam"
+    rationale: >-
+      caption 'BUSINESS / TRUSTEE NAME (if applicable)' inside the payer subform PForm; target data
+      variable PayerBusinessOrTrustOrgztnNam (G4 score 0.789) is the only business/trust name in the export
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-004
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.PhoneNo"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.telephone_number -> PayerTelNum (EFTAuth PremiumPayerTelNum_FormControl)"
+    rationale: >-
+      caption 'PHONE NUMBER' in the payer subform; target variable PayerTelNum (G4 score 0.921) and
+      FormControl 'EFTAuth PremiumPayerTelNum_FormControl'
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-005
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Home"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.phone_is_home -> PayerHomeRadio (EFTAuth PremiumPayerHomeRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'Home' on the same row as PHONE NUMBER, mutually exclusive with S5GH.Business
+      (change script, VAL-08); target has PayerHomeRadio / PayerBusinessRadio and grouping variable
+      PayerHomeBusiness. G4 proposed no match because the caption is a single word (UNS-03)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-006
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Business"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.phone_is_business -> PayerBusinessRadio (EFTAuth PremiumPayerBusinessRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'Business' paired with S5GH.Home by mutual-exclusion scripts; target
+      PayerBusinessRadio. G4 matched the group variable PayerHomeBusiness (0.796), which is the radio
+      group, not this option
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-007
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Yes"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.phone_is_mobile_yes -> PayerMobileYesRadio (EFTAuth PremiumPayerMobileYes_FormControl)"
+    rationale: >-
+      checkbox captioned 'Yes' at x=61mm on the phone row, exclusive with S5GH.No; the target's only
+      remaining yes/no pair in the payer block is PayerMobileYesRadio / PayerMobileNoRadio under
+      PayerMobYesNo. The question text ('mobile?') exists only visually (UNS-03); reviewer to confirm
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-008
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.No"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.phone_is_mobile_no -> PayerMobileNoRadio (EFTAuth PremiumPayerMobileNo_FormControl)"
+    rationale: >-
+      checkbox captioned 'No' at x=71mm next to S5GH.Yes, exclusive with it; counterpart of D-007.
+      G4's match to isaNum (0.875) is a token coincidence ('No'/'Num') and is rejected here
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Financial representative block ----------------------------------------------------
+  - id: D-009
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Finform.FirstName"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element agent.full_name -> AgentFullNam (EFTAuth FinancialAgentFullNam_FormControl)"
+    rationale: >-
+      caption 'FINANCIAL REPRESENTATIVE NAME' in subform Finform; a single free-text name, so the
+      target's AgentFullNam fits, not the payer first-name variable G4 matched (0.786, wrong section;
+      see G3-DUPNAME / FLD-04)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-010
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Finform.ntwrkoffno"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element agent.network_office_number -> AgentNoTerrNum (EFTAuth FinancialAgentNo_FormControl)"
+    rationale: >-
+      caption 'NETWORK OFFICE NUMBER'; among the three Agent* variables in the target, AgentNoTerrNum
+      (agent number / territory) is the office-level identifier. Reviewer to confirm against the data
+      master; AgentDsbNum is taken by D-011
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-011
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Finform.srvno"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element agent.servicing_fr_number -> AgentDsbNum (EFTAuth FinancialAgentDsbNum_FormControl)"
+    rationale: >-
+      caption 'SERVICING FR NUMBER' (financial-representative number); the target's per-agent id
+      variable is AgentDsbNum. Reviewer to confirm which of AgentDsbNum / AgentNoTerrNum is the
+      servicing FR
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- One-time payment block ------------------------------------------------------------
+  - id: D-012
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.OneTimePaymentAmt"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element one_time_payment.amount -> oneTimePaymentAmountBilled (EFTAuth OneTimePayAmount_FormControl)"
+    rationale: >-
+      no caption; text field in section 'ONE-TIME PAYMENT INFORMATION' at y=5.5mm; target variable
+      oneTimePaymentAmountBilled (G4 score 0.934) and FormControl OneTimePayAmount
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-013
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.Nextovrdueprm"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element one_time_payment.next_due_premium_ind -> nextDuePremiumRadio (EFTAuth OneTimePayNextDueRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'Next Due Premium OR', exclusive with Pymtform.Draftdate (change script clears
+      Draftdate and protects PaymentDate); target nextDuePremiumRadio (G4 score 0.921)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-014
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.Draftdate"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element one_time_payment.draft_date_ind -> draftDteRadio (EFTAuth OneTimePayDraftDareRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'DRAFT DATE (MM/DD/YYYY)' that opens PaymentDate; target has both draftDteRadio
+      (the choice) and draftDte (the date). G4 matched draftDte (0.947) but this node is the boolean,
+      so the *Radio variable is proposed
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-015
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.PaymentDate"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element one_time_payment.draft_date -> draftDte (EFTAuth OneTimePayDraftdte_FormControl)"
+    rationale: >-
+      dateTimeEdit with no caption at y=12.6mm, right of the DRAFT DATE checkbox, made editable by
+      Draftdate's change script; target date variable draftDte (G4 left it unmatched because it has no
+      caption)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Recurring payment block -----------------------------------------------------------
+  - id: D-016
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Amtbilled"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.amount_billed_ind -> AmountBilledRadio (EFTAuth RecurringAmountRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'AMOUNT BILLED EACH PAYMENT PERIOD ...', exclusive with Amountselected (change
+      script clears it and protects OneTimePymntAmt); target AmountBilledRadio. G4 unmatched because the
+      long caption diluted the token score
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-017
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Amountselected"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.select_amount_ind -> selectAmountRadio (EFTAuth RecurringSelectAmountRadio_FormControl)"
+    rationale: >-
+      checkbox captioned 'SELECT AMOUNT $', exclusive with Amtbilled; target has selectAmountRadio (the
+      choice) and selectAmount (the value). G4 matched selectAmount (1.0); the boolean maps to the
+      *Radio variable, the amount goes to D-018
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-018
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.OneTimePymntAmt"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.select_amount -> selectAmount (EFTAuth RecPaySelectAmount_FormControl)"
+    rationale: >-
+      text field without caption at y=14mm in 'RECURRING PAYMENT INFORMATION', opened by Amountselected's
+      change script; despite its source name it is the recurring selected amount, so selectAmount, not
+      oneTimePaymentAmountBilled as G4 proposed (0.934, name coincidence)
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-019
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqmnthly"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.frequency_monthly_ind -> monthlyRadio (EFTAuth RecurringPayMonthlyRadio_FormControl)"
+    rationale: >-
+      caption 'MONTHLY'; one of four mutually exclusive frequency checkboxes (VAL-08); target monthlyRadio
+      (G4 score 0.85) under group depositFreqCde
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-020
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqqutr"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.frequency_quarterly_ind -> quarterlyRadio (EFTAuth RecurringPayQuartelyRadio_FormControl)"
+    rationale: "caption 'QUARTERLY'; frequency group as D-019; target quarterlyRadio (G4 score 0.875)"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-021
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqsemiann"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.frequency_semi_annually_ind -> semiAnnuallyRadio (EFTAuth RecurringPaySemiAnnulRadio_FormControl)"
+    rationale: "caption 'SEMI-ANNUALLY'; frequency group as D-019; target semiAnnuallyRadio (G4 score 0.906)"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-022
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqann"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element recurring_payment.frequency_annually_ind -> annuallyRadio (EFTAuth RecurringPayAnnalRadio_FormControl)"
+    rationale: "caption 'ANNUALLY'; frequency group as D-019; target annuallyRadio (G4 score 0.864)"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Bank block ------------------------------------------------------------------------
+  - id: D-023
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Bankunname"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element bank.name -> bankName (EFTAuth BankeName_FormControl)"
+    rationale: "caption 'BANK OR CREDIT UNION NAME'; target bankName (G4 score 0.842); FormControl name is misspelt in the export and kept as-is"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-024
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Subform1.checking"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element bank.account_type_checking_ind -> checkingRadio (EFTAuth BankingInfoChecking_FormControl)"
+    rationale: "caption 'CHECKING' under 'B. ACCOUNT TYPE', exclusive with saving; target checkingRadio (G4 score 0.864) under isaAcctTypeCde"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-025
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Subform1.saving"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element bank.account_type_saving_ind -> savingRadio (EFTAuth BankingInfoSaving_FormControl)"
+    rationale: "caption 'SAVINGS', exclusive with checking; target savingRadio (G4 score 0.833)"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-026
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Bankroutingno"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element bank.routing_number -> bankRoutingNum (EFTAuth BankirotingNum_FormControl)"
+    rationale: "caption 'BANK ROUTING NUMBER (9 DIGITS)'; target bankRoutingNum (G4 score 0.809)"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-027
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Accno"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element bank.account_number -> achBankAcctNum (EFTAuth BankAcctNum_FormControl)"
+    rationale: >-
+      caption 'ACCOUNT NUMBER (4 TO 17 DIGITS ...)' in the bank block; target achBankAcctNum. G4 matched
+      isaAcctTypeCde (0.75), which is the checking/saving group, and is rejected here. This is the BND-05
+      example 'Accno / AccountNumber / achBankAcctNum'
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Signature block -------------------------------------------------------------------
+  - id: D-028
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Payersign.Signeddate"
+    finding: G3-UNBOUND
+    action: bind_to_element
+    proposal: "element payer.signed_date -> PayerSignedDte"
+    rationale: "caption 'DATE Signed by PAYER (MM/DD/YYYY)'; target PayerSignedDte (G4 score 0.741); no FormControl in the export, variable only"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-029
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Payersign.OwnerSig"
+    finding: G3-UNBOUND
+    action: keep_unbound
+    proposal: "no data binding; the signature is handled by the e-sign mechanism decided in D-031"
+    rationale: >-
+      caption 'Signature of PAYER'; the target carries PayerSignature and PayerEsignInfo, but which one the
+      1pt e-sign anchor binds to depends on the UNS-07 manual design; binding before that decision would
+      prejudge it
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-030
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Payersign.OwnerSig"
+    finding: VAL-SCRIPT-MANUAL
+    action: drop_script
+    proposal: "drop both OwnerSig scripts (initialize prefill from OwnerData.*OwnerNam, exit write-back via assignNode)"
+    rationale: >-
+      initialize copies persOwnerNam / busOwnerNam / trustOwnerNam into the signature field when
+      ownerPrefill != 'N'; exit writes the typed value back into the data DOM. Both are capture-channel
+      behaviour (VAL-07 / VAL-09); a composed document has no exit event, and the prefill is a compose-time
+      data question for the D-031 design
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-031
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Payersign.OwnerSig"
+    finding: UNS-SIGNATURE
+    action: manual_design
+    proposal: "designer places the target's e-sign visibility mechanism for the payer signature, using PayerEsignInfo / PayerSignature"
+    rationale: >-
+      ui/signature has no compose-time analogue (UNS-07); the target export already contains PayerSignature,
+      PayerEsignInfo, eSignInfo and SupervisorEsignInfo variables, so the target design for this form has
+      an e-sign construct that must be reproduced by hand
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-032
+    node: ".EFormsData.EFTA.PAYER.Mainsectionform.Payersign.TextField3"
+    finding: G3-UNBOUND
+    action: keep_unbound
+    proposal: "no data binding; treat as a static signature line"
+    rationale: >-
+      no caption, no dataRef, no script; 117mm x 6.6mm text field at the bottom of the PAYER SIGNATURE
+      section with no target counterpart (G4 unmatched). Reviewer may downgrade to accept_loss
+    status: proposed
+    decided_by: null
+    decided_on: null
+  # --- Submit button and page arithmetic -------------------------------------------------
+  - id: D-033
+    node: ".EFormsData.EFTA.PAYER.HTTPSubmitButton1"
+    finding: VAL-SCRIPT-MANUAL
+    action: drop_script
+    proposal: "drop the preSubmit script; the button itself is already skipped in the plan (VAL-09)"
+    rationale: >-
+      script sets event__click.submit.target from FormData.submitUrl: a submit-channel behaviour with no
+      compose-time equivalent (VAL-07); the target export has no submit control
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-034
+    node: ".EFormsData.Page1.CurrentPage"
+    finding: G3-UNBOUND
+    action: keep_unbound
+    proposal: "no data variable; render from the target's current-page system variable (OBJ-10)"
+    rationale: >-
+      caption 'Text Field', no dataRef; the ready script sets rawValue = xfa.layout.page(this), i.e. page
+      arithmetic; the target export declares 33 system variables and no CurrentPage data variable
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-035
+    node: ".EFormsData.Page1.CurrentPage"
+    finding: VAL-SCRIPT-MANUAL
+    action: drop_script
+    proposal: "drop xfa.layout.page(this); replaced by the system variable per D-034"
+    rationale: "38-char ready script whose only effect is the page number; OBJ-10 maps page arithmetic to Def.SystemVariables"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-036
+    node: ".EFormsData.Page1.PageCount"
+    finding: G3-UNBOUND
+    action: keep_unbound
+    proposal: "no data variable; render from the target's page-count system variable (OBJ-10)"
+    rationale: "caption 'Text Field', no dataRef; ready script sets rawValue = xfa.layout.pageCount(); same reasoning as D-034"
+    status: proposed
+    decided_by: null
+    decided_on: null
+  - id: D-037
+    node: ".EFormsData.Page1.PageCount"
+    finding: VAL-SCRIPT-MANUAL
+    action: drop_script
+    proposal: "drop xfa.layout.pageCount(); replaced by the system variable per D-036"
+    rationale: "39-char ready script whose only effect is the page count; OBJ-10"
+    status: proposed
+    decided_by: null
+    decided_on: null

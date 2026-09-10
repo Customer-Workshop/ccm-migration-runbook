@@ -23,3 +23,221 @@ rows:
     status: proposed
     evidence: exact leaf-name match between XDP dataRef and 17-0574.xml data variable
     reviewed_by: null
+  # 18-1026: unbound source fields; target_variable and data_path are the variable and its Def.Data
+  # path in 18-1026_Quad_2.xml. Proposed only; decision ids in src/decisions/18-1026.yaml.
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Billaccno
+    element: billing_account.isa_num
+    target_variable: isaNum
+    data_path: EFTAuth.ISAPaymentInfo.isaNum
+    status: proposed
+    evidence: "D-001: caption 'BILLING ACCOUNT NUMBER'; initialize script reads InsuranceServiceAccount.isaNum; variable isaNum at EFTAuth.ISAPaymentInfo.isaNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.BusinessName
+    element: payer.business_or_trust_name
+    target_variable: PayerBusinessOrTrustOrgztnNam
+    data_path: CommonData.PayerInfo.Names.PayerBusinessOrTrustOrgztnNam
+    status: proposed
+    evidence: "D-003: caption 'BUSINESS / TRUSTEE NAME (if applicable)'; variable PayerBusinessOrTrustOrgztnNam at CommonData.PayerInfo.Names.PayerBusinessOrTrustOrgztnNam in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.PhoneNo
+    element: payer.telephone_number
+    target_variable: PayerTelNum
+    data_path: CommonData.PayerInfo.PayerTelNum
+    status: proposed
+    evidence: "D-004: caption 'PHONE NUMBER'; variable PayerTelNum at CommonData.PayerInfo.PayerTelNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Home
+    element: payer.phone_is_home
+    target_variable: PayerHomeRadio
+    data_path: CommonData.PayerInfo.PayerHomeBusiness.PayerHomeRadio
+    status: proposed
+    evidence: "D-005: caption 'Home'; mutual exclusion with S5GH.Business; variable PayerHomeRadio at CommonData.PayerInfo.PayerHomeBusiness.PayerHomeRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Business
+    element: payer.phone_is_business
+    target_variable: PayerBusinessRadio
+    data_path: CommonData.PayerInfo.PayerHomeBusiness.PayerBusinessRadio
+    status: proposed
+    evidence: "D-006: caption 'Business'; mutual exclusion with S5GH.Home; variable PayerBusinessRadio at CommonData.PayerInfo.PayerHomeBusiness.PayerBusinessRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.Yes
+    element: payer.phone_is_mobile_yes
+    target_variable: PayerMobileYesRadio
+    data_path: CommonData.PayerInfo.PayerMobYesNo.PayerMobileYesRadio
+    status: proposed
+    evidence: "D-007: caption 'Yes' on the phone row; question text only visual (UNS-03); variable PayerMobileYesRadio at CommonData.PayerInfo.PayerMobYesNo.PayerMobileYesRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.PForm.S5GH.No
+    element: payer.phone_is_mobile_no
+    target_variable: PayerMobileNoRadio
+    data_path: CommonData.PayerInfo.PayerMobYesNo.PayerMobileNoRadio
+    status: proposed
+    evidence: "D-008: caption 'No' on the phone row; question text only visual (UNS-03); variable PayerMobileNoRadio at CommonData.PayerInfo.PayerMobYesNo.PayerMobileNoRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Finform.FirstName
+    element: agent.full_name
+    target_variable: AgentFullNam
+    data_path: CommonData.AgentInfo.AgentFullNam
+    status: proposed
+    evidence: "D-009: caption 'FINANCIAL REPRESENTATIVE NAME'; variable AgentFullNam at CommonData.AgentInfo.AgentFullNam in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Finform.ntwrkoffno
+    element: agent.network_office_number
+    target_variable: AgentNoTerrNum
+    data_path: CommonData.AgentInfo.AgentNoTerrNum
+    status: proposed
+    evidence: "D-010: caption 'NETWORK OFFICE NUMBER'; steward to confirm against AgentDsbNum; variable AgentNoTerrNum at CommonData.AgentInfo.AgentNoTerrNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Finform.srvno
+    element: agent.servicing_fr_number
+    target_variable: AgentDsbNum
+    data_path: CommonData.AgentInfo.AgentDsbNum
+    status: proposed
+    evidence: "D-011: caption 'SERVICING FR NUMBER'; steward to confirm against AgentNoTerrNum; variable AgentDsbNum at CommonData.AgentInfo.AgentDsbNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.OneTimePaymentAmt
+    element: one_time_payment.amount
+    target_variable: oneTimePaymentAmountBilled
+    data_path: EFTAuth.oneTimeOrRecurringPayments.oneTimePaymentAmountBilled
+    status: proposed
+    evidence: "D-012: uncaptioned text field in section 'ONE-TIME PAYMENT INFORMATION'; variable oneTimePaymentAmountBilled at EFTAuth.oneTimeOrRecurringPayments.oneTimePaymentAmountBilled in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.Nextovrdueprm
+    element: one_time_payment.next_due_premium_ind
+    target_variable: nextDuePremiumRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.nextDuePremiumRadio
+    status: proposed
+    evidence: "D-013: caption 'Next Due Premium OR'; variable nextDuePremiumRadio at EFTAuth.oneTimeOrRecurringPayments.nextDuePremiumRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.Draftdate
+    element: one_time_payment.draft_date_ind
+    target_variable: draftDteRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.draftDteRadio
+    status: proposed
+    evidence: "D-014: caption 'DRAFT DATE (MM/DD/YYYY)' checkbox; variable draftDteRadio at EFTAuth.oneTimeOrRecurringPayments.draftDteRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Pymtform.PaymentDate
+    element: one_time_payment.draft_date
+    target_variable: draftDte
+    data_path: EFTAuth.oneTimeOrRecurringPayments.draftDte
+    status: proposed
+    evidence: "D-015: uncaptioned dateTimeEdit opened by Draftdate change script; variable draftDte at EFTAuth.oneTimeOrRecurringPayments.draftDte in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Amtbilled
+    element: recurring_payment.amount_billed_ind
+    target_variable: AmountBilledRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.AmountBilledRadio
+    status: proposed
+    evidence: "D-016: caption 'AMOUNT BILLED EACH PAYMENT PERIOD'; variable AmountBilledRadio at EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.AmountBilledRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Amountselected
+    element: recurring_payment.select_amount_ind
+    target_variable: selectAmountRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.selectAmountRadio
+    status: proposed
+    evidence: "D-017: caption 'SELECT AMOUNT $'; variable selectAmountRadio at EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.selectAmountRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.OneTimePymntAmt
+    element: recurring_payment.select_amount
+    target_variable: selectAmount
+    data_path: EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.selectAmount
+    status: proposed
+    evidence: "D-018: uncaptioned text field opened by Amountselected change script; variable selectAmount at EFTAuth.oneTimeOrRecurringPayments.Recurringpayment.selectAmount in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqmnthly
+    element: recurring_payment.frequency_monthly_ind
+    target_variable: monthlyRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.monthlyRadio
+    status: proposed
+    evidence: "D-019: caption 'MONTHLY'; variable monthlyRadio at EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.monthlyRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqqutr
+    element: recurring_payment.frequency_quarterly_ind
+    target_variable: quarterlyRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.quarterlyRadio
+    status: proposed
+    evidence: "D-020: caption 'QUARTERLY'; variable quarterlyRadio at EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.quarterlyRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqsemiann
+    element: recurring_payment.frequency_semi_annually_ind
+    target_variable: semiAnnuallyRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.semiAnnuallyRadio
+    status: proposed
+    evidence: "D-021: caption 'SEMI-ANNUALLY'; variable semiAnnuallyRadio at EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.semiAnnuallyRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.RPymtform.Freqann
+    element: recurring_payment.frequency_annually_ind
+    target_variable: annuallyRadio
+    data_path: EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.annuallyRadio
+    status: proposed
+    evidence: "D-022: caption 'ANNUALLY'; variable annuallyRadio at EFTAuth.oneTimeOrRecurringPayments.depositFreqCde.annuallyRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Bankunname
+    element: bank.name
+    target_variable: bankName
+    data_path: EFTAuth.Banking.bankName
+    status: proposed
+    evidence: "D-023: caption 'BANK OR CREDIT UNION NAME'; variable bankName at EFTAuth.Banking.bankName in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Subform1.checking
+    element: bank.account_type_checking_ind
+    target_variable: checkingRadio
+    data_path: EFTAuth.Banking.isaAcctTypeCde.checkingRadio
+    status: proposed
+    evidence: "D-024: caption 'CHECKING'; variable checkingRadio at EFTAuth.Banking.isaAcctTypeCde.checkingRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Subform1.saving
+    element: bank.account_type_saving_ind
+    target_variable: savingRadio
+    data_path: EFTAuth.Banking.isaAcctTypeCde.savingRadio
+    status: proposed
+    evidence: "D-025: caption 'SAVINGS'; variable savingRadio at EFTAuth.Banking.isaAcctTypeCde.savingRadio in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Bankroutingno
+    element: bank.routing_number
+    target_variable: bankRoutingNum
+    data_path: EFTAuth.Banking.bankRoutingNum
+    status: proposed
+    evidence: "D-026: caption 'BANK ROUTING NUMBER (9 DIGITS)'; variable bankRoutingNum at EFTAuth.Banking.bankRoutingNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Bankform.Accno
+    element: bank.account_number
+    target_variable: achBankAcctNum
+    data_path: EFTAuth.Banking.achBankAcctNum
+    status: proposed
+    evidence: "D-027: caption 'ACCOUNT NUMBER (4 TO 17 DIGITS)'; variable achBankAcctNum at EFTAuth.Banking.achBankAcctNum in 18-1026_Quad_2.xml"
+    reviewed_by: null
+  - form_code: "18-1026"
+    som: .EFormsData.EFTA.PAYER.Mainsectionform.Payersign.Signeddate
+    element: payer.signed_date
+    target_variable: PayerSignedDte
+    data_path: CommonData.eSignInfo.PayerEsignInfo.PayerSignedDte
+    status: proposed
+    evidence: "D-028: caption 'DATE Signed by PAYER (MM/DD/YYYY)'; variable PayerSignedDte at CommonData.eSignInfo.PayerEsignInfo.PayerSignedDte in 18-1026_Quad_2.xml"
+    reviewed_by: null

@@ -105,3 +105,16 @@ rules:
     gates: [G2]
     reviewed_by: null
     reviewed_on: null
+  - id: BND-09
+    title: Checkbox options map to per-option "<option>Radio" variables under a code-group variable; a paired value field maps to the sibling non-Radio variable
+    class: MANUAL
+    status: draft
+    source: "checkbox (mutual-exclusion group) + the text/date field its change script opens"
+    target: "Def.Data group variable (e.g. depositFreqCde, isaAcctTypeCde, PayerHomeBusiness) with <option>Radio children; the value field is the sibling variable without the Radio suffix"
+    evidence: "Draftdate -> draftDteRadio and PaymentDate -> draftDte; Amountselected -> selectAmountRadio and OneTimePymntAmt -> selectAmount; Freq* -> depositFreqCde.*Radio; checking/saving -> isaAcctTypeCde.*Radio in 18-1026_Quad_2.xml. G4 name matching picks the value variable for the checkbox (score 0.947 draftDte, 1.0 selectAmount), which inverts the pairing"
+    origin: {type: reference_pair, refs: ["18-1026"]}
+    fixtures: ["18-1026"]
+    implemented_in: []
+    gates: [G3, G4]
+    reviewed_by: null
+    reviewed_on: null
