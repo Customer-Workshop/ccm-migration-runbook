@@ -15,9 +15,9 @@ forms:
       bytes: 1111158
     target:
       layout_xml:
-        file: 17-0574.xml
-        sha256: cfc13c2baf92376af2c3e7fa7ea838ca2ed7537e21ef57463d75b60647285b1e
-        bytes: 3504237
+        file: "Forms_17-0574 (AEM to Quad).xml"
+        sha256: 7202b804252bccf20d5f75d2dd42f507e0113c166a30557edc1d1faf0ef0fc16
+        bytes: 4089931
       composed_pdf:
         file: 17-0574_Quad.pdf
         sha256: 38fc7b64aa6998e3084d59fa9b5db2b1b2b6f937779552b341e9d0cade22c93f
