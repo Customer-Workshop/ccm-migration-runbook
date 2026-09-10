@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import json
 import shutil
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -14,7 +15,7 @@ from rulebook import Rule, load_rules
 from tests.conftest import SYNTHETIC_XDP, SYNTHETIC_XML
 
 
-def _pair(raw: Path, with_target: bool) -> dict:
+def _pair(raw: Path, with_target: bool, *, with_pdf: bool = True) -> dict:
     pair = {
         "form_id": "99-0001",
         "status": "reference_pair" if with_target else "source_only",
@@ -24,7 +25,7 @@ def _pair(raw: Path, with_target: bool) -> dict:
     if with_target:
         pair["target"] = {
             "layout_xml": {"file": "99-0001.xml", "sha256": sha256_of(raw / "99-0001.xml")},
-            "composed_pdf": {"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")},
+            "composed_pdf": ({"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")} if with_pdf else None),
         }
     return pair
 
@@ -69,6 +70,13 @@ def test_g0_source_only_form_passes_with_info(raw: Path, synthetic_cim: dict) ->
     result = g0_pairing.run(_pair(raw, False), raw, synthetic_cim)
     assert result.verdict == "pass"
     assert result.metrics["paired"] is False
+
+
+def test_g0_layout_without_pdf_passes_with_info(raw: Path, synthetic_cim: dict) -> None:
+    result = g0_pairing.run(_pair(raw, True, with_pdf=False), raw, synthetic_cim)
+    assert result.verdict == "pass"
+    assert [(f.code, f.severity) for f in result.findings] == [("G0-NO-PDF", "info")]
+    assert "static_text_coverage" in result.metrics
 
 
 def test_g0_flags_revision_drift_when_target_text_is_not_in_source(raw: Path, synthetic_cim: dict) -> None:
@@ -288,6 +296,38 @@ def test_inventory_reports_dangling_reference(tmp_path: Path) -> None:
     integrity = inventory(path)["integrity"]
     assert integrity["dangling_reference_count"] == 1
     assert integrity["dangling_references"][0]["value"] == "999"
+
+
+def test_inventory_accepts_workflow_wrapper(tmp_path: Path) -> None:
+    flat_root = ET.parse(SYNTHETIC_XML).getroot()
+    workflow = ET.Element("WorkFlow")
+    module = ET.SubElement(workflow, "Layout")
+    ET.SubElement(module, "Id").text = "module-id"
+    ET.SubElement(module, "Name").text = "TestModule"
+    ET.SubElement(module, "ModulePos").text = "0"
+    records = ET.SubElement(module, "Layout")
+    records.extend(copy.deepcopy(list(flat_root)))
+    path = tmp_path / "workflow.xml"
+    ET.ElementTree(workflow).write(path, encoding="utf-8", xml_declaration=True)
+
+    flat = inventory(SYNTHETIC_XML)
+    wrapped = inventory(path)
+    assert wrapped["counts"] == flat["counts"]
+    assert wrapped["data_variables"] == flat["data_variables"]
+    assert wrapped["root"] == "WorkFlow"
+    assert wrapped["layout_module"] == "TestModule"
+
+
+def test_inventory_rejects_multiple_workflow_layout_modules(tmp_path: Path) -> None:
+    workflow = ET.Element("WorkFlow")
+    for name in ("First", "Second"):
+        module = ET.SubElement(workflow, "Layout")
+        ET.SubElement(module, "Name").text = name
+    path = tmp_path / "workflow.xml"
+    ET.ElementTree(workflow).write(path, encoding="utf-8", xml_declaration=True)
+
+    with pytest.raises(ValueError, match="expected exactly one Layout module.*found 2"):
+        inventory(path)
 
 
 # G5

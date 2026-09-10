@@ -1,9 +1,11 @@
-"""Inventory of a Quadient Inspire Layout export (the *.xml next to a WFD).
+"""Inventory of Quadient Inspire Layout and WorkFlow exports.
 
-Observed grammar (two reference exports, Designer 17.0.436.3): the root <Layout> holds a flat
-list of records. A record with <ParentId> is a declaration (type, Name, ParentId, IndexInParent,
-Forward). A record without <ParentId> is the body of a declared object, keyed by <Id>. Group
-declarations never have a body and Def.* roots never have a declaration.
+Observed grammars (Designer 17.0.436.3): a flat Layout export has a root <Layout> with a list of
+records, while a WorkFlow export has a root <WorkFlow> containing one Layout module whose inner
+<Layout> contains that same flat record list. A record with <ParentId> is a declaration (type,
+Name, ParentId, IndexInParent, Forward). A record without <ParentId> is the body of a declared
+object, keyed by <Id>. Group declarations never have a body and Def.* roots never have a
+declaration.
 """
 
 from __future__ import annotations
@@ -23,11 +25,26 @@ def _text(el: ET.Element, tag: str) -> str:
     return (el.findtext(tag) or "").strip()
 
 
+def _records_root(root: ET.Element, path: Path | None = None) -> ET.Element:
+    if root.tag != "WorkFlow":
+        return root
+    modules = root.findall("Layout")
+    label = path.name if path is not None else root.tag
+    if len(modules) != 1:
+        raise ValueError(f"{label}: expected exactly one Layout module in WorkFlow export, found {len(modules)}")
+    records_root = modules[0].find("Layout")
+    if records_root is None:
+        raise ValueError(f"{label}: expected Layout child in WorkFlow export")
+    return records_root
+
+
 def inventory(path: Path) -> dict:
     root = load_xml(path)
+    records_root = _records_root(root, path)
+    layout_module = _text(root.findall("Layout")[0], "Name") if root.tag == "WorkFlow" else ""
     declarations: dict[str, dict] = {}
     bodies: dict[str, list] = defaultdict(list)
-    for child in root:
+    for child in records_root:
         ident = _text(child, "Id")
         if child.find("ParentId") is None:
             bodies[child.tag].append(child)
@@ -80,6 +97,7 @@ def inventory(path: Path) -> dict:
     return {
         "source_file": path.name,
         "root": root.tag,
+        "layout_module": layout_module,
         "counts": {
             "records_total": len(declarations) + sum(len(v) for v in bodies.values()),
             "declarations": len(declarations),

@@ -53,13 +53,19 @@ forms:
       - no fixed input data file was supplied, so G6 cannot compose an equivalent PDF
 
   - form_id: "18-1721"
-    title_hint: null
+    title_hint: Corporate Market Transmittal Letter
     tier: C
     source:
       file: 181721.xdp
       sha256: dbe906bd8ce0b4528d003a09b2206c09aad869184fcfdc708b7f9234953424bb
       bytes: 147127
-    target: null
-    status: source_only
+    target:
+      layout_xml:
+        file: Forms_18-1721 (AEM to Quad).xml
+        sha256: 3cb4b5a61bd413ff8ee24d5b92409ee8514a1f3a6211771eb021438ba5a919ba
+        bytes: 1412341
+      composed_pdf: null
+    status: reference_pair
     notes:
-      - no Quadient layout XML or composed PDF was supplied for this form; gates G0, G4, G5, G6 are skipped
+      - target delivered as a WorkFlow (WFD) XML export, Designer 17.0.436.3, with one Layout module; the earlier reference exports were flat Layout exports
+      - no composed PDF or fixed input data supplied, so G6 cannot run

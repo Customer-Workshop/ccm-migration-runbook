@@ -119,7 +119,9 @@ def test_convert_cli_raises_on_unparseable_input(tmp_path: Path) -> None:
         convert.main([str(bad), "-o", str(tmp_path / "out")])
 
 
-def _manifest(raw: Path, tmp_path: Path, *, with_target: bool, corrupt_hash: bool = False) -> Path:
+def _manifest(
+    raw: Path, tmp_path: Path, *, with_target: bool, with_pdf: bool = True, corrupt_hash: bool = False
+) -> Path:
     source_sha = "0" * 64 if corrupt_hash else sha256_of(raw / "990001.xdp")
     form = {
         "form_id": "99-0001",
@@ -130,7 +132,7 @@ def _manifest(raw: Path, tmp_path: Path, *, with_target: bool, corrupt_hash: boo
     if with_target:
         form["target"] = {
             "layout_xml": {"file": "99-0001.xml", "sha256": sha256_of(raw / "99-0001.xml")},
-            "composed_pdf": {"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")},
+            "composed_pdf": ({"file": "99-0001.pdf", "sha256": sha256_of(raw / "99-0001.pdf")} if with_pdf else None),
         }
     path = tmp_path / "pairs.yaml"
     path.write_text(yaml.safe_dump({"manifest_version": 1, "forms": [form]}), encoding="utf-8")
@@ -180,6 +182,18 @@ def test_pipeline_source_only_skips_target_gates(monkeypatch: pytest.MonkeyPatch
     assert {k: v for k, v in _verdicts(report).items() if k in ("G4", "G5", "G6")} == {
         "G4": "skipped",
         "G5": "skipped",
+        "G6": "skipped",
+    }
+
+
+def test_pipeline_layout_without_pdf_runs_g4_and_skips_g6(
+    monkeypatch: pytest.MonkeyPatch, raw: Path, tmp_path: Path
+) -> None:
+    code, report = _run(monkeypatch, raw, _manifest(raw, tmp_path, with_target=True, with_pdf=False), tmp_path / "out")
+    assert code == 0
+    assert {k: v for k, v in _verdicts(report).items() if k in ("G4", "G5", "G6")} == {
+        "G4": "fail",
+        "G5": "external",
         "G6": "skipped",
     }
 

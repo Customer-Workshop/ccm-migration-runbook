@@ -25,9 +25,12 @@ def run(pair: dict, raw_dir: Path, cim: dict | None) -> GateResult:
 
     result.metrics["paired"] = True
     layout = raw_dir / pair["target"]["layout_xml"]["file"]
-    pdf = raw_dir / pair["target"]["composed_pdf"]["file"]
     _check_file(result, layout, pair["target"]["layout_xml"]["sha256"], "target layout")
-    _check_file(result, pdf, pair["target"]["composed_pdf"]["sha256"], "target pdf")
+    if pair["target"]["composed_pdf"] is None:
+        result.add("G0-NO-PDF", "info", "no composed PDF supplied; G6 cannot run", rule_id="GOV-01")
+    else:
+        pdf = raw_dir / pair["target"]["composed_pdf"]["file"]
+        _check_file(result, pdf, pair["target"]["composed_pdf"]["sha256"], "target pdf")
     if not layout.exists() or cim is None:
         return result.finalize()
 

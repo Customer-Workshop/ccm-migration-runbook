@@ -11,7 +11,7 @@ Expected files for the current proof forms:
 |---|---|---|---|
 | 17-0574 | `170574.xdp` | `17-0574.xml` | `17-0574_Quad.pdf` |
 | 18-1026 | `181026.xdp` | `18-1026_Quad_2.xml` | `181026_Quad.pdf` |
-| 18-1721 | `181721.xdp` | not supplied | not supplied |
+| 18-1721 | `181721.xdp` | `Forms_18-1721 (AEM to Quad).xml` | not supplied |
 
 The filename `18-1026_Quad_2.xml` is what was actually supplied; earlier documents call
 it `18-1026_Quad.xml`. Do not rename it, update `pairs.yaml` if a different file arrives.
