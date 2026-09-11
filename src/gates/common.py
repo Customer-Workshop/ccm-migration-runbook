@@ -17,6 +17,15 @@ MAX_INPUT_BYTES = 256 * 1024 * 1024
 VERDICTS = ("pass", "fail", "skipped", "external")
 
 
+class ArtifactError(ValueError):
+    """A repository artifact (manifest, dictionary, catalogue, log, PDF) is malformed; the message names it."""
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise ArtifactError(message)
+
+
 @dataclass
 class Finding:
     code: str
@@ -82,7 +91,7 @@ def sha256_of(path: Path) -> str:
 def guard_size(path: Path) -> None:
     size = os.path.getsize(path)
     if size > MAX_INPUT_BYTES:
-        raise ValueError(f"{path}: {size} bytes exceeds the {MAX_INPUT_BYTES} byte limit")
+        raise ArtifactError(f"{path}: {size} bytes exceeds the {MAX_INPUT_BYTES} byte limit")
 
 
 def load_xml(path: Path) -> ET.Element:

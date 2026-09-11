@@ -23,7 +23,7 @@ rules:
     evidence: target style libraries
     origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
     fixtures: ["17-0574", "18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    implemented_in: [converters.xdp_to_cim.styles.style_entry]
     gates: [G5]
     notes: base name is AUTO, decorators are ASSIST
     reviewed_by: null
@@ -37,7 +37,7 @@ rules:
     evidence: both reference targets
     origin: {type: reference_pair, refs: ["17-0574", "18-1026"]}
     fixtures: ["17-0574", "18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    implemented_in: [converters.xdp_to_cim.styles.style_entry]
     gates: [G2]
     reviewed_by: null
     reviewed_on: null

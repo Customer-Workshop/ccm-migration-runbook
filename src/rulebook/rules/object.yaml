@@ -60,10 +60,10 @@ rules:
     status: draft
     source: draw/value/{text|exData|line|rectangle|image}
     target: "text/exData -> Flow+FlowContent/P/T; line/rectangle -> PathObject; image -> image object referencing an externalised asset"
-    evidence: "18-1026: 35 draws -> 76 text runs + 10 PathObject; both targets contain exactly 10 PathObject"
-    origin: {type: reference_pair, refs: ["18-1026"]}
-    fixtures: ["18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._draw]
+    evidence: "18-1026: 35 draws -> 76 text runs + 10 PathObject; both targets contain exactly 10 PathObject. A draw with no value but a visible border (18-1721: five Text2 draws with a 212,208,208 fill) is a PathObject too: line when its thin side is <= 1.5 mm, rectangle otherwise; hidden borders stay unknown"
+    origin: {type: reference_pair, refs: ["18-1026", "18-1721"]}
+    fixtures: ["18-1026", "18-1721"]
+    implemented_in: [converters.xdp_to_cim.statics.draw_content]
     gates: [G2, G4]
     reviewed_by: null
     reviewed_on: null
@@ -89,7 +89,7 @@ rules:
     evidence: "23 distinct source combinations -> 11 TextStyle + 5 ParaStyle + 7 BorderStyle in the 18-1026 target"
     origin: {type: reference_pair, refs: ["18-1026"]}
     fixtures: ["18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._style_ref]
+    implemented_in: [converters.xdp_to_cim.styles.style_entry]
     gates: [G2]
     reviewed_by: null
     reviewed_on: null

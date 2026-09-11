@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from gates.common import GateResult, external, guard_size, load_json, sha256_of
+from gates.common import GateResult, external, guard_size, load_json, require, sha256_of
 
 COMPOSITION_LOG_DIR = Path(__file__).resolve().parents[1] / "fixtures" / "composition_logs"
 PAGE_OBJECT = re.compile(rb"/Type\s*/Page(?![s/])")
@@ -21,7 +21,7 @@ CREATOR = re.compile(rb"/Creator\s*\((.*?)\)", re.S)
 def inspect_pdf(path: Path) -> dict:
     guard_size(path)
     data = path.read_bytes()
-    assert data.startswith(b"%PDF-"), f"{path.name} is not a PDF"
+    require(data.startswith(b"%PDF-"), f"{path.name} is not a PDF")
     creator = CREATOR.search(data)
     return {
         "file": path.name,
@@ -52,7 +52,7 @@ def run(pdf: Path) -> GateResult:
         )
         return outcome
     record = load_json(log)
-    assert record["verdict"] in ("pass", "fail"), f"{log}: verdict must be pass or fail"
+    require(record["verdict"] in ("pass", "fail"), f"{log}: verdict must be pass or fail")
     result.verdict = record["verdict"]
     result.reason = (
         f"composed by {record['composed_by']} on {record['composed_on']} with input {record['input_data_sha256'][:12]}"

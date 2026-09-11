@@ -13,7 +13,8 @@ from pathlib import Path
 
 from dictionary import CrosswalkRow
 
-PLAN_VERSION = "1.0"
+PLAN_VERSION = "1.1"
+ROW_SUFFIX = "_R{index}"
 
 DATA_TYPES = {
     "string": "String",
@@ -38,6 +39,10 @@ SKIPPED_CONTROLS = {
     "signature": "UNS-07",
     "action": "VAL-09",
 }
+
+
+class BuildPlanError(ValueError):
+    """The CIM cannot be expressed as a build plan; the message names the offending node."""
 
 
 def build_plan(cim: dict, crosswalk: dict[tuple[str, str], CrosswalkRow]) -> dict:
@@ -93,19 +98,38 @@ def _variables(
                     "rule_id": "BND-04",
                 }
             )
-        var_id = f"{form_code}_{name}"
-        existing = variables.get(var_id)
-        if existing is None:
-            variables[var_id] = {
-                "id": var_id,
+        if f["datatype"] not in DATA_TYPES:
+            raise BuildPlanError(f"{f['som']}: datatype '{f['datatype']}' has no migration-stack DataType")
+        data_path = f["binding"]["source_path"]
+        group = [v for v in variables.values() if v["name"] == name or v.get("disambiguated_from") == name]
+        existing = next((v for v in group if v["data_path"] == data_path), None)
+        if existing is not None:
+            existing["source_soms"].append(f["som"])
+        else:
+            variable = {
+                "id": f"{form_code}_{name}",
                 "name": name,
                 "data_type": DATA_TYPES[f["datatype"]],
-                "data_path": f["binding"]["source_path"],
+                "data_path": data_path,
                 "resolution": resolution,
                 "source_soms": [f["som"]],
             }
-        else:
-            existing["source_soms"].append(f["som"])
+            if group:
+                row_index = len(group) + 1
+                variable["name"] = name + ROW_SUFFIX.format(index=row_index)
+                variable["id"] = f"{form_code}_{variable['name']}"
+                variable["disambiguated_from"] = name
+                variable["row_index"] = row_index
+                decisions.append(
+                    {
+                        "node": f["som"],
+                        "decision": f"'{name}' is shared by fields with different data paths; confirm the "
+                        f"row-suffix variable '{variable['name']}' or supply the repeat representation",
+                        "owner": "data_steward",
+                        "rule_id": "BND-10",
+                    }
+                )
+            variables[variable["id"]] = variable
         if kind in ("checkbox", "radio"):
             decisions.append(
                 {
@@ -183,7 +207,9 @@ def _blocks(cim: dict, variables: dict[str, dict], skipped: list[dict]) -> list[
 
 
 def _pages(cim: dict, blocks: list[dict]) -> list[dict]:
-    body = next(b for b in blocks if b["role"] == "page_body")
+    body = next((b for b in blocks if b["role"] == "page_body"), None)
+    if body is None:
+        raise BuildPlanError(f"{cim['form']['form_code']}: no page_body block; the root subform emitted no content")
     pages = []
     for p in cim["pages"]:
         areas = [

@@ -36,8 +36,8 @@ mergeable. Running the pipeline by hand and pasting `readiness.md` into a ticket
 1. **Never hand-author target XML.** Quadient objects are produced through the migration-stack builder
    API from a build plan (GOV-03). If a construct cannot be expressed through the plan, it becomes a
    `MANUAL` decision, not a string template.
-2. **Never execute embedded scripts.** XDP `<script>` bodies are classified (`interactive_only`,
-   `calculation`, `validation`) and recorded; they are not run (GOV-04).
+2. **Never execute embedded scripts.** XDP `<script>` bodies are classified by idiom (`rule_translatable`, `runtime_only`,
+   `manual`) and recorded; they are not run (GOV-04).
 3. **Every input is untrusted.** Use `gates.common.load_xml` / `guard_size`; keep the size caps; no
    external entities; no network access from converters or gates.
 4. **Never set a rule or dictionary row to `verified`.** Agents draft. Verification is a PR by the named
@@ -62,7 +62,7 @@ mergeable. Running the pipeline by hand and pasting `readiness.md` into a ticket
 ```
 pip install -e ".[dev]"
 ruff check .
-pytest -q
+pytest -q --cov --cov-fail-under=90
 python -m tools.pipeline -o out/          # all forms, readiness.json + readiness.md
 python -m tools.pipeline -o out/ --strict # exit 1 on any fail; use once forms are expected ready
 python -m tools.convert path/to/form.xdp  # one form: CIM + plan + G1/G2/G3

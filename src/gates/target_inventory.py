@@ -93,10 +93,15 @@ def inventory(path: Path) -> dict:
         if d["parent"] and not d["parent"].startswith("Def.") and d["parent"] not in declared_ids
     )
 
+    missing_attributes = []
+    if export.tag == "WorkFlow" and export.get("version") is None:
+        missing_attributes.append("WorkFlow@version")
+
     result = {
         "source_file": path.name,
         "root": root.tag,
         "export_kind": "workflow" if export.tag == "WorkFlow" else "layout",
+        "workflow_version": export.get("version"),
         "counts": {
             "records_total": len(declarations) + sum(len(v) for v in bodies.values()),
             "declarations": len(declarations),
@@ -121,8 +126,7 @@ def inventory(path: Path) -> dict:
             "bodies_without_declaration": undeclared_body,
             "dangling_references": dangling[:200],
             "dangling_reference_count": len(dangling),
+            "missing_attributes": missing_attributes,
         },
     }
-    if export.tag == "WorkFlow":
-        result["workflow_version"] = export.attrib["version"]
     return result

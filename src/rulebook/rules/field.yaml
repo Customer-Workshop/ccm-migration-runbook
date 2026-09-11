@@ -36,7 +36,7 @@ rules:
     evidence: "417 complexTypes in 17-0574 give xsd:boolean/xsd:double/xsd:string for bound leaves"
     origin: {type: reference_pair, refs: ["17-0574"]}
     fixtures: ["17-0574"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._datatype]
+    implemented_in: [converters.xdp_to_cim.bindings.datatype_for]
     gates: [G2]
     reviewed_by: null
     reviewed_on: null

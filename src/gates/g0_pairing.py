@@ -9,7 +9,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from gates.common import GateResult, sha256_of, skipped
-from gates.matching import tokens
+from gates.matching import static_text_coverage
 from gates.target_inventory import inventory
 
 STATIC_TEXT_COVERAGE_MIN = 0.95
@@ -43,13 +43,11 @@ def run(pair: dict, raw_dir: Path, cim: dict | None) -> GateResult:
         return result.finalize()
 
     inv = inventory(layout)
-    source_tokens = tokens(s["text"] for s in cim["statics"]) | tokens(f["caption"] for f in cim["fields"])
-    target_tokens = tokens(inv["static_text"])
-    coverage = len(target_tokens & source_tokens) / len(target_tokens) if target_tokens else 0.0
+    coverage, target_only = static_text_coverage(cim, inv)
     result.metrics.update(
         {
-            "static_text_coverage": round(coverage, 4),
-            "target_only_tokens": sorted(target_tokens - source_tokens)[:50],
+            "static_text_coverage": coverage,
+            "target_only_tokens": target_only,
             "threshold": STATIC_TEXT_COVERAGE_MIN,
         }
     )

@@ -6,6 +6,11 @@ derived value carries a rule id and a confidence classification, and everything 
 cannot establish is emitted into ``diagnostics.review_queue``. Embedded scripts are
 classified as text and never executed.
 
+The walk over the template lives here; idiom tables and pure helpers live in the
+sibling modules ``scripts`` (script classification), ``styles`` (font/para/border),
+``bindings`` (bind/@ref and datatypes), ``statics`` (draw content, title evidence)
+and ``xfa`` (namespaces, measurements, text).
+
 Usage:
     python3 -m converters.xdp_to_cim FORM.xdp -o out/FORM.cim.json
 """
@@ -19,17 +24,19 @@ import os
 import re
 import sys
 import xml.etree.ElementTree as ET
-from collections import Counter, OrderedDict
+from collections import Counter
 
 from cim import CIM_VERSION
+from converters.xdp_to_cim.bindings import binding_of, datatype_for, leaf_types
+from converters.xdp_to_cim.scripts import classify_script, script_targets
+from converters.xdp_to_cim.statics import TitleRun, draw_content, select_title, title_runs
+from converters.xdp_to_cim.styles import StyleRegistry, style_entry
+from converters.xdp_to_cim.xfa import XFA_TEMPLATE_NS, XSD_NS, is_blob, local, pascal, text_of, to_mm
 
-XFA_TEMPLATE_NS = "http://www.xfa.org/schema/xfa-template/"
-XSD_NS = "{http://www.w3.org/2001/XMLSchema}"
-EXTRACTOR = "xdp_to_cim/1.1"
+EXTRACTOR = "xdp_to_cim/1.2"
 
 # Maximum accepted input size (defensive: XDP files are untrusted input).
 MAX_INPUT_BYTES = 256 * 1024 * 1024
-BASE64_BLOB = re.compile(r"^[A-Za-z0-9+/=\s]{200,}$")
 
 UI_TO_KIND = {
     "textEdit": "text",
@@ -45,65 +52,62 @@ UI_TO_KIND = {
     "picture": "image",
 }
 
-KIND_TO_DATATYPE = {
-    "text": "string",
-    "multiline_text": "string",
-    "checkbox": "boolean",
-    "radio": "boolean",
-    "dropdown": "string",
-    "date": "date",
-    "number": "decimal",
-    "currency": "currency",
-    "barcode": "barcode",
-    "image": "image",
-    "signature": "string",
-    "action": "void",
-    "computed": "string",
-    "unknown": "string",
-}
-
-# Rule ids are the identifiers published in src/rulebook/rules/*.yaml.
-SCRIPT_CLASSIFIERS = (
-    ("uppercase", re.compile(r"toUpperCase|\.rawValue\s*=\s*.*upper", re.I), "rule_translatable"),
-    ("mutual_exclusion", re.compile(r"rawValue\s*=\s*(0|\"0\"|off)", re.I), "rule_translatable"),
-    ("conditional_clear", re.compile(r"rawValue\s*=\s*(null|\"\")", re.I), "rule_translatable"),
-    ("visibility", re.compile(r"presence\s*=|\.access\s*=", re.I), "rule_translatable"),
-    ("navigation", re.compile(r"xfa\.host\.(gotoURL|pageDown|pageUp)|\.execEvent", re.I), "runtime_only"),
-    ("submit", re.compile(r"HTTPSubmit|\.submit\(|xfa\.host\.exportData", re.I), "runtime_only"),
-    ("signature", re.compile(r"signature|eSign", re.I), "manual"),
-    ("external_call", re.compile(r"SOAP|WSDL|xfa\.connectionSet|Net\.HTTP", re.I), "manual"),
-    ("formatting", re.compile(r"formatString|util\.printf|replace\(", re.I), "rule_translatable"),
-    ("calculation", re.compile(r"[-+*/]\s*\w+\.rawValue|Math\.", re.I), "rule_translatable"),
-)
-
-SOM_REF = re.compile(r"(?:xfa\.resolveNode\(\s*\"([^\"]+)\"|([A-Za-z_][\w.]*)\.rawValue)")
 HEADING_NUM = re.compile(r"^\s*(\d+)[.)]\s+(.+)$")
 REVISION = re.compile(r"\(\s*(\d{3,4})\s*\)|\b(?:REV|Rev\.?)\s*([A-Za-z0-9/\-]+)")
+FORM_CODE = re.compile(r"\b(\d{2}-\d{4})\b")
+NAME_TOKEN = re.compile(r"[A-Z]?[a-z]+|[A-Z]+(?![a-z])|\d+")
+
+ROLE_TOKENS = (
+    ("footer", {"footer"}),
+    ("header", {"header", "brand", "logo"}),
+    ("signature", {"signature", "sign", "sig"}),
+    ("barcode_zone", {"barcode"}),
+)
+
+PASSIVE_TEMPLATE_CHILDREN = frozenset(
+    {
+        "pageSet",
+        "contentArea",
+        "medium",
+        "occur",
+        "desc",
+        "extras",
+        "proto",
+        "variables",
+        "bind",
+        "event",
+        "border",
+        "margin",
+        "para",
+        "font",
+        "keep",
+        "break",
+        "breakBefore",
+        "breakAfter",
+        "overflow",
+        "bookend",
+        "traversal",
+        "calculate",
+        "validate",
+        "assist",
+        "setProperty",
+    }
+)
 
 
-def local(tag: str) -> str:
-    return tag.rsplit("}", 1)[-1]
+def name_tokens(name: str | None) -> set[str]:
+    """Split a template name into lower-case words on case and non-alphanumeric boundaries."""
+    return {t.lower() for t in NAME_TOKEN.findall(name or "")}
 
 
-def to_mm(value: str | None) -> float | None:
-    """Convert an XFA measurement to millimetres. Returns None when absent/unparseable."""
-    if not value:
-        return None
-    m = re.match(r"^\s*(-?\d+(?:\.\d+)?)\s*(mm|cm|in|pt|mp)?\s*$", value)
-    if not m:
-        return None
-    factor = {"mm": 1.0, "cm": 10.0, "in": 25.4, "pt": 25.4 / 72.0, "mp": 25.4 / 72000.0}
-    return round(float(m.group(1)) * factor[m.group(2) or "mm"], 4)
+def is_signature_name(name: str | None) -> bool:
+    return (name or "").lower().endswith("sig")
 
 
-def text_of(el: ET.Element | None) -> str:
-    if el is None:
-        return ""
-    return " ".join("".join(el.itertext()).split())
-
-
-def is_blob(s: str) -> bool:
-    return bool(s) and " " not in s and bool(BASE64_BLOB.match(s))
+def _heading_key(text: str) -> str:
+    """Heading text without its section number, as stored in ``container.section_heading``."""
+    m = HEADING_NUM.match(text)
+    return (m.group(2) if m else text).strip()
 
 
 class XdpExtractor:
@@ -121,15 +125,16 @@ class XdpExtractor:
         self.template = self._first_child("template")
         if self.template is None:
             raise ValueError("no XFA template packet found")
-        self.containers = []
-        self.fields = []
-        self.statics = []
-        self.pages = []
-        self.styles = OrderedDict()
-        self.review = []
-        self.unsupported = []
-        self._seq = Counter()
-        self._som_seen = Counter()
+        self.containers: list[dict] = []
+        self.fields: list[dict] = []
+        self.statics: list[dict] = []
+        self.pages: list[dict] = []
+        self.styles = StyleRegistry()
+        self.review: list[dict] = []
+        self.unsupported: list[dict] = []
+        self._title_runs: list[TitleRun] = []
+        self._seq: Counter = Counter()
+        self._som_seen: Counter = Counter()
 
     # ---------------------------------------------------------------- plumbing
     def _template_namespace(self) -> str:
@@ -184,6 +189,17 @@ class XdpExtractor:
             "owner": owner,
         }
         (self.unsupported if unsupported else self.review).append(item)
+
+    def _geometry(self, el: ET.Element, positioned: bool) -> dict:
+        return {
+            "x_mm": to_mm(el.get("x")),
+            "y_mm": to_mm(el.get("y")),
+            "w_mm": to_mm(el.get("w")),
+            "h_mm": to_mm(el.get("h")),
+            "page_index": None,
+            "anchor": el.get("anchorType"),
+            "positioned": positioned,
+        }
 
     # ------------------------------------------------------------------ pages
     def extract_pages(self) -> None:
@@ -251,60 +267,8 @@ class XdpExtractor:
 
     # ----------------------------------------------------------------- styles
     def _style_ref(self, el: ET.Element) -> str | None:
-        font = el.find(self.t("font"))
-        para = el.find(self.t("para"))
-        border = el.find(self.t("border"))
-        if font is None and para is None and border is None:
-            return None
-        fill = None
-        if border is not None:
-            f = border.find(self.t("fill"))
-            colour = f.find(self.t("color")) if f is not None else None
-            fill = colour.get("value") if colour is not None else None
-        entry = {
-            "typeface": font.get("typeface") if font is not None else None,
-            "size_pt": to_mm(font.get("size")) and round(to_mm(font.get("size")) * 72 / 25.4, 2)
-            if font is not None
-            else None,
-            "bold": (font.get("weight") == "bold") if font is not None else None,
-            "italic": (font.get("posture") == "italic") if font is not None else None,
-            "underline": bool(font.get("underline")) if font is not None else None,
-            "color": (font.find(self.t("fill")) is not None and text_of(font.find(self.t("fill"))) or None)
-            if font is not None
-            else None,
-            "align": para.get("hAlign") if para is not None else None,
-            "v_align": para.get("vAlign") if para is not None else None,
-            "border": {"present": border is not None} if border is not None else None,
-            "fill": fill,
-            "margins_mm": {
-                "top": to_mm(para.get("spaceAbove")) if para is not None else None,
-                "bottom": to_mm(para.get("spaceBelow")) if para is not None else None,
-            }
-            if para is not None
-            else None,
-        }
-        key = json.dumps(entry, sort_keys=True)
-        if key not in self.styles:
-            entry = dict(entry)
-            entry["id"] = f"ST{len(self.styles) + 1:03d}"
-            entry["usage_count"] = 0
-            entry["target_name_hint"] = self._style_name(entry)
-            self.styles[key] = entry
-        self.styles[key]["usage_count"] += 1
-        return self.styles[key]["id"]
-
-    @staticmethod
-    def _style_name(entry: dict) -> str:
-        """STY-02: target style names follow <Font>_<Size>pt[_Bold][_Italic]."""
-        size = entry.get("size_pt")
-        parts = ["Arial"]  # font substitution policy, see rule STY-01
-        if size:
-            parts.append(f"{round(size, 1):g}pt")
-        if entry.get("bold"):
-            parts.append("Bold")
-        if entry.get("italic"):
-            parts.append("Italic")
-        return "_".join(parts)
+        entry = style_entry(el, self.t)
+        return None if entry is None else self.styles.register(entry)
 
     # ------------------------------------------------------------- containers
     def walk(self) -> None:
@@ -336,15 +300,7 @@ class XdpExtractor:
             "section_number": number,
             "section_heading": heading,
             "target_name_hint": pascal(heading) if heading else None,
-            "geometry": {
-                "x_mm": to_mm(el.get("x")),
-                "y_mm": to_mm(el.get("y")),
-                "w_mm": to_mm(el.get("w")),
-                "h_mm": to_mm(el.get("h")),
-                "page_index": None,
-                "anchor": el.get("anchorType"),
-                "positioned": (el.get("layout") or "position") == "position",
-            },
+            "geometry": self._geometry(el, (el.get("layout") or "position") == "position"),
             "occur": self._occur(el),
             "break_before": None,
             "keep_together": None,
@@ -385,39 +341,13 @@ class XdpExtractor:
                     self._walk_subform(inner, container["id"], path, depth + 1)
             elif tag == "field":
                 self._field(child, container, path)
-            elif tag in ("draw",):
+            elif tag == "draw":
                 self._draw(child, container, path)
             elif tag == "exclGroup":
                 self._excl_group(child, container, path)
             elif tag == "area":
                 self._walk_subform(child, container["id"], path, depth + 1)
-            elif tag in (
-                "pageSet",
-                "contentArea",
-                "medium",
-                "occur",
-                "desc",
-                "extras",
-                "proto",
-                "variables",
-                "bind",
-                "event",
-                "border",
-                "margin",
-                "para",
-                "font",
-                "keep",
-                "break",
-                "breakBefore",
-                "breakAfter",
-                "overflow",
-                "bookend",
-                "traversal",
-                "calculate",
-                "validate",
-                "assist",
-                "setProperty",
-            ):
+            elif tag in PASSIVE_TEMPLATE_CHILDREN:
                 continue
             else:
                 self._flag(
@@ -428,6 +358,15 @@ class XdpExtractor:
                     rule_id="OBJ-01",
                     unsupported=True,
                 )
+        if container["role"] in ("group", "section") and self._holds_signature(container["id"]):
+            container["role"] = "signature"
+
+    def _holds_signature(self, container_id: str) -> bool:
+        """LAY-08: a container that directly holds a signature capture field is the signature block."""
+        return any(
+            f["container_id"] == container_id and (f["control"]["kind"] == "signature" or is_signature_name(f["name"]))
+            for f in self.fields
+        )
 
     def _heading_of(self, el: ET.Element) -> tuple[str | None, str | None]:
         """OBJ-03: the first non-blob draw inside a section carries its business name."""
@@ -453,17 +392,13 @@ class XdpExtractor:
 
     @staticmethod
     def _container_role(container: dict, el: ET.Element) -> str:
-        name = (container["name"] or "").lower()
+        """LAY-08: role from whole-word name tokens, then heading, then repetition/layout."""
         if container["depth"] == 0:
             return "page_body"
-        if "footer" in name:
-            return "footer"
-        if "header" in name or name in ("brand", "logo"):
-            return "header"
-        if "sign" in name:
-            return "signature"
-        if "barcode" in name:
-            return "barcode_zone"
+        tokens = name_tokens(container["name"])
+        for role, words in ROLE_TOKENS:
+            if tokens & words:
+                return role
         if container["section_heading"]:
             return "section"
         if container["occur"] and container["occur"].get("repeating"):
@@ -494,10 +429,9 @@ class XdpExtractor:
         if is_blob(caption):
             caption = ""
         labels = self._labels(el, caption, container)
-        bind = el.find(self.t("bind"))
-        binding = self._binding(bind, kind, path)
+        binding = binding_of(el.find(self.t("bind")))
         fmt = self._format(el)
-        validations = self._validations(el, path, kind, fmt)
+        validations = self._validations(el, path, fmt)
         scripts = self._scripts(el, path)
         field = {
             "id": self._id("FD"),
@@ -515,20 +449,12 @@ class XdpExtractor:
                 "access": el.get("access"),
                 "presence": el.get("presence"),
             },
-            "datatype": self._datatype(kind, fmt, binding),
+            "datatype": datatype_for(kind, fmt, binding),
             "caption": caption or None,
             "label_candidates": labels,
             "semantic": self._semantic(name, caption, labels, container, binding, kind),
             "binding": binding,
-            "geometry": {
-                "x_mm": to_mm(el.get("x")),
-                "y_mm": to_mm(el.get("y")),
-                "w_mm": to_mm(el.get("w")),
-                "h_mm": to_mm(el.get("h")),
-                "page_index": None,
-                "anchor": el.get("anchorType"),
-                "positioned": container["geometry"]["positioned"],
-            },
+            "geometry": self._geometry(el, container["geometry"]["positioned"]),
             "style_ref": self._style_ref(el),
             "format": fmt,
             "validations": validations,
@@ -562,7 +488,7 @@ class XdpExtractor:
                 rule_id="FLD-02",
                 unsupported=True,
             )
-        if kind == "signature" or (name or "").lower().endswith("sig"):
+        if kind == "signature" or is_signature_name(name):
             self._flag(
                 "UNS-SIGNATURE",
                 "major",
@@ -620,69 +546,18 @@ class XdpExtractor:
             "data_picture": picture(el.find(self.t("bind"))),
         }
 
-    def _datatype(self, kind: str, fmt: dict, binding: dict) -> str:
-        base = KIND_TO_DATATYPE.get(kind, "string")
-        picture = (fmt.get("display_picture") or "") + (fmt.get("data_picture") or "")
-        if base in ("decimal", "string") and re.search(r"\$|zzz9\.99|num\{", picture):
-            return "currency"
-        if base == "string" and re.search(r"date\{|YYYY|MM/DD", picture):
-            return "date"
-        xsd = (binding.get("xsd_type") or "").lower()
-        if "boolean" in xsd:
-            return "boolean"
-        if "date" in xsd:
-            return "date"
-        if any(t in xsd for t in ("double", "decimal", "float")):
-            return "decimal"
-        if any(t in xsd for t in ("int", "long", "short")):
-            return "integer"
-        return base
-
-    def _binding(self, bind: ET.Element | None, kind: str, path: str) -> dict:
-        if bind is None:
-            return {
-                "mode": "none",
-                "match": None,
-                "source_path": None,
-                "xsd_type": None,
-                "target_variable_hint": None,
-                "nullable": None,
-            }
-        match = bind.get("match")
-        ref = bind.get("ref")
-        if match == "none" or (match is None and ref is None):
-            mode = "none"
-        elif match == "global":
-            mode = "global"
-        elif ref:
-            mode = "dataRef"
-        else:
-            mode = "unresolved"
-        source = None
-        if ref:
-            source = ref.replace("$record.", "").replace("$.", "").replace("$data.", "")
-            source = source.replace("!", "").replace("[*]", "[]").lstrip(".")
-            source = re.sub(r"\s+", "", source)
-        return {
-            "mode": mode,
-            "match": match,
-            "source_path": source,
-            "xsd_type": None,
-            "target_variable_hint": source.split(".")[-1] if source else None,
-            "nullable": None,
-        }
-
-    def _validations(self, el: ET.Element, path: str, kind: str, fmt: dict) -> list[dict]:
+    def _validations(self, el: ET.Element, path: str, fmt: dict) -> list[dict]:
         out = []
         validate = el.find(self.t("validate"))
         if validate is not None:
+            message = text_of(validate.find(self.t("message"))) or None
             if validate.get("nullTest") in ("error", "warning"):
                 out.append(
                     {
                         "kind": "mandatory",
                         "expression": None,
                         "picture": None,
-                        "message": text_of(validate.find(self.t("message"))) or None,
+                        "message": message,
                         "severity": "error" if validate.get("nullTest") == "error" else "warning",
                         "transferability": "declarative",
                         "provenance": self._prov(path, rule_id="VAL-01"),
@@ -695,7 +570,7 @@ class XdpExtractor:
                         "kind": "picture_format",
                         "expression": None,
                         "picture": picture or None,
-                        "message": text_of(validate.find(self.t("message"))) or None,
+                        "message": message,
                         "severity": "error",
                         "transferability": "declarative",
                         "provenance": self._prov(path, rule_id="VAL-02"),
@@ -703,14 +578,16 @@ class XdpExtractor:
                 )
             script = validate.find(self.t("script"))
             if script is not None and text_of(script):
+                body = text_of(script)
+                _, transferability = classify_script(body)
                 out.append(
                     {
                         "kind": "script",
-                        "expression": text_of(script)[:2000],
+                        "expression": body[:2000],
                         "picture": None,
-                        "message": text_of(validate.find(self.t("message"))) or None,
+                        "message": message,
                         "severity": "error",
-                        "transferability": "rule_translatable",
+                        "transferability": "manual" if transferability == "manual" else "rule_translatable",
                         "provenance": self._prov(path, rule_id="VAL-03"),
                     }
                 )
@@ -747,12 +624,7 @@ class XdpExtractor:
             body = text_of(script)
             if not body:
                 continue
-            classification, transferability = "unknown", "manual"
-            for label, pattern, transfer in SCRIPT_CLASSIFIERS:
-                if pattern.search(body):
-                    classification, transferability = label, transfer
-                    break
-            targets = sorted({m.group(1) or m.group(2) for m in SOM_REF.finditer(body)} - {None})
+            classification, transferability = classify_script(body)
             out.append(
                 {
                     "activity": event.get("activity"),
@@ -760,7 +632,7 @@ class XdpExtractor:
                     "body": body[:4000],
                     "length": len(body),
                     "classification": classification,
-                    "targets": targets[:20],
+                    "targets": script_targets(body),
                     "transferability": transferability,
                     "provenance": self._prov(path, rule_id="VAL-05"),
                 }
@@ -819,45 +691,22 @@ class XdpExtractor:
         name = el.get("name")
         path = f"{som}.{name}" if name else som
         path = self._unique_som(path)
-        value = el.find(self.t("value"))
-        kind, text, image_ref = "unknown", None, None
-        if value is not None:
-            for child in value:
-                tag = local(child.tag)
-                if tag in ("text", "exData"):
-                    raw = text_of(child)
-                    if is_blob(raw):
-                        kind, image_ref = "image", f"asset:{hashlib.sha256(raw.encode()).hexdigest()[:16]}"
-                    else:
-                        kind, text = ("rich_text" if tag == "exData" else "text"), raw
-                elif tag == "image":
-                    kind = "image"
-                    image_ref = f"asset:{hashlib.sha256((child.text or path).encode()).hexdigest()[:16]}"
-                elif tag == "line":
-                    kind = "line"
-                elif tag == "rectangle":
-                    kind = "rectangle"
-        heading = bool(text) and text == container.get("section_heading")
+        content = draw_content(el, self.t, path)
+        text = content.text
+        self._title_runs.extend(title_runs(el, self.t, len(self.statics)))
+        heading = bool(text) and _heading_key(text) == container.get("section_heading")
         self.statics.append(
             {
                 "id": self._id("SX"),
                 "som": path,
                 "container_id": container["id"],
-                "kind": kind,
+                "kind": content.kind,
                 "text": text,
                 "is_heading": heading,
                 "is_legal_block": bool(text) and len(text) > 300,
-                "geometry": {
-                    "x_mm": to_mm(el.get("x")),
-                    "y_mm": to_mm(el.get("y")),
-                    "w_mm": to_mm(el.get("w")),
-                    "h_mm": to_mm(el.get("h")),
-                    "page_index": None,
-                    "anchor": el.get("anchorType"),
-                    "positioned": container["geometry"]["positioned"],
-                },
+                "geometry": self._geometry(el, container["geometry"]["positioned"]),
                 "style_ref": self._style_ref(el),
-                "image_ref": image_ref,
+                "image_ref": content.image_ref,
                 "confidence": {
                     "structural": "deterministic",
                     "semantic": "bound" if text else "heuristic",
@@ -959,31 +808,26 @@ class XdpExtractor:
             "containers": self.containers,
             "fields": self.fields,
             "statics": self.statics,
-            "styles": list(self.styles.values()),
+            "styles": self.styles.values(),
             "data_dictionary": dictionary,
             "diagnostics": {"counts": counts, "unsupported": self.unsupported, "review_queue": self.review},
         }
 
     def _resolve_xsd_types(self, dictionary: dict) -> None:
         """BND-03: type a bound field from the embedded XSD when the leaf name is unique."""
-        leaf_types = {}
-        for entry in dictionary["types"]:
-            for element in entry["elements"]:
-                if not element["name"]:
-                    continue
-                leaf_types.setdefault(element["name"], set()).add(element["type"])
+        types = leaf_types(dictionary)
         for field in self.fields:
             path = field["binding"].get("source_path")
             if not path:
                 continue
-            candidates = leaf_types.get(path.split(".")[-1].split("[")[0])
+            candidates = types.get(path.split(".")[-1].split("[")[0])
             if candidates and len(candidates) == 1:
                 field["binding"]["xsd_type"] = next(iter(candidates))
-                field["datatype"] = self._datatype(field["control"]["kind"], field["format"], field["binding"])
+                field["datatype"] = datatype_for(field["control"]["kind"], field["format"], field["binding"])
 
     def _form_identity(self) -> tuple[str | None, str | None, str | None]:
+        """GOV-02: form code from the file stem, revision from static text, title from the title evidence."""
         code: str | None = None
-        title = None
         revision = None
         stem = re.match(r"^(\d{2})(\d{4})", os.path.basename(self.path))
         if stem:
@@ -993,26 +837,14 @@ class XdpExtractor:
             if not text:
                 continue
             if code is None:
-                m = re.search(r"\b(\d{2}-\d{4})\b", text)
+                m = FORM_CODE.search(text)
                 if m:
                     code = m.group(1)
             if revision is None:
                 m = REVISION.search(text)
                 if m:
                     revision = next(g for g in m.groups() if g)
-            if title is None and static["is_heading"] and len(text) > 8:
-                title = text
-        return code, title, revision
-
-
-def pascal(text: str | None) -> str | None:
-    if not text:
-        return None
-    cleaned = re.sub(r"[^A-Za-z0-9 ]+", " ", text)
-    words = [w for w in cleaned.split() if w]
-    if not words:
-        return None
-    return "".join(w[:1].upper() + w[1:] for w in words[:6])
+        return code, select_title(self._title_runs), revision
 
 
 def main(argv: list[str] | None = None) -> int:

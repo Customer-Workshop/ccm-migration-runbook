@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -125,3 +126,43 @@ def test_corpus_tiers_and_orders_forms(tmp_path: Path) -> None:
 def test_corpus_refuses_an_empty_directory(tmp_path: Path) -> None:
     with pytest.raises(FileNotFoundError):
         corpus.assess(tmp_path, load_rules())
+
+
+def test_corpus_cli_writes_json_and_markdown(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    out = tmp_path / "out"
+    assert corpus.main([str(DATA), "-o", str(out)]) == 0
+    report = json.loads((out / "corpus.json").read_text(encoding="utf-8"))
+    md = (out / "corpus.md").read_text(encoding="utf-8")
+    assert report["tiers"] == {"simple": 1, "medium": 0, "complex": 0}
+    assert report["forms"][0]["file"] == "990001.xdp"
+    assert "| 99-0001 | simple |" in md
+    assert "Suggested order: 99-0001" in md
+    assert capsys.readouterr().out == md + "\n"
+
+
+def test_corpus_orders_by_tier_then_human_touch_then_size(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    profiles = {
+        "a.xdp": {"tier": "complex", "human_touch": 1, "fields": 10, "form_code": "A"},
+        "b.xdp": {"tier": "simple", "human_touch": 5, "fields": 10, "form_code": "B"},
+        "c.xdp": {"tier": "simple", "human_touch": 2, "fields": 30, "form_code": "C"},
+        "d.xdp": {"tier": "simple", "human_touch": 2, "fields": 20, "form_code": "D"},
+    }
+    for name in profiles:
+        (tmp_path / name).write_text("<x/>", encoding="utf-8")
+    monkeypatch.setattr(corpus, "profile_form", lambda xdp, rules: {"file": xdp.name, **profiles[xdp.name]})
+    report = corpus.assess(tmp_path, {})
+    assert report["suggested_order"] == ["D", "C", "B", "A"]
+    assert report["tiers"] == {"simple": 3, "medium": 0, "complex": 1}
+
+
+@pytest.mark.parametrize(
+    ("profile", "tier"),
+    [
+        ({"fields": 40, "scripts": 5, "unsupported": 5, "pages": 1}, "simple"),
+        ({"fields": 41, "scripts": 0, "unsupported": 0, "pages": 1}, "medium"),
+        ({"fields": 0, "scripts": 26, "unsupported": 0, "pages": 1}, "complex"),
+        ({"fields": 0, "scripts": 0, "unsupported": 21, "pages": 1}, "complex"),
+    ],
+)
+def test_corpus_tier_limits_are_inclusive(profile: dict, tier: str) -> None:
+    assert corpus.tier_for(profile) == tier

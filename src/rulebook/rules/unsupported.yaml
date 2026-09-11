@@ -114,7 +114,7 @@ rules:
     evidence: byte-identical re-embedding is not guaranteed
     origin: {type: reference_pair, refs: ["18-1026"]}
     fixtures: ["18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.XdpExtractor._draw]
+    implemented_in: [converters.xdp_to_cim.statics.draw_content]
     gates: [G2]
     reviewed_by: null
     reviewed_on: null
