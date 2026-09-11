@@ -8,6 +8,7 @@ import yaml
 
 from dictionary import CrosswalkRow, load_crosswalk, load_elements
 from fixtures import load_pairs
+from gates.common import ArtifactError
 from gates.import_lint import CHECKS, load_catalogue
 from rulebook import lint, load_rules
 from tools import report
@@ -122,7 +123,7 @@ def test_crosswalk_rejects_unknown_element(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="unknown element"):
+    with pytest.raises(ArtifactError, match="unknown element"):
         load_crosswalk(path, elements={})
 
 
@@ -148,7 +149,7 @@ def test_crosswalk_verified_row_requires_reviewer(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="reviewed_by"):
+    with pytest.raises(ArtifactError, match="reviewed_by"):
         load_crosswalk(path, elements={"e1": {}})
 
 
@@ -164,14 +165,14 @@ def test_elements_reject_duplicate_ids(tmp_path: Path) -> None:
         "reviewed_by": None,
     }
     path.write_text(yaml.safe_dump({"dictionary_version": 1, "elements": [row, row]}), encoding="utf-8")
-    with pytest.raises(AssertionError, match="duplicate element"):
+    with pytest.raises(ArtifactError, match="duplicate element"):
         load_elements(path)
 
 
 def test_dictionary_version_is_enforced(tmp_path: Path) -> None:
     path = tmp_path / "elements.yaml"
     path.write_text(yaml.safe_dump({"dictionary_version": 2, "elements": []}), encoding="utf-8")
-    with pytest.raises(AssertionError, match="dictionary_version"):
+    with pytest.raises(ArtifactError, match="dictionary_version"):
         load_elements(path)
 
 
@@ -199,7 +200,7 @@ def test_catalogue_rejects_unknown_check(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="unknown check"):
+    with pytest.raises(ArtifactError, match="unknown check"):
         load_catalogue(path)
 
 
@@ -227,7 +228,7 @@ def test_pairs_manifest_rejects_status_target_mismatch(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="status/target mismatch"):
+    with pytest.raises(ArtifactError, match="status/target mismatch"):
         load_pairs(path)
 
 
@@ -249,7 +250,7 @@ def test_pairs_manifest_rejects_reference_pair_without_layout_xml(tmp_path: Path
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="99-0001: reference_pair needs layout_xml"):
+    with pytest.raises(ArtifactError, match="99-0001: reference_pair needs layout_xml"):
         load_pairs(path)
 
 
@@ -292,7 +293,7 @@ def test_pairs_manifest_rejects_source_file_not_carrying_form_number(tmp_path: P
         ),
         encoding="utf-8",
     )
-    with pytest.raises(AssertionError, match="form number"):
+    with pytest.raises(ArtifactError, match="form number"):
         load_pairs(path)
 
 

@@ -10,10 +10,12 @@ from __future__ import annotations
 
 from dictionary import CrosswalkRow
 from gates.common import GateResult
-from gates.matching import best_match, norm, tokens
+from gates.matching import best_match, norm, static_text_coverage
 
 FIELD_MATCH_MIN = 0.70
 SECTION_ROLES = ("section", "header", "footer", "signature")
+PENDING_STATUSES = ("auto", "proposed")
+BOOLEAN_KINDS = ("checkbox", "radio")
 
 
 def run(cim: dict, inv: dict, crosswalk: dict[tuple[str, str], CrosswalkRow] | None = None) -> GateResult:
@@ -39,17 +41,12 @@ def run(cim: dict, inv: dict, crosswalk: dict[tuple[str, str], CrosswalkRow] | N
     ]
     section_rows = [_match_section(c, containers) for c in cim["containers"] if c["role"] in SECTION_ROLES]
 
-    source_tokens = tokens(s["text"] for s in cim["statics"]) | tokens(f["caption"] for f in cim["fields"])
-    target_tokens = tokens(inv["static_text"])
+    text_coverage, target_only = static_text_coverage(cim, inv)
     matched = [r for r in field_rows if r["matched_target"]]
     field_pct = len(matched) / len(field_rows) if field_rows else 0.0
-    pending = [r for r in field_rows if r["crosswalk_status"] in ("auto", "proposed")]
+    pending = [r for r in field_rows if r["crosswalk_status"] in PENDING_STATUSES]
     projected_matches = len(matched) + sum(
-        1
-        for r in field_rows
-        if not r["matched_target"]
-        and r["crosswalk_status"] in ("auto", "proposed")
-        and not r["crosswalk_target_missing"]
+        1 for r in pending if not r["matched_target"] and not r["crosswalk_target_missing"]
     )
 
     result.metrics = {
@@ -63,10 +60,8 @@ def run(cim: dict, inv: dict, crosswalk: dict[tuple[str, str], CrosswalkRow] | N
         "exact_name_pct": round(sum(1 for r in matched if r["exact"]) / len(field_rows), 4) if field_rows else 0.0,
         "sections_matched": sum(1 for r in section_rows if r["matched_target"]),
         "sections_total": len(section_rows),
-        "static_text_coverage": round(len(target_tokens & source_tokens) / len(target_tokens), 4)
-        if target_tokens
-        else 0.0,
-        "target_only_tokens": sorted(target_tokens - source_tokens)[:50],
+        "static_text_coverage": text_coverage,
+        "target_only_tokens": target_only,
         "unmatched_target_controls": sorted(set(inv["form_controls"]) - {r["matched_target"] for r in matched})[:50],
         "fields": field_rows,
         "sections": section_rows,
@@ -89,7 +84,7 @@ def run(cim: dict, inv: dict, crosswalk: dict[tuple[str, str], CrosswalkRow] | N
             )
             continue
         if not row["matched_target"]:
-            if row["crosswalk_status"] in ("auto", "proposed"):
+            if row["crosswalk_status"] in PENDING_STATUSES:
                 result.add(
                     "G4-CROSSWALK-PROPOSED",
                     "minor",
@@ -126,22 +121,13 @@ def _match_field(
 ) -> dict:
     keys = [field["semantic"]["target_name_hint"], field["caption"], field["name"], field["binding"]["source_path"]]
     kind = field["control"]["kind"]
-    indexes = (
-        (("form_control", controls), ("variable", radio_variables))
-        if kind in ("checkbox", "radio")
-        else (("form_control", controls), ("variable", value_variables))
-    )
-    best = (None, 0.0, None, None)
-    for key in keys:
-        for label, index in indexes:
-            candidate, score = best_match(norm(key), list(index))
-            if candidate and score > best[1]:
-                best = (index[candidate], score, label, candidate)
-    if kind in ("checkbox", "radio") and best[0] is None:
-        for key in keys:
-            candidate, score = best_match(norm(key), list(value_variables))
-            if candidate and score > best[1]:
-                best = (value_variables[candidate], score, "variable", candidate)
+    boolean = kind in BOOLEAN_KINDS
+    # BND-09: boolean controls match *Radio variables first and fall back to value variables;
+    # value controls never match a *Radio variable.
+    indexes = [("form_control", controls), ("variable", radio_variables if boolean else value_variables)]
+    best = _best_over(keys, indexes)
+    if boolean and best[0] is None:
+        best = _best_over(keys, [("variable", value_variables)])
     target_present = row is not None and (
         row.target_variable in inv["form_controls"] or row.target_variable in inv["data_variables"]
     )
@@ -149,7 +135,7 @@ def _match_field(
     crosswalk_target = row.target_variable if row is not None else None
     crosswalk_target_missing = row is not None and row.status != "rejected" and not target_present
     exact = bool(best[0] and norm(field["semantic"]["target_name_hint"]) == best[3])
-    if row is not None and row.status != "rejected" and target_present and row.status == "verified":
+    if row is not None and row.status == "verified" and target_present:
         best = (row.target_variable, 1.0, "crosswalk:verified", norm(row.target_variable))
         exact = True
     return {
@@ -165,6 +151,16 @@ def _match_field(
         "crosswalk_target": crosswalk_target,
         "crosswalk_target_missing": crosswalk_target_missing,
     }
+
+
+def _best_over(keys: list[str | None], indexes: list[tuple[str, dict]]) -> tuple:
+    best: tuple = (None, 0.0, None, None)
+    for key in keys:
+        for label, index in indexes:
+            candidate, score = best_match(norm(key), list(index))
+            if candidate and score > best[1]:
+                best = (index[candidate], score, label, candidate)
+    return best
 
 
 def _match_section(container: dict, index: dict) -> dict:

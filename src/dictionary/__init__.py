@@ -15,6 +15,8 @@ from pathlib import Path
 
 import yaml
 
+from gates.common import require
+
 DICT_DIR = Path(__file__).resolve().parent
 ELEMENTS_PATH = DICT_DIR / "elements.yaml"
 CROSSWALK_PATH = DICT_DIR / "crosswalk.yaml"
@@ -35,15 +37,15 @@ class CrosswalkRow:
 
 def _rows(path: Path, key: str) -> list[dict]:
     doc = yaml.safe_load(path.read_text(encoding="utf-8"))
-    assert doc["dictionary_version"] == 1, f"{path.name}: unsupported dictionary_version"
+    require(doc["dictionary_version"] == 1, f"{path.name}: unsupported dictionary_version")
     return doc[key]
 
 
 def load_elements(path: Path = ELEMENTS_PATH) -> dict[str, dict]:
     elements = {}
     for row in _rows(path, "elements"):
-        assert row["id"] not in elements, f"duplicate element {row['id']}"
-        assert row["status"] in STATUSES, f"{row['id']}: bad status {row['status']}"
+        require(row["id"] not in elements, f"duplicate element {row['id']}")
+        require(row["status"] in STATUSES, f"{row['id']}: bad status {row['status']}")
         elements[row["id"]] = row
     return elements
 
@@ -57,10 +59,10 @@ def load_crosswalk(
     for raw in _rows(path, "rows"):
         row = CrosswalkRow(**raw)
         key = (row.form_code, row.som)
-        assert key not in rows, f"duplicate crosswalk row {key}"
-        assert row.status in STATUSES, f"{key}: bad status {row.status}"
-        assert row.element in known, f"{key}: unknown element {row.element}"
+        require(key not in rows, f"duplicate crosswalk row {key}")
+        require(row.status in STATUSES, f"{key}: bad status {row.status}")
+        require(row.element in known, f"{key}: unknown element {row.element}")
         if row.status == "verified":
-            assert row.reviewed_by, f"{key}: verified rows need reviewed_by"
+            require(bool(row.reviewed_by), f"{key}: verified rows need reviewed_by")
         rows[key] = row
     return rows

@@ -58,11 +58,11 @@ rules:
     class: AUTO
     status: draft
     source: event/script body (text only, never executed)
-    target: "uppercase, mutual_exclusion, conditional_clear, visibility, calculation, formatting, navigation, submit, signature, external_call"
-    evidence: 68 scripts classified across the three sources; 82-100% fall into mechanically translatable idioms
+    target: "page_number, prefill, uppercase, mutual_exclusion, conditional_clear, visibility, calculation, formatting (rule_translatable); navigation, submit (runtime_only); signature, external_call (manual)"
+    evidence: "72 scripts classified across the three sources. page_number covers a single-statement xfa.layout.page/pageCount read (18-1026 Page1 CurrentPage/PageCount, 18-1721 TextField1/TextField3); prefill covers a single-statement rawValue = xfa.data.resolveNode(...).value read. Both compose to static Inspire constructs (page counter, data-path read) so they are rule_translatable. Bodies that branch or concatenate around those reads (18-1026 Billaccno joins six account numbers, OwnerSig picks one of three owner names) stay unknown -> manual, as do assignNode and HTTP-target assembly"
     origin: {type: reference_pair, refs: ["17-0574", "18-1026", "18-1721"]}
     fixtures: ["17-0574", "18-1026", "18-1721"]
-    implemented_in: [converters.xdp_to_cim.extractor.SCRIPT_CLASSIFIERS]
+    implemented_in: [converters.xdp_to_cim.scripts.SCRIPT_CLASSIFIERS]
     gates: [G2, G3]
     reviewed_by: null
     reviewed_on: null
@@ -88,7 +88,7 @@ rules:
     evidence: observed in 18-1026
     origin: {type: reference_pair, refs: ["18-1026"]}
     fixtures: ["18-1026"]
-    implemented_in: [converters.xdp_to_cim.extractor.SCRIPT_CLASSIFIERS]
+    implemented_in: [converters.xdp_to_cim.scripts.SCRIPT_CLASSIFIERS]
     gates: [G3]
     reviewed_by: null
     reviewed_on: null

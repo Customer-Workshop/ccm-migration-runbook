@@ -372,17 +372,6 @@ decisions:
     decided_by: null
     decided_on: null
   # --- Submit button and page arithmetic -------------------------------------------------
-  - id: D-033
-    node: ".EFormsData.EFTA.PAYER.HTTPSubmitButton1"
-    finding: VAL-SCRIPT-MANUAL
-    action: drop_script
-    proposal: "drop the preSubmit script; the button itself is already skipped in the plan (VAL-09)"
-    rationale: >-
-      script sets event__click.submit.target from FormData.submitUrl: a submit-channel behaviour with no
-      compose-time equivalent (VAL-07); the target export has no submit control
-    status: proposed
-    decided_by: null
-    decided_on: null
   - id: D-034
     node: ".EFormsData.Page1.CurrentPage"
     finding: G3-UNBOUND
@@ -394,30 +383,12 @@ decisions:
     status: proposed
     decided_by: null
     decided_on: null
-  - id: D-035
-    node: ".EFormsData.Page1.CurrentPage"
-    finding: VAL-SCRIPT-MANUAL
-    action: drop_script
-    proposal: "drop xfa.layout.page(this); replaced by the system variable per D-034"
-    rationale: "38-char ready script whose only effect is the page number; OBJ-10 maps page arithmetic to Def.SystemVariables"
-    status: proposed
-    decided_by: null
-    decided_on: null
   - id: D-036
     node: ".EFormsData.Page1.PageCount"
     finding: G3-UNBOUND
     action: keep_unbound
     proposal: "no data variable; render from the target's page-count system variable (OBJ-10)"
     rationale: "caption 'Text Field', no dataRef; ready script sets rawValue = xfa.layout.pageCount(); same reasoning as D-034"
-    status: proposed
-    decided_by: null
-    decided_on: null
-  - id: D-037
-    node: ".EFormsData.Page1.PageCount"
-    finding: VAL-SCRIPT-MANUAL
-    action: drop_script
-    proposal: "drop xfa.layout.pageCount(); replaced by the system variable per D-036"
-    rationale: "39-char ready script whose only effect is the page count; OBJ-10"
     status: proposed
     decided_by: null
     decided_on: null

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from gates.common import GateResult, external, load_json, sha256_of
+from gates.common import GateResult, external, load_json, require, sha256_of
 from gates.import_lint import lint, load_catalogue
 from gates.target_inventory import inventory
 
@@ -32,7 +32,7 @@ def run(layout_xml: Path) -> GateResult:
         outcome.findings = result.findings
         return outcome
     record = load_json(log)
-    assert record["verdict"] in ("pass", "fail"), f"{log}: verdict must be pass or fail"
+    require(record["verdict"] in ("pass", "fail"), f"{log}: verdict must be pass or fail")
     result.verdict = record["verdict"]
     result.reason = (
         f"Designer {record['designer_version']} import by {record['imported_by']} on {record['imported_on']}"

@@ -7,7 +7,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from converters.cim_to_inspire.build_plan import build_plan, write_plan
+from converters.cim_to_inspire.build_plan import BuildPlanError, build_plan, write_plan
+from converters.xdp_to_cim.extractor import XdpExtractor
 from converters.xpr_to_cim import XpressionFormatUnknown, extract
 from dictionary import CrosswalkRow
 from fixtures import load_pairs
@@ -76,7 +77,7 @@ def test_build_plan_skips_controls_without_representation(synthetic_cim: dict) -
 
 def test_build_plan_rejects_unknown_datatype(synthetic_cim: dict) -> None:
     synthetic_cim["fields"][0]["datatype"] = "blob"
-    with pytest.raises(KeyError):
+    with pytest.raises(BuildPlanError, match="blob"):
         build_plan(synthetic_cim, {})
 
 
@@ -238,3 +239,114 @@ def test_pipeline_output_is_deterministic(monkeypatch: pytest.MonkeyPatch, raw: 
     _run(monkeypatch, raw, manifest, tmp_path / "b")
     for name in ("99-0001.cim.json", "99-0001.plan.json", "readiness.json", "readiness.md"):
         assert (tmp_path / "a" / name).read_bytes() == (tmp_path / "b" / name).read_bytes(), name
+
+
+# BND-10: same-named fields
+
+
+def _clone_field(cim: dict, som: str, *, new_som: str, data_path: str | None) -> dict:
+    twin = json.loads(json.dumps(next(f for f in cim["fields"] if f["som"] == som)))
+    twin["id"] = f"FD9{len(cim['fields']):03d}"
+    twin["som"] = new_som
+    twin["binding"]["source_path"] = data_path
+    cim["fields"].append(twin)
+    return twin
+
+
+def test_build_plan_shares_a_variable_for_same_name_and_same_data_path(synthetic_cim: dict) -> None:
+    state = next(f for f in synthetic_cim["fields"] if f["som"] == SOM_STATE)
+    _clone_field(synthetic_cim, SOM_STATE, new_som=SOM_STATE + "[1]", data_path=state["binding"]["source_path"])
+    plan = build_plan(synthetic_cim, {})
+    matching = [v for v in plan["variables"] if v["name"] == state["binding"]["target_variable_hint"]]
+    assert len(matching) == 1
+    assert matching[0]["source_soms"] == [SOM_STATE, SOM_STATE + "[1]"]
+    assert "disambiguated_from" not in matching[0]
+    assert not [d for d in plan["decisions_required"] if d["rule_id"] == "BND-10"]
+
+
+def test_build_plan_suffixes_same_name_with_different_data_paths_and_routes_bnd10(synthetic_cim: dict) -> None:
+    state = next(f for f in synthetic_cim["fields"] if f["som"] == SOM_STATE)
+    name = state["binding"]["target_variable_hint"]
+    _clone_field(synthetic_cim, SOM_STATE, new_som=SOM_STATE + "[1]", data_path="Row2.State")
+    _clone_field(synthetic_cim, SOM_STATE, new_som=SOM_STATE + "[2]", data_path="Row3.State")
+    _clone_field(synthetic_cim, SOM_STATE, new_som=SOM_STATE + "[3]", data_path="Row2.State")
+    plan = build_plan(synthetic_cim, {})
+    group = [v for v in plan["variables"] if v["name"] == name or v.get("disambiguated_from") == name]
+    assert [v["name"] for v in group] == [name, f"{name}_R2", f"{name}_R3"]
+    assert [v["id"] for v in group] == [f"99-0001_{name}", f"99-0001_{name}_R2", f"99-0001_{name}_R3"]
+    assert [v.get("row_index") for v in group] == [None, 2, 3]
+    assert group[1]["source_soms"] == [SOM_STATE + "[1]", SOM_STATE + "[3]"]
+    assert group[2]["source_soms"] == [SOM_STATE + "[2]"]
+    bnd10 = [d for d in plan["decisions_required"] if d["rule_id"] == "BND-10"]
+    assert [d["node"] for d in bnd10] == [SOM_STATE + "[1]", SOM_STATE + "[2]"]
+    assert all(d["owner"] == "data_steward" and f"'{name}_R" in d["decision"] for d in bnd10)
+    var_ids = {v["id"] for v in plan["variables"]}
+    referenced = [p["variable_id"] for b in plan["blocks"] for p in b["paragraphs"] if p["kind"] == "variable"]
+    assert set(referenced) <= var_ids
+
+
+def test_build_plan_requires_a_page_body_block(synthetic_cim: dict) -> None:
+    for container in synthetic_cim["containers"]:
+        if container["role"] == "page_body":
+            container["role"] = "group"
+    with pytest.raises(BuildPlanError, match="no page_body block"):
+        build_plan(synthetic_cim, {})
+
+
+def test_build_plan_maps_alignment_and_marks_checkbox_rendering(synthetic_cim: dict) -> None:
+    synthetic_cim["styles"][0]["align"] = "justify"
+    synthetic_cim["fields"][0]["control"]["kind"] = "checkbox"
+    synthetic_cim["fields"][0]["datatype"] = "boolean"
+    plan = build_plan(synthetic_cim, {})
+    assert plan["paragraph_styles"][0]["alignment"] == "JustifyLeft"
+    expected = [f["som"] for f in synthetic_cim["fields"] if f["control"]["kind"] in ("checkbox", "radio")]
+    assert synthetic_cim["fields"][0]["som"] in expected
+    assert [d["node"] for d in plan["decisions_required"] if d["rule_id"] == "OBJ-06"] == expected
+
+
+# pipeline: integrity short-circuit
+
+
+def test_pipeline_g1_failure_short_circuits_and_exits_2(
+    monkeypatch: pytest.MonkeyPatch, raw: Path, tmp_path: Path
+) -> None:
+    real_build = XdpExtractor.build
+
+    def broken_build(self: XdpExtractor) -> dict:
+        cim = real_build(self)
+        cim["fields"][0]["container_id"] = "CT9999"
+        return cim
+
+    monkeypatch.setattr(pipeline.XdpExtractor, "build", broken_build)
+    code, report = _run(monkeypatch, raw, _manifest(raw, tmp_path, with_target=True), tmp_path / "out")
+    assert code == 2
+    verdicts = _verdicts(report)
+    assert verdicts["G1"] == "fail"
+    assert {verdicts[g] for g in ("G2", "G3", "G4", "G5", "G6")} == {"skipped"}
+    assert all(
+        g["reason"] == "G1 failed" for g in report["forms"][0]["gates"] if g["gate"] in ("G2", "G3", "G4", "G5", "G6")
+    )
+    assert not (tmp_path / "out" / "99-0001.plan.json").exists()
+
+
+def test_pipeline_reports_missing_target_files_as_skipped(
+    monkeypatch: pytest.MonkeyPatch, raw: Path, tmp_path: Path
+) -> None:
+    manifest = _manifest(raw, tmp_path, with_target=True)
+    (raw / "99-0001.xml").unlink()
+    (raw / "99-0001.pdf").unlink()
+    code, report = _run(monkeypatch, raw, manifest, tmp_path / "out")
+    assert code == 0
+    verdicts = _verdicts(report)
+    assert (verdicts["G4"], verdicts["G5"], verdicts["G6"]) == ("skipped", "skipped", "skipped")
+    reasons = {g["gate"]: g["reason"] for g in report["forms"][0]["gates"]}
+    assert reasons["G4"] == "99-0001.xml missing" and reasons["G6"] == "99-0001.pdf missing"
+
+
+def test_pipeline_markdown_lists_every_gate_and_form(
+    monkeypatch: pytest.MonkeyPatch, raw: Path, tmp_path: Path
+) -> None:
+    _run(monkeypatch, raw, _manifest(raw, tmp_path, with_target=True), tmp_path / "out")
+    md = (tmp_path / "out" / "readiness.md").read_text(encoding="utf-8")
+    assert "99-0001" in md
+    assert all(gate in md for gate in ("G0", "G1", "G2", "G3", "G4", "G5", "G6"))

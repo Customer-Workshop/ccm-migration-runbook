@@ -785,21 +785,3 @@ decisions:
     status: proposed
     decided_by: null
     decided_on: null
-  - id: D-088
-    node: ".EFormData.Page1.CurrentPage"
-    finding: VAL-SCRIPT-MANUAL
-    action: translate_script
-    proposal: "replace the field with Designer's built-in page-number/page-count system variable for the current page number in the page footer; the designer confirms the exact system-variable name at import (recorded on the G5 checklist)"
-    rationale: "the 'ready' script is a single assignment xfa.layout.page(this) with no input dependency, i.e. render-time current page number; there is no data or validation semantics to translate"
-    status: proposed
-    decided_by: null
-    decided_on: null
-  - id: D-089
-    node: ".EFormData.Page1.PageCount"
-    finding: VAL-SCRIPT-MANUAL
-    action: translate_script
-    proposal: "replace the field with Designer's built-in page-number/page-count system variable for the total page count in the page footer; the designer confirms the exact system-variable name at import (recorded on the G5 checklist)"
-    rationale: "the 'ready' script is a single assignment xfa.layout.pageCount() with no input dependency, i.e. render-time total page count; there is no data or validation semantics to translate"
-    status: proposed
-    decided_by: null
-    decided_on: null

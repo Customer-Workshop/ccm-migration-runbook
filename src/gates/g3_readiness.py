@@ -13,6 +13,7 @@ from rulebook import Rule
 
 ROUTABLE = ("blocker", "major")
 STATUS_KEYS = ("proposed", "accepted", "rejected")
+CHOICE_KINDS = ("dropdown", "radio")
 
 
 def run(cim: dict, rules: dict[str, Rule], record: DecisionRecord | None = None) -> GateResult:
@@ -45,10 +46,16 @@ def run(cim: dict, rules: dict[str, Rule], record: DecisionRecord | None = None)
                 node=field["som"],
                 rule_id="BND-05",
             )
-        if field["control"]["kind"] in ("choice", "radio") and not field["control"]["items"]:
-            result.add("G3-NOITEMS", "major", "choice control without items", node=field["som"], rule_id="FLD-07")
+        if field["control"]["kind"] in CHOICE_KINDS and not field["control"]["items"]:
+            result.add(
+                "G3-NOITEMS",
+                "major",
+                f"{field['control']['kind']} control without items",
+                node=field["som"],
+                rule_id="FLD-07",
+            )
         for script in field["scripts"]:
-            if script["transferability"] == "interactive_only":
+            if script["transferability"] == "runtime_only":
                 result.add(
                     "G3-INTERACTIVE",
                     "minor",

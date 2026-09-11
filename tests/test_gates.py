@@ -9,7 +9,7 @@ import pytest
 
 from dictionary import CrosswalkRow
 from gates import g0_pairing, g1_shape, g2_completeness, g3_readiness, g4_coverage, g5_target, g6_pdf
-from gates.common import sha256_of
+from gates.common import ArtifactError, sha256_of
 from gates.target_inventory import inventory
 from rulebook import Rule, load_rules
 from tests.conftest import SYNTHETIC_XDP, SYNTHETIC_XML
@@ -486,7 +486,7 @@ def test_g5_adopts_designer_verdict_from_import_log(monkeypatch: pytest.MonkeyPa
 def test_g5_rejects_import_log_with_bad_verdict(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     monkeypatch.setattr(g5_target, "IMPORT_LOG_DIR", tmp_path)
     (tmp_path / f"{sha256_of(SYNTHETIC_XML)}.json").write_text(json.dumps({"verdict": "maybe"}), encoding="utf-8")
-    with pytest.raises(AssertionError):
+    with pytest.raises(ArtifactError):
         g5_target.run(SYNTHETIC_XML)
 
 
@@ -512,7 +512,7 @@ def test_g6_fails_on_pdf_without_pages(tmp_path: Path) -> None:
 def test_g6_rejects_non_pdf(tmp_path: Path) -> None:
     fake = tmp_path / "x.pdf"
     fake.write_bytes(b"hello")
-    with pytest.raises(AssertionError):
+    with pytest.raises(ArtifactError):
         g6_pdf.run(fake)
 
 
@@ -532,3 +532,169 @@ def test_g6_adopts_composition_verdict(monkeypatch: pytest.MonkeyPatch, raw: Pat
     result = g6_pdf.run(pdf)
     assert result.verdict == "pass"
     assert result.reason.startswith("composed by qa")
+
+
+# G2 edge cases
+
+
+def test_g2_reports_missing_medium_content_area_fields_and_styles(synthetic_cim: dict) -> None:
+    synthetic_cim["pages"][0]["medium"]["width_mm"] = None
+    synthetic_cim["pages"][0]["content_areas"] = []
+    synthetic_cim["styles"] = []
+    result = g2_completeness.run(synthetic_cim)
+    codes = {f.code for f in result.findings}
+    assert {"G2-NOMEDIUM", "G2-NOCONTENT", "G2-NOSTYLES"} <= codes
+    assert result.verdict == "fail"
+
+
+def test_g2_reports_unknown_controls_missing_geometry_and_unknown_statics(synthetic_cim: dict) -> None:
+    synthetic_cim["fields"][0]["control"]["kind"] = "unknown"
+    synthetic_cim["fields"][1]["geometry"]["w_mm"] = None
+    synthetic_cim["statics"][0]["kind"] = "unknown"
+    codes = {f.code for f in g2_completeness.run(synthetic_cim).findings}
+    assert {"G2-UNKNOWNCTRL", "G2-NOGEOM", "G2-UNKNOWNSTATIC"} <= codes
+
+
+def test_g2_no_fields_is_a_blocker(synthetic_cim: dict) -> None:
+    synthetic_cim["fields"] = []
+    synthetic_cim["diagnostics"]["counts"]["source_nodes"]["field"] = 0
+    result = g2_completeness.run(synthetic_cim)
+    assert "G2-NOFIELDS" in {f.code for f in result.findings}
+    assert result.verdict == "fail"
+
+
+# G3 edge cases
+
+
+def _field_named(cim: dict, name: str) -> dict:
+    return next(f for f in cim["fields"] if f["name"] == name)
+
+
+def test_g3_flags_choice_controls_without_items(synthetic_cim: dict) -> None:
+    field = _field_named(_clean(synthetic_cim), "State")
+    field["control"]["kind"] = "dropdown"
+    field["control"]["items"] = []
+    findings = g3_readiness.run(synthetic_cim, _verified(load_rules())).findings
+    assert [(f.code, f.severity) for f in findings if f.code == "G3-NOITEMS"] == [("G3-NOITEMS", "major")]
+
+    field["control"]["items"] = [{"value": "WI", "label": None}]
+    assert "G3-NOITEMS" not in {f.code for f in g3_readiness.run(synthetic_cim, _verified(load_rules())).findings}
+
+
+def test_g3_runtime_only_scripts_are_minor_and_manual_validations_major(synthetic_cim: dict) -> None:
+    field = _field_named(_clean(synthetic_cim), "State")
+    field["scripts"] = [
+        {
+            "activity": "click",
+            "language": None,
+            "body": "xfa.host.gotoURL('x')",
+            "length": 21,
+            "classification": "navigation",
+            "targets": [],
+            "transferability": "runtime_only",
+            "provenance": field["provenance"],
+        }
+    ]
+    field["validations"] = [
+        {
+            "kind": "script",
+            "expression": "app.alert(1)",
+            "picture": None,
+            "message": None,
+            "severity": "error",
+            "transferability": "manual",
+            "provenance": field["provenance"],
+        }
+    ]
+    result = g3_readiness.run(synthetic_cim, _verified(load_rules()))
+    by_code = {f.code: f.severity for f in result.findings}
+    assert by_code["G3-INTERACTIVE"] == "minor"
+    assert by_code["G3-VALIDATION"] == "major"
+    assert result.metrics["scripts_mechanically_transferable_pct"] == 0.0
+    assert result.metrics["nodes_requiring_human_touch"] == 1
+
+
+def test_g3_duplicate_leaf_names_and_missing_revision_are_minor(synthetic_cim: dict) -> None:
+    _clean(synthetic_cim)
+    twin = copy.deepcopy(synthetic_cim["fields"][0])
+    twin["id"] = "FD9999"
+    twin["som"] = twin["som"] + "[1]"
+    twin["name"] = synthetic_cim["fields"][0]["name"].upper()
+    synthetic_cim["fields"].append(twin)
+    synthetic_cim["form"]["revision_hint"] = None
+    result = g3_readiness.run(synthetic_cim, _verified(load_rules()))
+    by_code = {f.code: f for f in result.findings}
+    assert by_code["G3-DUPNAME"].severity == "minor"
+    assert by_code["G3-DUPNAME"].node == f"{synthetic_cim['fields'][0]['som']};{twin['som']}"
+    assert by_code["G3-NOREVISION"].severity == "minor"
+    assert result.verdict == "pass"
+
+
+def test_g3_field_without_name_evidence_is_major(synthetic_cim: dict) -> None:
+    field = _field_named(_clean(synthetic_cim), "State")
+    field["semantic"]["target_name_hint"] = None
+    assert "G3-NONAME" in {f.code for f in g3_readiness.run(synthetic_cim, _verified(load_rules())).findings}
+
+
+def test_g3_metrics_are_none_safe_for_empty_forms(synthetic_cim: dict) -> None:
+    synthetic_cim["fields"] = []
+    synthetic_cim["diagnostics"]["unsupported"] = []
+    result = g3_readiness.run(synthetic_cim, _verified(load_rules()))
+    assert result.metrics["bound_pct"] is None
+    assert result.metrics["scripts_mechanically_transferable_pct"] is None
+    assert result.metrics["fields_in_scope"] == 0
+
+
+# target inventory: WorkFlow version handling
+
+
+def test_inventory_records_missing_workflow_version_as_a_finding_not_a_crash(tmp_path: Path) -> None:
+    path = tmp_path / "noversion.xml"
+    path.write_text(
+        "<WorkFlow><Layout><Id>1</Id><Layout>"
+        "<Variable><Id>1</Id><Name>Only</Name><ParentId>Def.Data</ParentId></Variable>"
+        "</Layout></Layout></WorkFlow>",
+        encoding="utf-8",
+    )
+    inv = inventory(path)
+    assert inv["export_kind"] == "workflow"
+    assert inv["workflow_version"] is None
+    assert inv["integrity"]["missing_attributes"] == ["WorkFlow@version"]
+
+
+def test_inventory_layout_export_has_no_workflow_version(synthetic_inventory: dict) -> None:
+    assert synthetic_inventory["export_kind"] == "layout"
+    assert synthetic_inventory["workflow_version"] is None
+    assert synthetic_inventory["integrity"]["missing_attributes"] == []
+
+
+def test_import_lint_flags_missing_workflow_version(tmp_path: Path) -> None:
+    from gates.import_lint import lint, load_catalogue
+
+    path = tmp_path / "noversion.xml"
+    path.write_text(
+        "<WorkFlow><Layout><Id>1</Id><Layout>"
+        "<Variable><Id>1</Id><Name>Only</Name><ParentId>Def.Data</ParentId></Variable>"
+        "</Layout></Layout></WorkFlow>",
+        encoding="utf-8",
+    )
+    findings = lint(inventory(path), load_catalogue()).findings
+    assert [f.node for f in findings if f.code == "IMP-006"] == ["WorkFlow@version"]
+    assert not [f for f in lint(inventory(SYNTHETIC_XML), load_catalogue()).findings if f.code == "IMP-006"]
+
+
+# matching helpers
+
+
+def test_static_text_coverage_reports_target_only_tokens(synthetic_cim: dict, synthetic_inventory: dict) -> None:
+    from gates.matching import static_text_coverage
+
+    coverage, missing = static_text_coverage(synthetic_cim, synthetic_inventory)
+    assert coverage == 1.0 and missing == []
+    inv = copy.deepcopy(synthetic_inventory)
+    inv["static_text"] = inv["static_text"] + ["Milwaukee Wisconsin"]
+    coverage, missing = static_text_coverage(synthetic_cim, inv)
+    assert 0 < coverage < 1.0
+    assert missing == ["milwaukee", "wisconsin"]
+    inv["static_text"] = []
+    assert static_text_coverage(synthetic_cim, inv) == (0.0, [])

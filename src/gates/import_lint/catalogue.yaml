@@ -44,3 +44,10 @@
   rule_id: LAY-01
   evidence: "reference exports declare >=1 Page under Def.Pages and >=1 Flow"
   designer_message: null
+- code: IMP-006
+  title: WorkFlow export without a version attribute
+  status: inferred
+  check: gates.import_lint.export_declares_version
+  rule_id: GOV-02
+  evidence: "Forms_17-0574 (AEM to Quad).xml and Forms_18-1721 (AEM to Quad).xml both carry <WorkFlow version=\"17.0.436.3\">; the import log needs the Designer version to be recorded"
+  designer_message: null

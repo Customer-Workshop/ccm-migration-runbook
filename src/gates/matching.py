@@ -52,6 +52,14 @@ def best_match(needle: str, haystack: list[str], cutoff: float = 0.72) -> tuple[
     return (candidate, round(score, 3)) if score >= cutoff else (None, round(score, 3))
 
 
+def static_text_coverage(cim: dict, inv: dict) -> tuple[float, list[str]]:
+    """Share of target static-text tokens present in the source statics or captions, plus the target-only tokens."""
+    source = tokens(s["text"] for s in cim["statics"]) | tokens(f["caption"] for f in cim["fields"])
+    target = tokens(inv["static_text"])
+    coverage = len(target & source) / len(target) if target else 0.0
+    return round(coverage, 4), sorted(target - source)[:50]
+
+
 def tokens(strings: Iterable[str | None]) -> set[str]:
     out = set()
     for value in strings:
